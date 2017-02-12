@@ -7,9 +7,9 @@ use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
 interface ConstraintInterface
 {
     /**
-     * Assert $value against constraint.
+     * Assert $value and, optional, $context against constraint.
      *
-     * When assertion fails, an exception will be thrown.
+     * When assertion fails, an exception will be thrown, true will be returned otherwise.
      *
      * @param mixed $value
      * @param null  $context
@@ -19,7 +19,7 @@ interface ConstraintInterface
     public function assert($value, $context = null);
 
     /**
-     * Validate $value against constraint.
+     * Validate $value and, optional, $context against constraint.
      *
      * When validation fails, false will be returned, true otherwise.
      *

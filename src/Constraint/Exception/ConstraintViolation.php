@@ -7,7 +7,7 @@ use DomainException;
 class ConstraintViolation extends DomainException
 {
     /**
-     * Parameters to replace in message.
+     * Parameters to replace in violation message.
      *
      * @var array
      */

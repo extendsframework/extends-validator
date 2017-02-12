@@ -7,17 +7,21 @@ use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 class ValidatorConstraint
 {
     /**
+     * The constraint to assert.
+     *
      * @var ConstraintInterface
      */
     protected $constraint;
 
     /**
+     * Whether or not the validation must be stopped.
+     *
      * @var bool
      */
     protected $interrupt;
 
     /**
-     * Set $constraint and $interrupt for the validator constraint.
+     * Set $constraint and $interrupt flag.
      *
      * @param ConstraintInterface $constraint
      * @param bool                $interrupt

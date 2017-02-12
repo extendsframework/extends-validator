@@ -8,7 +8,7 @@ use ExtendsFramework\Validator\Exception\ValidatorNotValidated;
 interface ValidatorInterface
 {
     /**
-     * Validate $value against constraints.
+     * Validate $value and, optional, $context against constraints.
      *
      * The $context will be passed to the current constraint that is asserted. When validation is successful, true
      * will be returned. False otherwise.

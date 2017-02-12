@@ -16,7 +16,7 @@ abstract class AbstractConstraint implements ConstraintInterface
     /**
      * Set templates for constraint.
      *
-     * Associative array with keys and templates. Given $templates keys will replaces default template keys.
+     * Associative array with keys and templates. Given $templates keys will replace default template keys.
      *
      * @param array $templates
      */
