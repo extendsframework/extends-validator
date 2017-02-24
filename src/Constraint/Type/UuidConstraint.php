@@ -14,15 +14,6 @@ class UuidConstraint extends AbstractConstraint
     const NOT_UUID = 'notUuid';
 
     /**
-     * Violation templates.
-     *
-     * @var array
-     */
-    protected $templates = [
-        self::NOT_UUID => 'Value {{value}} must be a valid UUID.',
-    ];
-
-    /**
      * UUID regular expression.
      *
      * @var string
@@ -35,11 +26,21 @@ class UuidConstraint extends AbstractConstraint
     public function assert($value, $context = null)
     {
         if (!preg_match($this->pattern, $value)) {
-            $violation = $this->violate(self::NOT_UUID, [
+            throw $this->getViolation(self::NOT_UUID, [
                 'value' => $value,
             ]);
-            throw $violation;
         }
+
         return true;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getTemplates()
+    {
+        return [
+            self::NOT_UUID => 'Value {{value}} must be a valid UUID.',
+        ];
     }
 }

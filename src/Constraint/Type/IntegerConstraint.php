@@ -14,25 +14,26 @@ class IntegerConstraint extends AbstractConstraint
     const NOT_INTEGER = 'notInteger';
 
     /**
-     * Violation templates.
-     *
-     * @var array
-     */
-    protected $templates = [
-        self::NOT_INTEGER => 'Value must be a integer, got "{{type}}".',
-    ];
-
-    /**
      * @inheritDoc
      */
     public function assert($value, $context = null)
     {
         if (!is_int($value)) {
-            $violation = $this->violate(self::NOT_INTEGER, [
+            throw $this->getViolation(self::NOT_INTEGER, [
                 'type' => gettype($value),
             ]);
-            throw $violation;
         }
+
         return true;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getTemplates()
+    {
+        return [
+            self::NOT_INTEGER => 'Value must be a integer, got "{{type}}".',
+        ];
     }
 }

@@ -2,9 +2,9 @@
 
 namespace ExtendsFramework\Validator\Exception;
 
-use LogicException;
+use ExtendsFramework\Validator\ValidatorException;
 
-class ValidatorNotValidated extends LogicException
+class ValidatorNotValidated extends ValidatorException
 {
     /**
      * Exception when validator is not validated yet.
@@ -13,7 +13,6 @@ class ValidatorNotValidated extends LogicException
      */
     public static function forViolations()
     {
-        $exception = new static('Validator MUST be validated to get violations, call validate() first.');
-        return $exception;
+        return new static('Validator MUST be validated to get violations, call validate() first.');
     }
 }

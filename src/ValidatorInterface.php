@@ -3,7 +3,6 @@
 namespace ExtendsFramework\Validator;
 
 use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
-use ExtendsFramework\Validator\Exception\ValidatorNotValidated;
 
 interface ValidatorInterface
 {
@@ -24,8 +23,8 @@ interface ValidatorInterface
      *
      * If validation has not happened yet, an exception will be thrown.
      *
-     * @throws ValidatorNotValidated
      * @return ConstraintViolation[]
+     * @throws ValidatorException
      */
     public function violations();
 }

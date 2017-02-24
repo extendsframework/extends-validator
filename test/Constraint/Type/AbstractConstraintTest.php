@@ -45,4 +45,36 @@ class AbstractConstraintTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($valid);
     }
+
+    /**
+     * @covers                   \ExtendsFramework\Validator\Constraint\AbstractConstraint::validate()
+     * @covers                   \ExtendsFramework\Validator\Constraint\AbstractConstraint::getViolation()
+     * @covers                   \ExtendsFramework\Validator\Constraint\Exception\TemplateNotFound::forKey
+     * @expectedException        \ExtendsFramework\Validator\Constraint\Exception\TemplateNotFound
+     * @expectedExceptionMessage Template MUST exist for key "foo".
+     */
+    public function testCanNotGetTemplateForKey()
+    {
+        $constraint = new Constraint();
+        $constraint->assert('bar');
+    }
+}
+
+class Constraint extends AbstractConstraint
+{
+    /**
+     * @inheritDoc
+     */
+    public function assert($value, $context = null)
+    {
+        throw $this->getViolation('foo', []);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getTemplates()
+    {
+        return [];
+    }
 }

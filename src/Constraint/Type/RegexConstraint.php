@@ -14,15 +14,6 @@ class RegexConstraint extends AbstractConstraint
     const NOT_VALID = 'notValid';
 
     /**
-     * Violation templates.
-     *
-     * @var array
-     */
-    protected $templates = [
-        self::NOT_VALID => 'Value {{value}} must match regular expression {{pattern}}.',
-    ];
-
-    /**
      * Regular expression to assert.
      *
      * @var string
@@ -30,15 +21,12 @@ class RegexConstraint extends AbstractConstraint
     protected $pattern;
 
     /**
-     * Constructor to set $pattern and $templates.
+     * Constructor to set $pattern for validation.
      *
      * @param string $pattern
-     * @param array  $templates
      */
-    public function __construct($pattern, array $templates = [])
+    public function __construct($pattern)
     {
-        parent::__construct($templates);
-
         $this->pattern = $pattern;
     }
 
@@ -48,12 +36,22 @@ class RegexConstraint extends AbstractConstraint
     public function assert($value, $context = null)
     {
         if (!preg_match($this->pattern, $value)) {
-            $violation = $this->violate(self::NOT_VALID, [
+            throw $this->getViolation(self::NOT_VALID, [
                 'value' => $value,
                 'pattern' => $this->pattern,
             ]);
-            throw $violation;
         }
+
         return true;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getTemplates()
+    {
+        return [
+            self::NOT_VALID => 'Value {{value}} must match regular expression {{pattern}}.',
+        ];
     }
 }

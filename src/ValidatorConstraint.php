@@ -26,7 +26,7 @@ class ValidatorConstraint
      * @param ConstraintInterface $constraint
      * @param bool                $interrupt
      */
-    public function __construct(ConstraintInterface $constraint, $interrupt = false)
+    public function __construct(ConstraintInterface $constraint, $interrupt = null)
     {
         $this->constraint = $constraint;
         $this->interrupt = (bool)$interrupt;

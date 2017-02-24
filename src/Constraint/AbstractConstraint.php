@@ -3,28 +3,10 @@
 namespace ExtendsFramework\Validator\Constraint;
 
 use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
+use ExtendsFramework\Validator\Constraint\Exception\TemplateNotFound;
 
 abstract class AbstractConstraint implements ConstraintInterface
 {
-    /**
-     * Associative array with templates to use for the violation.
-     *
-     * @var array
-     */
-    protected $templates = [];
-
-    /**
-     * Set templates for constraint.
-     *
-     * Associative array with keys and templates. Given $templates keys will replace default template keys.
-     *
-     * @param array $templates
-     */
-    public function __construct(array $templates = [])
-    {
-        $this->templates = array_replace($this->templates, $templates);
-    }
-
     /**
      * @inheritDoc
      */
@@ -32,8 +14,9 @@ abstract class AbstractConstraint implements ConstraintInterface
     {
         try {
             $this->assert($value, $context);
+
             return true;
-        } catch (ConstraintViolation $violation) {
+        } catch (ConstraintException $violation) {
             return false;
         }
     }
@@ -44,11 +27,22 @@ abstract class AbstractConstraint implements ConstraintInterface
      * @param string $key
      * @param array  $parameters
      * @return ConstraintViolation
+     * @throws ConstraintException
      */
-    protected function violate($key, array $parameters = [])
+    protected function getViolation($key, array $parameters = null)
     {
-        $message = $this->templates[$key];
-        $violation = new ConstraintViolation($message, $parameters);
-        return $violation;
+        $templates = $this->getTemplates();
+        if (!isset($templates[$key])) {
+            throw TemplateNotFound::forKey($key);
+        }
+
+        return new ConstraintViolation($templates[$key], $parameters ?: []);
     }
+
+    /**
+     * Get an associative array with templates to use for the violation.
+     *
+     * @return array
+     */
+    abstract protected function getTemplates();
 }

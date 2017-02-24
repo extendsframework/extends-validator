@@ -2,9 +2,9 @@
 
 namespace ExtendsFramework\Validator\Constraint\Exception;
 
-use DomainException;
+use ExtendsFramework\Validator\Constraint\ConstraintException;
 
-class ConstraintViolation extends DomainException
+class ConstraintViolation extends ConstraintException
 {
     /**
      * Parameters to replace in violation message.
@@ -43,10 +43,11 @@ class ConstraintViolation extends DomainException
      */
     public function __toString()
     {
-        $message = $this->getMessage();
+        $replacement = [];
         foreach ($this->parameters as $key => $parameter) {
-            $message = str_replace(sprintf('{{%s}}', $key), $parameter, $message);
+            $replacement[sprintf('{{%s}}', $key)] = $parameter;
         }
-        return $message;
+
+        return strtr($this->getMessage(), $replacement);
     }
 }

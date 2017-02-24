@@ -5,7 +5,6 @@ namespace ExtendsFramework\Validator\Constraint\Type;
 class IntegerConstraintTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers \ExtendsFramework\Validator\Constraint\AbstractConstraint::__construct()
      * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::assert()
      * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::validate()
      */
@@ -18,9 +17,9 @@ class IntegerConstraintTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers                   \ExtendsFramework\Validator\Constraint\AbstractConstraint::__construct()
-     * @covers                   \ExtendsFramework\Validator\Constraint\AbstractConstraint::violate()
+     * @covers                   \ExtendsFramework\Validator\Constraint\AbstractConstraint::getViolation()
      * @covers                   \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::assert()
+     * @covers                   \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::getTemplates()
      * @expectedException        \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation
      * @expectedExceptionMessage Value must be a integer, got "{{type}}".
      */

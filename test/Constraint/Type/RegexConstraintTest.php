@@ -5,10 +5,9 @@ namespace ExtendsFramework\Validator\Constraint\Type;
 class RegexConstraintTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @covers \ExtendsFramework\Validator\Constraint\AbstractConstraint::__construct()
      * @covers \ExtendsFramework\Validator\Constraint\Type\RegexConstraint::__construct()
      * @covers \ExtendsFramework\Validator\Constraint\Type\RegexConstraint::assert()
-     * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::validate()
+     * @covers \ExtendsFramework\Validator\Constraint\Type\RegexConstraint::validate()
      */
     public function testCanAssertValidValue()
     {
@@ -19,10 +18,10 @@ class RegexConstraintTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers                   \ExtendsFramework\Validator\Constraint\AbstractConstraint::__construct()
-     * @covers                   \ExtendsFramework\Validator\Constraint\AbstractConstraint::violate()
+     * @covers                   \ExtendsFramework\Validator\Constraint\AbstractConstraint::getViolation()
      * @covers                   \ExtendsFramework\Validator\Constraint\Type\RegexConstraint::__construct()
      * @covers                   \ExtendsFramework\Validator\Constraint\Type\RegexConstraint::assert()
+     * @covers                   \ExtendsFramework\Validator\Constraint\Type\RegexConstraint::getTemplates()
      * @expectedException        \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation
      * @expectedExceptionMessage Value {{value}} must match regular expression {{pattern}}.
      */
