@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator\Constraint\Type;
 
@@ -16,21 +17,19 @@ class StringConstraint extends AbstractConstraint
     /**
      * @inheritDoc
      */
-    public function assert($value, $context = null)
+    public function assert($value, $context = null): void
     {
-        if (!is_string($value)) {
+        if (!\is_string($value)) {
             throw $this->getViolation(self::NOT_STRING, [
-                'type' => gettype($value),
+                'type' => \gettype($value),
             ]);
         }
-
-        return true;
     }
 
     /**
      * @inheritDoc
      */
-    protected function getTemplates()
+    protected function getTemplates(): array
     {
         return [
             self::NOT_STRING => 'Value must be a string, got "{{type}}".',

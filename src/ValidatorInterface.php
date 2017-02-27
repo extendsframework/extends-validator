@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator;
 
@@ -16,7 +17,7 @@ interface ValidatorInterface
      * @param mixed $context
      * @return bool
      */
-    public function validate($value, $context = null);
+    public function validate($value, $context = null): bool;
 
     /**
      * Returns list with constraint violations after validation.
@@ -26,5 +27,5 @@ interface ValidatorInterface
      * @return ConstraintViolation[]
      * @throws ValidatorException
      */
-    public function violations();
+    public function violations(): array;
 }

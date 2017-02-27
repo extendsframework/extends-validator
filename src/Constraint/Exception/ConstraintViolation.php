@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator\Constraint\Exception;
 
@@ -31,7 +32,7 @@ class ConstraintViolation extends ConstraintException
      *
      * @return array
      */
-    public function getParameters()
+    public function getParameters(): array
     {
         return $this->parameters;
     }
@@ -41,11 +42,11 @@ class ConstraintViolation extends ConstraintException
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         $replacement = [];
         foreach ($this->parameters as $key => $parameter) {
-            $replacement[sprintf('{{%s}}', $key)] = $parameter;
+            $replacement[\sprintf('{{%s}}', $key)] = $parameter;
         }
 
         return strtr($this->getMessage(), $replacement);

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator;
 
@@ -27,7 +28,7 @@ class Validator implements ValidatorInterface
     /**
      * @inheritdoc
      */
-    public function validate($value, $context = null)
+    public function validate($value, $context = null): bool
     {
         $this->violations = [];
 
@@ -51,7 +52,7 @@ class Validator implements ValidatorInterface
     /**
      * @inheritDoc
      */
-    public function violations()
+    public function violations(): array
     {
         if (!$this->validated) {
             throw ValidatorNotValidated::forViolations();
@@ -65,9 +66,9 @@ class Validator implements ValidatorInterface
      *
      * @param ConstraintInterface $constraint
      * @param bool                $interrupt
-     * @return $this
+     * @return Validator
      */
-    public function add(ConstraintInterface $constraint, $interrupt = null)
+    public function add(ConstraintInterface $constraint, bool $interrupt = null): Validator
     {
         $this->constraints[] = new ValidatorConstraint($constraint, $interrupt);
 

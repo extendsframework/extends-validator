@@ -1,15 +1,18 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator\Constraint\Exception;
 
-class ConstraintViolationTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ConstraintViolationTest extends TestCase
 {
     /**
      * @covers \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation::__construct()
      * @covers \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation::getParameters()
      * @covers \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation::__toString()
      */
-    public function testCanCreateStringRepresentation()
+    public function testCanCreateStringRepresentation(): void
     {
         $violation = new ConstraintViolation('Value {{foo}} is equal to {{bar}}.', [
             'foo' => 'baz',

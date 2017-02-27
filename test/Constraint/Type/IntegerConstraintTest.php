@@ -1,19 +1,20 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator\Constraint\Type;
 
-class IntegerConstraintTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class IntegerConstraintTest extends TestCase
 {
     /**
      * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::assert()
      * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::validate()
      */
-    public function testCanAssertValidValue()
+    public function testCanAssertValidValue(): void
     {
         $constraint = new IntegerConstraint();
-        $assert = $constraint->assert(9);
-
-        $this->assertTrue($assert);
+        $constraint->assert(9);
     }
 
     /**
@@ -23,7 +24,7 @@ class IntegerConstraintTest extends \PHPUnit_Framework_TestCase
      * @expectedException        \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation
      * @expectedExceptionMessage Value must be a integer, got "{{type}}".
      */
-    public function testCanNotAssertInvalidValid()
+    public function testCanNotAssertInvalidValid(): void
     {
         $constraint = new IntegerConstraint();
         $constraint->assert('foo');

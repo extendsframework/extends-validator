@@ -1,16 +1,18 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator\Constraint\Type;
 
 use ExtendsFramework\Validator\Constraint\AbstractConstraint;
 use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
+use PHPUnit\Framework\TestCase;
 
-class AbstractConstraintTest extends \PHPUnit_Framework_TestCase
+class AbstractConstraintTest extends TestCase
 {
     /**
      * @covers \ExtendsFramework\Validator\Constraint\AbstractConstraint::validate()
      */
-    public function testCanValidateAssert()
+    public function testCanValidateAssert(): void
     {
         $constraint = $this->getMockForAbstractClass(AbstractConstraint::class);
         $constraint
@@ -29,7 +31,7 @@ class AbstractConstraintTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers \ExtendsFramework\Validator\Constraint\AbstractConstraint::validate()
      */
-    public function testCanCatchViolationException()
+    public function testCanCatchViolationException(): void
     {
         $constraint = $this->getMockForAbstractClass(AbstractConstraint::class);
         $constraint
@@ -53,28 +55,26 @@ class AbstractConstraintTest extends \PHPUnit_Framework_TestCase
      * @expectedException        \ExtendsFramework\Validator\Constraint\Exception\TemplateNotFound
      * @expectedExceptionMessage Template MUST exist for key "foo".
      */
-    public function testCanNotGetTemplateForKey()
+    public function testCanNotGetTemplateForKey(): void
     {
-        $constraint = new Constraint();
-        $constraint->assert('bar');
-    }
-}
+        $constraint = new class extends AbstractConstraint
+        {
+            /**
+             * @inheritDoc
+             */
+            public function assert($value, $context = null): void
+            {
+                throw $this->getViolation('foo', []);
+            }
 
-class Constraint extends AbstractConstraint
-{
-    /**
-     * @inheritDoc
-     */
-    public function assert($value, $context = null)
-    {
-        throw $this->getViolation('foo', []);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function getTemplates()
-    {
-        return [];
+            /**
+             * @inheritDoc
+             */
+            protected function getTemplates(): array
+            {
+                return [];
+            }
+        };
+        $constraint->assert('foo');
     }
 }

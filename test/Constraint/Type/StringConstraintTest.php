@@ -1,19 +1,20 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator\Constraint\Type;
 
-class StringConstraintTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class StringConstraintTest extends TestCase
 {
     /**
      * @covers \ExtendsFramework\Validator\Constraint\Type\StringConstraint::assert()
      * @covers \ExtendsFramework\Validator\Constraint\Type\StringConstraint::validate()
      */
-    public function testCanAssertValidValue()
+    public function testCanAssertValidValue(): void
     {
         $constraint = new StringConstraint();
-        $assert = $constraint->assert('foo');
-
-        $this->assertTrue($assert);
+        $constraint->assert('foo');
     }
 
     /**
@@ -23,7 +24,7 @@ class StringConstraintTest extends \PHPUnit_Framework_TestCase
      * @expectedException        \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation
      * @expectedExceptionMessage Value must be a string, got "{{type}}".
      */
-    public function testCanNotAssertInvalidValid()
+    public function testCanNotAssertInvalidValid(): void
     {
         $constraint = new StringConstraint();
         $constraint->assert(9);

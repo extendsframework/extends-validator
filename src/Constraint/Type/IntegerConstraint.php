@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator\Constraint\Type;
 
@@ -16,21 +17,19 @@ class IntegerConstraint extends AbstractConstraint
     /**
      * @inheritDoc
      */
-    public function assert($value, $context = null)
+    public function assert($value, $context = null): void
     {
-        if (!is_int($value)) {
+        if (!\is_int($value)) {
             throw $this->getViolation(self::NOT_INTEGER, [
-                'type' => gettype($value),
+                'type' => \gettype($value),
             ]);
         }
-
-        return true;
     }
 
     /**
      * @inheritDoc
      */
-    protected function getTemplates()
+    protected function getTemplates(): array
     {
         return [
             self::NOT_INTEGER => 'Value must be a integer, got "{{type}}".',

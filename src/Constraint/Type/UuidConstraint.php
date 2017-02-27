@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator\Constraint\Type;
 
@@ -23,21 +24,19 @@ class UuidConstraint extends AbstractConstraint
     /**
      * @inheritDoc
      */
-    public function assert($value, $context = null)
+    public function assert($value, $context = null): void
     {
-        if (!preg_match($this->pattern, $value)) {
+        if (!\preg_match($this->pattern, $value)) {
             throw $this->getViolation(self::NOT_UUID, [
                 'value' => $value,
             ]);
         }
-
-        return true;
     }
 
     /**
      * @inheritDoc
      */
-    protected function getTemplates()
+    protected function getTemplates(): array
     {
         return [
             self::NOT_UUID => 'Value {{value}} must be a valid UUID.',

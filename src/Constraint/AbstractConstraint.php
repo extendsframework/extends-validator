@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator\Constraint;
 
@@ -10,7 +11,7 @@ abstract class AbstractConstraint implements ConstraintInterface
     /**
      * @inheritDoc
      */
-    public function validate($value, $context = null)
+    public function validate($value, $context = null): bool
     {
         try {
             $this->assert($value, $context);
@@ -29,7 +30,7 @@ abstract class AbstractConstraint implements ConstraintInterface
      * @return ConstraintViolation
      * @throws ConstraintException
      */
-    protected function getViolation($key, array $parameters = null)
+    protected function getViolation(string $key, array $parameters = null): ConstraintViolation
     {
         $templates = $this->getTemplates();
         if (!isset($templates[$key])) {
@@ -44,5 +45,5 @@ abstract class AbstractConstraint implements ConstraintInterface
      *
      * @return array
      */
-    abstract protected function getTemplates();
+    abstract protected function getTemplates(): array;
 }

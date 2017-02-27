@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator\Constraint;
 
@@ -11,10 +12,10 @@ interface ConstraintInterface
      *
      * @param mixed $value
      * @param mixed $context
-     * @return true
+     * @return void
      * @throws ConstraintException
      */
-    public function assert($value, $context = null);
+    public function assert($value, $context = null): void;
 
     /**
      * Validate $value and, optional, $context against constraint.
@@ -25,5 +26,5 @@ interface ConstraintInterface
      * @param mixed $context
      * @return bool
      */
-    public function validate($value, $context = null);
+    public function validate($value, $context = null): bool;
 }

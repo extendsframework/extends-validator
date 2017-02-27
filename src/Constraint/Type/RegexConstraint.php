@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace ExtendsFramework\Validator\Constraint\Type;
 
@@ -33,22 +34,20 @@ class RegexConstraint extends AbstractConstraint
     /**
      * @inheritDoc
      */
-    public function assert($value, $context = null)
+    public function assert($value, $context = null): void
     {
-        if (!preg_match($this->pattern, $value)) {
+        if (!\preg_match($this->pattern, $value)) {
             throw $this->getViolation(self::NOT_VALID, [
                 'value' => $value,
                 'pattern' => $this->pattern,
             ]);
         }
-
-        return true;
     }
 
     /**
      * @inheritDoc
      */
-    protected function getTemplates()
+    protected function getTemplates(): array
     {
         return [
             self::NOT_VALID => 'Value {{value}} must match regular expression {{pattern}}.',
