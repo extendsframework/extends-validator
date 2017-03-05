@@ -22,10 +22,7 @@ interface ValidatorInterface
     /**
      * Returns list with constraint violations after validation.
      *
-     * If validation has not happened yet, an exception will be thrown.
-     *
      * @return ConstraintViolation[]
-     * @throws ValidatorException
      */
     public function violations(): array;
 }

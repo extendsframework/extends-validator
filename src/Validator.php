@@ -6,7 +6,6 @@ namespace ExtendsFramework\Validator;
 use ExtendsFramework\Validator\Constraint\ConstraintException;
 use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
-use ExtendsFramework\Validator\Exception\ValidatorNotValidated;
 
 class Validator implements ValidatorInterface
 {
@@ -19,11 +18,6 @@ class Validator implements ValidatorInterface
      * @var ConstraintViolation[]
      */
     protected $violations = [];
-
-    /**
-     * @var bool
-     */
-    protected $validated = false;
 
     /**
      * @inheritdoc
@@ -44,8 +38,6 @@ class Validator implements ValidatorInterface
             }
         }
 
-        $this->validated = true;
-
         return empty($this->violations);
     }
 
@@ -54,10 +46,6 @@ class Validator implements ValidatorInterface
      */
     public function violations(): array
     {
-        if (!$this->validated) {
-            throw ValidatorNotValidated::forViolations();
-        }
-
         return $this->violations;
     }
 

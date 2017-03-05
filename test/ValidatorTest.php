@@ -55,16 +55,4 @@ class ValidatorTest extends TestCase
         $this->assertFalse($valid);
         $this->assertSame([$violation], $violations);
     }
-
-    /**
-     * @covers                   \ExtendsFramework\Validator\Validator::violations()
-     * @covers                   \ExtendsFramework\Validator\Exception\ValidatorNotValidated::forViolations()
-     * @expectedException        \ExtendsFramework\Validator\Exception\ValidatorNotValidated
-     * @expectedExceptionMessage Validator MUST be validated to get violations, call validate() first.
-     */
-    public function testCanNotGetViolationsWhenNotValidated(): void
-    {
-        $validator = new Validator();
-        $validator->violations();
-    }
 }
