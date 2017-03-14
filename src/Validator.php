@@ -10,11 +10,15 @@ use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
 class Validator implements ValidatorInterface
 {
     /**
+     * Indexed array with validator constraints to use for validation.
+     *
      * @var ValidatorConstraint[]
      */
     protected $constraints = [];
 
     /**
+     * Indexed array which contains the violations after validating.
+     *
      * @var ConstraintViolation[]
      */
     protected $violations = [];

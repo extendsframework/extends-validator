@@ -9,13 +9,19 @@ use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
 class ContainerValidator implements ContainerValidatorInterface
 {
     /**
+     * Associative array with validators.
      *
+     * Key is the path to validate. A path can contain only one validator.
      *
      * @var ValidatorInterface[]
      */
     protected $validators = [];
 
     /**
+     * Associative array which holds the violations after validating.
+     *
+     * Key is the validated path. Key can contain multiple violations.
+     *
      * @var ConstraintViolation[][]
      */
     protected $violations = [];
@@ -46,6 +52,10 @@ class ContainerValidator implements ContainerValidatorInterface
     }
 
     /**
+     * Add $validator for $path.
+     *
+     * Any existing validator for $path will be overwritten.
+     *
      * @param ValidatorInterface $validator
      * @param string             $path
      * @return ContainerValidator
