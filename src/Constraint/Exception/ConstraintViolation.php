@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Exception;
 
@@ -10,17 +10,17 @@ class ConstraintViolation extends ConstraintException
     /**
      * Parameters to replace in violation message.
      *
-     * @var array
+     * @var iterable
      */
     protected $parameters = [];
 
     /**
      * Set $message and $parameters.
      *
-     * @param string $message
-     * @param array  $parameters
+     * @param string   $message
+     * @param iterable $parameters
      */
-    public function __construct($message, array $parameters)
+    public function __construct($message, iterable $parameters)
     {
         parent::__construct($message);
 
@@ -30,9 +30,9 @@ class ConstraintViolation extends ConstraintException
     /**
      * Get parameters to use for string representation.
      *
-     * @return array
+     * @return iterable
      */
-    public function getParameters(): array
+    public function getParameters(): iterable
     {
         return $this->parameters;
     }
