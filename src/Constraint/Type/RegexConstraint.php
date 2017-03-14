@@ -26,7 +26,7 @@ class RegexConstraint extends AbstractConstraint
      *
      * @param string $pattern
      */
-    public function __construct($pattern)
+    public function __construct(string $pattern)
     {
         $this->pattern = $pattern;
     }
