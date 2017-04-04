@@ -19,9 +19,9 @@ class StringConstraint extends AbstractConstraint
      */
     public function assert($value, $context = null): void
     {
-        if (!\is_string($value)) {
+        if (!is_string($value)) {
             throw $this->getViolation(self::NOT_STRING, [
-                'type' => \gettype($value),
+                'type' => gettype($value),
             ]);
         }
     }

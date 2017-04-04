@@ -46,7 +46,7 @@ class ConstraintViolation extends ConstraintException
     {
         $replacement = [];
         foreach ($this->parameters as $key => $parameter) {
-            $replacement[\sprintf('{{%s}}', $key)] = $parameter;
+            $replacement[sprintf('{{%s}}', $key)] = $parameter;
         }
 
         return strtr($this->getMessage(), $replacement);

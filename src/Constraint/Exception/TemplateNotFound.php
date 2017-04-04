@@ -15,7 +15,7 @@ class TemplateNotFound extends ConstraintException
      */
     public static function forKey(string $key): ConstraintException
     {
-        return new static(\sprintf(
+        return new static(sprintf(
             'Template MUST exist for key "%s".',
             $key
         ));

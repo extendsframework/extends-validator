@@ -36,7 +36,7 @@ class RegexConstraint extends AbstractConstraint
      */
     public function assert($value, $context = null): void
     {
-        if (!\preg_match($this->pattern, $value)) {
+        if (!preg_match($this->pattern, $value)) {
             throw $this->getViolation(self::NOT_VALID, [
                 'value' => $value,
                 'pattern' => $this->pattern,

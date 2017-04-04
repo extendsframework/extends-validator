@@ -19,9 +19,9 @@ class IntegerConstraint extends AbstractConstraint
      */
     public function assert($value, $context = null): void
     {
-        if (!\is_int($value)) {
+        if (!is_int($value)) {
             throw $this->getViolation(self::NOT_INTEGER, [
-                'type' => \gettype($value),
+                'type' => gettype($value),
             ]);
         }
     }
