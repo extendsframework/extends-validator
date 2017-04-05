@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Exception;
 
@@ -26,5 +26,21 @@ class ConstraintViolationTest extends TestCase
             'foo' => 'baz',
             'bar' => 'baz',
         ], $parameters);
+    }
+
+    /**
+     * @covers \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation::__construct()
+     * @covers \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation::jsonSerialize()
+     * @covers \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation::__toString()
+     * @covers \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation::getParameters()
+     */
+    public function testCanJsonSerialize(): void
+    {
+        $violation = new ConstraintViolation('Value {{foo}} is equal to {{bar}}.', [
+            'foo' => 'baz',
+            'bar' => 'baz',
+        ]);
+
+        $this->assertSame('"Value baz is equal to baz."', json_encode($violation));
     }
 }
