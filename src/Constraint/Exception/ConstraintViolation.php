@@ -18,7 +18,7 @@ class ConstraintViolation extends ConstraintException implements JsonSerializabl
     /**
      * Set $message and $parameters.
      *
-     * @param string $message
+     * @param string   $message
      * @param iterable $parameters
      */
     public function __construct($message, iterable $parameters)
