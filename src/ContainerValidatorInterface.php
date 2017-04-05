@@ -1,10 +1,9 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator;
 
 use ExtendsFramework\Container\ContainerInterface;
-use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
 
 interface ContainerValidatorInterface
 {
@@ -17,9 +16,12 @@ interface ContainerValidatorInterface
     public function validate(ContainerInterface $container): bool;
 
     /**
-     * Returns list with constraint violations after validation grouped per container path.
+     * Returns container interface with constraint violations after validation.
      *
-     * @return ConstraintViolation[][]
+     * When validator is not validated, a exception will be thrown.
+     *
+     * @return ContainerInterface
+     * @throws ValidatorException
      */
-    public function violations(): array;
+    public function violations(): ContainerInterface;
 }

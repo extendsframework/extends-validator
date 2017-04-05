@@ -1,10 +1,11 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator;
 
+use ExtendsFramework\Container\Container;
 use ExtendsFramework\Container\ContainerInterface;
-use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
+use ExtendsFramework\Validator\Exception\ValidatorNotValidated;
 
 class ContainerValidator implements ContainerValidatorInterface
 {
@@ -22,32 +23,44 @@ class ContainerValidator implements ContainerValidatorInterface
      *
      * Key is the validated path. Key can contain multiple violations.
      *
-     * @var ConstraintViolation[][]
+     * @var ContainerInterface
      */
-    protected $violations = [];
+    protected $violations;
+
+    /**
+     * If validator is validated.
+     *
+     * @var bool
+     */
+    protected $validated = false;
 
     /**
      * @inheritDoc
      */
     public function validate(ContainerInterface $container): bool
     {
-        $this->violations = [];
+        $this->violations = new Container();
+        $this->validated = true;
 
         foreach ($this->validators as $path => $validator) {
             $value = $container->find($path, null);
             if (!$validator->validate($value, $container)) {
-                $this->violations[$path] = $validator->violations();
+                $this->violations = $this->violations->with($path, $validator->violations());
             }
         }
 
-        return empty($this->violations);
+        return $this->violations->isEmpty();
     }
 
     /**
      * @inheritDoc
      */
-    public function violations(): array
+    public function violations(): ContainerInterface
     {
+        if (!$this->validated) {
+            throw ValidatorNotValidated::forContainer();
+        }
+
         return $this->violations;
     }
 

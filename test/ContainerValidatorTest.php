@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator;
 
@@ -20,7 +20,7 @@ class ContainerValidatorTest extends TestCase
         $container
             ->expects($this->exactly(2))
             ->method('find')
-            ->withConsecutive(['foo'], ['bar'])
+            ->withConsecutive(['foo'], ['bar.baz'])
             ->willReturnOnConsecutiveCalls('qux', 'quux');
 
         $violation = $this->createMock(ConstraintViolation::class);
@@ -54,15 +54,29 @@ class ContainerValidatorTest extends TestCase
         $validator = new ContainerValidator();
         $valid = $validator
             ->addValidator($validator1, 'foo')
-            ->addValidator($validator2, 'bar')
+            ->addValidator($validator2, 'bar.baz')
             ->validate($container);
         $violations = $validator->violations();
 
         $this->assertFalse($valid);
         $this->assertSame([
             'bar' => [
-                $violation,
+                'baz' => [
+                    $violation,
+                ],
             ],
-        ], $violations);
+        ], $violations->extract());
+    }
+
+    /**
+     * @covers                   \ExtendsFramework\Validator\ContainerValidator::violations()
+     * @covers                   \ExtendsFramework\Validator\Exception\ValidatorNotValidated::forContainer()
+     * @expectedException        \ExtendsFramework\Validator\Exception\ValidatorNotValidated
+     * @expectedExceptionMessage Container validator MUST be validated. Call validate() first.
+     */
+    public function testCanNotGetViolationsWhenNotValidated(): void
+    {
+        $validator = new ContainerValidator();
+        $validator->violations();
     }
 }
