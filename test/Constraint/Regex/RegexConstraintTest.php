@@ -33,6 +33,7 @@ class RegexConstraintTest extends TestCase
      * @covers \ExtendsFramework\Validator\Constraint\Regex\RegexConstraint::__construct()
      * @covers \ExtendsFramework\Validator\Constraint\Regex\RegexConstraint::validate()
      * @covers \ExtendsFramework\Validator\Constraint\Regex\RegexConstraint::getTemplates()
+     * @covers \ExtendsFramework\Validator\Constraint\AbstractConstraint::getViolation()
      */
     public function testInvalid(): void
     {

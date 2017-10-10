@@ -31,6 +31,7 @@ class UuidConstraintTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Constraint\Uuid\UuidConstraint::validate()
      * @covers \ExtendsFramework\Validator\Constraint\Uuid\UuidConstraint::getTemplates()
+     * @covers \ExtendsFramework\Validator\Constraint\AbstractConstraint::getViolation()
      */
     public function testCanNotAssertInvalidUuid(): void
     {

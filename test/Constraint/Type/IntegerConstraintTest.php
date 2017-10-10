@@ -30,6 +30,7 @@ class IntegerConstraintTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::validate()
      * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::getTemplates()
+     * @covers \ExtendsFramework\Validator\Constraint\AbstractConstraint::getViolation()
      */
     public function testInvalid(): void
     {

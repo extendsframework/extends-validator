@@ -30,6 +30,7 @@ class StringConstraintTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Constraint\Type\StringConstraint::validate()
      * @covers \ExtendsFramework\Validator\Constraint\Type\StringConstraint::getTemplates()
+     * @covers \ExtendsFramework\Validator\Constraint\AbstractConstraint::getViolation()
      */
     public function testCanNotAssertInvalidValid(): void
     {
