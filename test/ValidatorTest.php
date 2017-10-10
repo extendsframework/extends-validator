@@ -1,43 +1,49 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator;
 
 use ExtendsFramework\Validator\Constraint\ConstraintInterface;
-use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
+use ExtendsFramework\Validator\Constraint\ConstraintViolation;
 use PHPUnit\Framework\TestCase;
 
 class ValidatorTest extends TestCase
 {
     /**
-     * @covers \ExtendsFramework\Validator\Validator::add()
+     * Validate.
+     *
+     * Test that validator can validate constraints, break on failure and return invalid result with violation.
+     *
+     * @covers \ExtendsFramework\Validator\Validator::addConstraint()
      * @covers \ExtendsFramework\Validator\Validator::validate()
-     * @covers \ExtendsFramework\Validator\Validator::violations()
      * @covers \ExtendsFramework\Validator\ValidatorConstraint::__construct()
-     * @covers \ExtendsFramework\Validator\ValidatorConstraint::constraint()
-     * @covers \ExtendsFramework\Validator\ValidatorConstraint::interrupt()
+     * @covers \ExtendsFramework\Validator\ValidatorConstraint::getConstraint()
+     * @covers \ExtendsFramework\Validator\ValidatorConstraint::mustInterrupt()
+     * @covers \ExtendsFramework\Validator\ValidatorResult::__construct()
+     * @covers \ExtendsFramework\Validator\ValidatorResult::isValid()
+     * @covers \ExtendsFramework\Validator\ValidatorResult::getViolations()
      */
-    public function testCanAttachConstraintValidateInterruptAndGetViolations(): void
+    public function testValidate(): void
     {
         $constraint1 = $this->createMock(ConstraintInterface::class);
         $constraint1
             ->expects($this->once())
-            ->method('assert')
+            ->method('validate')
             ->with('foo', ['bar' => 'baz'])
-            ->willReturn(true);
+            ->willReturn(null);
 
         $violation = new ConstraintViolation('', []);
         $constraint2 = $this->createMock(ConstraintInterface::class);
         $constraint2
             ->expects($this->once())
-            ->method('assert')
+            ->method('validate')
             ->with('foo', ['bar' => 'baz'])
-            ->willThrowException($violation);
+            ->willReturn($violation);
 
         $constraint3 = $this->createMock(ConstraintInterface::class);
         $constraint3
             ->expects($this->never())
-            ->method('assert');
+            ->method('validate');
 
         /**
          * @var ConstraintInterface $constraint1
@@ -45,14 +51,16 @@ class ValidatorTest extends TestCase
          * @var ConstraintInterface $constraint3
          */
         $validator = new Validator();
-        $valid = $validator
-            ->add($constraint1)
-            ->add($constraint2, true)
-            ->add($constraint3)
+        $result = $validator
+            ->addConstraint($constraint1)
+            ->addConstraint($constraint2, true)
+            ->addConstraint($constraint3)
             ->validate('foo', ['bar' => 'baz']);
-        $violations = $validator->violations();
 
-        $this->assertFalse($valid);
-        $this->assertSame([$violation], $violations);
+        $this->assertInstanceOf(ValidatorResultInterface::class, $result);
+        $this->assertFalse($result->isValid());
+        $this->assertSame([
+            $violation,
+        ], $result->getViolations());
     }
 }

@@ -1,9 +1,10 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Constraint\Type;
+namespace ExtendsFramework\Validator\Constraint\Regex;
 
 use ExtendsFramework\Validator\Constraint\AbstractConstraint;
+use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 
 class RegexConstraint extends AbstractConstraint
 {
@@ -12,17 +13,17 @@ class RegexConstraint extends AbstractConstraint
      *
      * @const string
      */
-    const NOT_VALID = 'notValid';
+    public const NOT_VALID = 'notValid';
 
     /**
-     * Regular expression to assert.
+     * Regular expression to validate.
      *
      * @var string
      */
     protected $pattern;
 
     /**
-     * Constructor to set $pattern for validation.
+     * Create new regular expression constraint for $pattern.
      *
      * @param string $pattern
      */
@@ -34,14 +35,16 @@ class RegexConstraint extends AbstractConstraint
     /**
      * @inheritDoc
      */
-    public function assert($value, $context = null): void
+    public function validate($value, $context = null): ?ConstraintViolationInterface
     {
-        if (!preg_match($this->pattern, $value)) {
-            throw $this->getViolation(self::NOT_VALID, [
+        if ((bool)preg_match($this->pattern, $value) === false) {
+            return $this->getViolation(self::NOT_VALID, [
                 'value' => $value,
                 'pattern' => $this->pattern,
             ]);
         }
+
+        return null;
     }
 
     /**
@@ -50,7 +53,7 @@ class RegexConstraint extends AbstractConstraint
     protected function getTemplates(): array
     {
         return [
-            self::NOT_VALID => 'Value {{value}} must match regular expression {{pattern}}.',
+            self::NOT_VALID => 'Value "{{value}}" must match regular expression "{{pattern}}".',
         ];
     }
 }

@@ -1,10 +1,10 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator;
 
-use Exception;
+use Throwable;
 
-class ValidatorException extends Exception
+interface ValidatorException extends Throwable
 {
 }

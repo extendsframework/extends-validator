@@ -1,22 +1,22 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Exception;
 
+use Exception;
 use ExtendsFramework\Validator\Constraint\ConstraintException;
 
-class TemplateNotFound extends ConstraintException
+class TemplateNotFound extends Exception implements ConstraintException
 {
     /**
-     * Exception when template can not be found for $key.
+     * Template not found for $key.
      *
      * @param string $key
-     * @return ConstraintException
      */
-    public static function forKey(string $key): ConstraintException
+    public function __construct(string $key)
     {
-        return new static(sprintf(
-            'Template MUST exist for key "%s".',
+        parent::__construct(sprintf(
+            'No constraint violation template found for key "%s".',
             $key
         ));
     }

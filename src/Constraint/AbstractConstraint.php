@@ -1,43 +1,30 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint;
 
-use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
 use ExtendsFramework\Validator\Constraint\Exception\TemplateNotFound;
 
 abstract class AbstractConstraint implements ConstraintInterface
 {
     /**
-     * @inheritDoc
-     */
-    public function validate($value, $context = null): bool
-    {
-        try {
-            $this->assert($value, $context);
-
-            return true;
-        } catch (ConstraintException $violation) {
-            return false;
-        }
-    }
-
-    /**
      * Create violation with template $key and $parameters.
+     *
+     * When template can not be found, an exception will be thrown.
      *
      * @param string $key
      * @param array  $parameters
-     * @return ConstraintViolation
+     * @return ConstraintViolationInterface
      * @throws ConstraintException
      */
-    protected function getViolation(string $key, array $parameters = null): ConstraintViolation
+    protected function getViolation(string $key, array $parameters = null): ConstraintViolationInterface
     {
         $templates = $this->getTemplates();
-        if (!isset($templates[$key])) {
-            throw TemplateNotFound::forKey($key);
+        if (array_key_exists($key, $templates) === false) {
+            throw new TemplateNotFound($key);
         }
 
-        return new ConstraintViolation($templates[$key], $parameters ?: []);
+        return new ConstraintViolation($templates[$key], $parameters ?? []);
     }
 
     /**

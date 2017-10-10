@@ -1,10 +1,10 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint;
 
-use Exception;
+use ExtendsFramework\Validator\ValidatorException;
 
-class ConstraintException extends Exception
+interface ConstraintException extends ValidatorException
 {
 }

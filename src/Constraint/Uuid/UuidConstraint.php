@@ -1,9 +1,10 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Constraint\Type;
+namespace ExtendsFramework\Validator\Constraint\Uuid;
 
 use ExtendsFramework\Validator\Constraint\AbstractConstraint;
+use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 
 class UuidConstraint extends AbstractConstraint
 {
@@ -12,7 +13,7 @@ class UuidConstraint extends AbstractConstraint
      *
      * @const string
      */
-    const NOT_UUID = 'notUuid';
+    public const NOT_UUID = 'notUuid';
 
     /**
      * UUID regular expression.
@@ -24,13 +25,15 @@ class UuidConstraint extends AbstractConstraint
     /**
      * @inheritDoc
      */
-    public function assert($value, $context = null): void
+    public function validate($value, $context = null): ?ConstraintViolationInterface
     {
-        if (!preg_match($this->pattern, $value)) {
-            throw $this->getViolation(self::NOT_UUID, [
+        if ((bool)preg_match($this->pattern, $value) === false) {
+            return $this->getViolation(self::NOT_UUID, [
                 'value' => $value,
             ]);
         }
+
+        return null;
     }
 
     /**
@@ -39,7 +42,7 @@ class UuidConstraint extends AbstractConstraint
     protected function getTemplates(): array
     {
         return [
-            self::NOT_UUID => 'Value {{value}} must be a valid UUID.',
+            self::NOT_UUID => 'Value "{{value}}" must be a valid UUID.',
         ];
     }
 }

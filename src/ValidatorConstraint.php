@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator;
 
@@ -27,10 +27,10 @@ class ValidatorConstraint
      * @param ConstraintInterface $constraint
      * @param bool                $interrupt
      */
-    public function __construct(ConstraintInterface $constraint, bool $interrupt = null)
+    public function __construct(ConstraintInterface $constraint, bool $interrupt)
     {
         $this->constraint = $constraint;
-        $this->interrupt = $interrupt ?: false;
+        $this->interrupt = $interrupt;
     }
 
     /**
@@ -38,7 +38,7 @@ class ValidatorConstraint
      *
      * @return ConstraintInterface
      */
-    public function constraint(): ConstraintInterface
+    public function getConstraint(): ConstraintInterface
     {
         return $this->constraint;
     }
@@ -48,7 +48,7 @@ class ValidatorConstraint
      *
      * @return bool
      */
-    public function interrupt(): bool
+    public function mustInterrupt(): bool
     {
         return $this->interrupt;
     }

@@ -1,9 +1,10 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Type;
 
 use ExtendsFramework\Validator\Constraint\AbstractConstraint;
+use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 
 class IntegerConstraint extends AbstractConstraint
 {
@@ -12,18 +13,20 @@ class IntegerConstraint extends AbstractConstraint
      *
      * @const string
      */
-    const NOT_INTEGER = 'notInteger';
+    public const NOT_INTEGER = 'notInteger';
 
     /**
      * @inheritDoc
      */
-    public function assert($value, $context = null): void
+    public function validate($value, $context = null): ?ConstraintViolationInterface
     {
-        if (!is_int($value)) {
-            throw $this->getViolation(self::NOT_INTEGER, [
+        if (is_int($value) === false) {
+            return $this->getViolation(self::NOT_INTEGER, [
                 'type' => gettype($value),
             ]);
         }
+
+        return null;
     }
 
     /**

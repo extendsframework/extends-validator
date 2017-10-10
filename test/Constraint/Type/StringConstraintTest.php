@@ -1,32 +1,47 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Type;
 
+use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 use PHPUnit\Framework\TestCase;
 
 class StringConstraintTest extends TestCase
 {
     /**
-     * @covers \ExtendsFramework\Validator\Constraint\Type\StringConstraint::assert()
+     * Valid.
+     *
+     * Test that string value 'foo' is a valid string and null will be returned.
+     *
      * @covers \ExtendsFramework\Validator\Constraint\Type\StringConstraint::validate()
      */
     public function testCanAssertValidValue(): void
     {
         $constraint = new StringConstraint();
-        $constraint->assert('foo');
+        $result = $constraint->validate('foo');
+
+        $this->assertNull($result);
     }
 
     /**
-     * @covers                   \ExtendsFramework\Validator\Constraint\AbstractConstraint::getViolation()
-     * @covers                   \ExtendsFramework\Validator\Constraint\Type\StringConstraint::assert()
-     * @covers                   \ExtendsFramework\Validator\Constraint\Type\StringConstraint::getTemplates()
-     * @expectedException        \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation
-     * @expectedExceptionMessage Value must be a string, got "{{type}}".
+     * Invalid.
+     *
+     * Test that integer value '9' is a valid string and ConstraintViolationInterface instance will be returned.
+     *
+     * @covers \ExtendsFramework\Validator\Constraint\Type\StringConstraint::validate()
+     * @covers \ExtendsFramework\Validator\Constraint\Type\StringConstraint::getTemplates()
      */
     public function testCanNotAssertInvalidValid(): void
     {
         $constraint = new StringConstraint();
-        $constraint->assert(9);
+        $result = $constraint->validate(9);
+
+        $this->assertInstanceOf(ConstraintViolationInterface::class, $result);
+        if ($result instanceof ConstraintViolationInterface) {
+            $this->assertSame('Value must be a string, got "{{type}}".', $result->getMessage());
+            $this->assertSame([
+                'type' => 'integer',
+            ], $result->getParameters());
+        }
     }
 }

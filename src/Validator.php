@@ -1,11 +1,10 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator;
 
-use ExtendsFramework\Validator\Constraint\ConstraintException;
 use ExtendsFramework\Validator\Constraint\ConstraintInterface;
-use ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation;
+use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 
 class Validator implements ValidatorInterface
 {
@@ -17,52 +16,39 @@ class Validator implements ValidatorInterface
     protected $constraints = [];
 
     /**
-     * Indexed array which contains the violations after validating.
-     *
-     * @var ConstraintViolation[]
-     */
-    protected $violations = [];
-
-    /**
      * @inheritdoc
      */
-    public function validate($value, $context = null): bool
+    public function validate($value, $context = null): ValidatorResultInterface
     {
-        $this->violations = [];
-
+        $valid = true;
+        $violations = [];
         foreach ($this->constraints as $constraint) {
-            try {
-                $constraint->constraint()->assert($value, $context);
-            } catch (ConstraintException $violation) {
-                $this->violations[] = $violation;
+            $violation = $constraint->getConstraint()->validate($value, $context);
+            if ($violation instanceof ConstraintViolationInterface) {
+                $valid = false;
+                $violations[] = $violation;
 
-                if ($constraint->interrupt()) {
+                if ($constraint->mustInterrupt() === true) {
                     break;
                 }
             }
         }
 
-        return empty($this->violations);
+        return new ValidatorResult($valid, $violations);
     }
 
     /**
-     * @inheritDoc
-     */
-    public function violations(): array
-    {
-        return $this->violations;
-    }
-
-    /**
-     * Add constraint to validator.
+     * Add $constraint to validator.
+     *
+     * When $interrupt is true, validation will stop if $constraint is invalid. Default value is false.
      *
      * @param ConstraintInterface $constraint
-     * @param bool                $interrupt
+     * @param bool|null           $interrupt
      * @return Validator
      */
-    public function add(ConstraintInterface $constraint, bool $interrupt = null): Validator
+    public function addConstraint(ConstraintInterface $constraint, bool $interrupt = null): Validator
     {
-        $this->constraints[] = new ValidatorConstraint($constraint, $interrupt);
+        $this->constraints[] = new ValidatorConstraint($constraint, $interrupt ?? false);
 
         return $this;
     }

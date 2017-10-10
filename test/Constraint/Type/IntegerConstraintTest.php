@@ -1,32 +1,47 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Type;
 
+use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 use PHPUnit\Framework\TestCase;
 
 class IntegerConstraintTest extends TestCase
 {
     /**
-     * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::assert()
+     * Valid.
+     *
+     * Test that integer value '9' is an valid integer and null will be returned.
+     *
      * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::validate()
      */
-    public function testCanAssertValidValue(): void
+    public function testValid(): void
     {
         $constraint = new IntegerConstraint();
-        $constraint->assert(9);
+        $result = $constraint->validate(9);
+
+        $this->assertNull($result);
     }
 
     /**
-     * @covers                   \ExtendsFramework\Validator\Constraint\AbstractConstraint::getViolation()
-     * @covers                   \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::assert()
-     * @covers                   \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::getTemplates()
-     * @expectedException        \ExtendsFramework\Validator\Constraint\Exception\ConstraintViolation
-     * @expectedExceptionMessage Value must be a integer, got "{{type}}".
+     * Invalid.
+     *
+     * Test that string value 'foo' is an valid integer and ConstraintViolationInterface instance will be returned.
+     *
+     * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::validate()
+     * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::getTemplates()
      */
-    public function testCanNotAssertInvalidValid(): void
+    public function testInvalid(): void
     {
         $constraint = new IntegerConstraint();
-        $constraint->assert('foo');
+        $result = $constraint->validate('foo');
+
+        $this->assertInstanceOf(ConstraintViolationInterface::class, $result);
+        if ($result instanceof ConstraintViolationInterface) {
+            $this->assertSame('Value must be a integer, got "{{type}}".', $result->getMessage());
+            $this->assertSame([
+                'type' => 'string',
+            ], $result->getParameters());
+        }
     }
 }

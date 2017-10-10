@@ -11,12 +11,11 @@
     }
   ],
   "require": {
-    "php": ">=7.1",
-    "extendsframework/extends-container": "dev-master"
+    "php": ">=7.1"
   },
   "require-dev": {
     "php": ">=7.1",
-    "phpunit/phpunit": "6.0.*"
+    "phpunit/phpunit": "6.3.*"
   },
   "autoload": {
     "psr-4": {
