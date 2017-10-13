@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Constraint\Collection;
+namespace ExtendsFramework\Validator\Constraint\Logical;
 
 use ExtendsFramework\Validator\Constraint\AbstractConstraint;
 use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 
-abstract class AbstractCollectionConstraint extends AbstractConstraint
+abstract class AbstractLogicalConstraint extends AbstractConstraint
 {
     /**
      * Constraints to validate.
@@ -19,9 +19,9 @@ abstract class AbstractCollectionConstraint extends AbstractConstraint
      * Add $constraint.
      *
      * @param ConstraintInterface $constraint
-     * @return AbstractCollectionConstraint
+     * @return AbstractLogicalConstraint
      */
-    public function addConstraint(ConstraintInterface $constraint): AbstractCollectionConstraint
+    public function addConstraint(ConstraintInterface $constraint): AbstractLogicalConstraint
     {
         $this->constraints[] = $constraint;
 

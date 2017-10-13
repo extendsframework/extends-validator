@@ -1,41 +1,35 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Constraint\Collection;
+namespace ExtendsFramework\Validator\Constraint\Logical;
 
 use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 use PHPUnit\Framework\TestCase;
 
-class OrConstraintTest extends TestCase
+class AndConstraintTest extends TestCase
 {
     /**
      * Valid.
      *
-     * Test that one of the inner constraints are valid and null will be returned.
+     * Test that all the inner constraints are valid and null will be returned.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Collection\OrConstraint::validate()
-     * @covers \ExtendsFramework\Validator\Constraint\Collection\AbstractCollectionConstraint::addConstraint()
+     * @covers \ExtendsFramework\Validator\Constraint\Logical\AndConstraint::validate()
+     * @covers \ExtendsFramework\Validator\Constraint\Logical\AbstractLogicalConstraint::addConstraint()
      */
     public function testValid(): void
     {
         $innerConstraint = $this->createMock(ConstraintInterface::class);
         $innerConstraint
-            ->expects($this->exactly(2))
+            ->expects($this->exactly(3))
             ->method('validate')
-            ->withConsecutive(
-                ['foo', ['bar' => 'baz']],
-                ['foo', ['bar' => 'baz']]
-            )
-            ->willReturnOnConsecutiveCalls(
-                $this->createMock(ConstraintViolationInterface::class),
-                null
-            );
+            ->with('foo', ['bar' => 'baz'])
+            ->willReturn(null);
 
         /**
          * @var ConstraintInterface $innerConstraint
          */
-        $constraint = new OrConstraint();
+        $constraint = new AndConstraint();
         $result = $constraint
             ->addConstraint($innerConstraint)
             ->addConstraint($innerConstraint)
@@ -48,11 +42,10 @@ class OrConstraintTest extends TestCase
     /**
      * Invalid.
      *
-     * Test that one of the inner constraints are valid and null will be returned.
+     * Test that one of the inner constraints are invalid and a violation will be returned.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Collection\OrConstraint::validate()
-     * @covers \ExtendsFramework\Validator\Constraint\Collection\OrConstraint::getTemplates()
-     * @covers \ExtendsFramework\Validator\Constraint\Collection\AbstractCollectionConstraint::addConstraint()
+     * @covers \ExtendsFramework\Validator\Constraint\Logical\AndConstraint::validate()
+     * @covers \ExtendsFramework\Validator\Constraint\Logical\AbstractLogicalConstraint::addConstraint()
      */
     public function testInvalid(): void
     {
@@ -67,25 +60,19 @@ class OrConstraintTest extends TestCase
                 ['foo', ['bar' => 'baz']]
             )
             ->willReturnOnConsecutiveCalls(
-                $violation,
+                null,
                 $violation
             );
 
         /**
          * @var ConstraintInterface $innerConstraint
          */
-        $constraint = new OrConstraint();
+        $constraint = new AndConstraint();
         $result = $constraint
             ->addConstraint($innerConstraint)
             ->addConstraint($innerConstraint)
             ->validate('foo', ['bar' => 'baz']);
 
-        $this->assertInstanceOf(ConstraintViolationInterface::class, $result);
-        if ($result instanceof ConstraintViolationInterface) {
-            $this->assertSame('None of the {{count}} constraint(s) are valid.', $result->getMessage());
-            $this->assertSame([
-                'count' => 2,
-            ], $result->getParameters());
-        }
+        $this->assertSame($violation, $result);
     }
 }

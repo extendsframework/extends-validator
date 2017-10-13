@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Constraint\Collection;
+namespace ExtendsFramework\Validator\Constraint\Logical;
 
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 
-class OrConstraint extends AbstractCollectionConstraint
+class OrConstraint extends AbstractLogicalConstraint
 {
     /**
      * When none of the constraints is valid.
