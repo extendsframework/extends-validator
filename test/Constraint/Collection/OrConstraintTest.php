@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Constraint\Comparison;
+namespace ExtendsFramework\Validator\Constraint\Collection;
 
 use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
@@ -14,8 +14,8 @@ class OrConstraintTest extends TestCase
      *
      * Test that one of the inner constraints are valid and null will be returned.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Comparison\OrConstraint::validate()
-     * @covers \ExtendsFramework\Validator\Constraint\Comparison\AbstractComparisonConstraint::addConstraint()
+     * @covers \ExtendsFramework\Validator\Constraint\Collection\OrConstraint::validate()
+     * @covers \ExtendsFramework\Validator\Constraint\Collection\AbstractCollectionConstraint::addConstraint()
      */
     public function testValid(): void
     {
@@ -50,9 +50,9 @@ class OrConstraintTest extends TestCase
      *
      * Test that one of the inner constraints are valid and null will be returned.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Comparison\OrConstraint::validate()
-     * @covers \ExtendsFramework\Validator\Constraint\Comparison\OrConstraint::getTemplates()
-     * @covers \ExtendsFramework\Validator\Constraint\Comparison\AbstractComparisonConstraint::addConstraint()
+     * @covers \ExtendsFramework\Validator\Constraint\Collection\OrConstraint::validate()
+     * @covers \ExtendsFramework\Validator\Constraint\Collection\OrConstraint::getTemplates()
+     * @covers \ExtendsFramework\Validator\Constraint\Collection\AbstractCollectionConstraint::addConstraint()
      */
     public function testInvalid(): void
     {

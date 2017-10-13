@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Constraint\Comparison;
+namespace ExtendsFramework\Validator\Constraint\Collection;
 
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 
-class AndConstraint extends AbstractComparisonConstraint
+class AndConstraint extends AbstractCollectionConstraint
 {
     /**
      * @inheritDoc
