@@ -20,13 +20,13 @@ class StringConstraint extends AbstractConstraint
      */
     public function validate($value, $context = null): ?ConstraintViolationInterface
     {
-        if (is_string($value) === false) {
-            return $this->getViolation(self::NOT_STRING, [
-                'type' => gettype($value),
-            ]);
+        if (is_string($value) === true) {
+            return null;
         }
 
-        return null;
+        return $this->getViolation(self::NOT_STRING, [
+            'type' => gettype($value),
+        ]);
     }
 
     /**

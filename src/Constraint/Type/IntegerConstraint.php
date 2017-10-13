@@ -20,13 +20,13 @@ class IntegerConstraint extends AbstractConstraint
      */
     public function validate($value, $context = null): ?ConstraintViolationInterface
     {
-        if (is_int($value) === false) {
-            return $this->getViolation(self::NOT_INTEGER, [
-                'type' => gettype($value),
-            ]);
+        if (is_int($value) === true) {
+            return null;
         }
 
-        return null;
+        return $this->getViolation(self::NOT_INTEGER, [
+            'type' => gettype($value),
+        ]);
     }
 
     /**

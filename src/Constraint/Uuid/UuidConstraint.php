@@ -27,13 +27,13 @@ class UuidConstraint extends AbstractConstraint
      */
     public function validate($value, $context = null): ?ConstraintViolationInterface
     {
-        if ((bool)preg_match($this->pattern, $value) === false) {
-            return $this->getViolation(self::NOT_UUID, [
-                'value' => $value,
-            ]);
+        if (preg_match($this->pattern, $value) === 1) {
+            return null;
         }
 
-        return null;
+        return $this->getViolation(self::NOT_UUID, [
+            'value' => $value,
+        ]);
     }
 
     /**
