@@ -8,7 +8,7 @@ use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 class OrConstraint extends AbstractCollectionConstraint
 {
     /**
-     * Key when none of the constraints is valid.
+     * When none of the constraints is valid.
      *
      * @const string
      */

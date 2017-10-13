@@ -9,7 +9,7 @@ use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 class NotEqualConstraint extends AbstractConstraint
 {
     /**
-     * Key when value is not equal to context.
+     * When value is not equal to context.
      *
      * @const string
      */

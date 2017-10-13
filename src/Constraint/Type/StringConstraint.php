@@ -9,7 +9,7 @@ use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 class StringConstraint extends AbstractConstraint
 {
     /**
-     * Key when value is not a string.
+     * When value is not a string.
      *
      * @const string
      */

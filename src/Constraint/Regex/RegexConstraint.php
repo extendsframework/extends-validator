@@ -9,7 +9,7 @@ use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 class RegexConstraint extends AbstractConstraint
 {
     /**
-     * Key when value does not match pattern.
+     * When value does not match pattern.
      *
      * @const string
      */

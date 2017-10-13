@@ -9,7 +9,7 @@ use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 class IntegerConstraint extends AbstractConstraint
 {
     /**
-     * Key when value is not an integer.
+     * When value is not an integer.
      *
      * @const string
      */

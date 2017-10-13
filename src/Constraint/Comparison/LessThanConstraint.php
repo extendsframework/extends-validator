@@ -9,7 +9,7 @@ use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 class LessThanConstraint extends AbstractConstraint
 {
     /**
-     * Key when value is not less than context.
+     * When value is not less than context.
      *
      * @const string
      */

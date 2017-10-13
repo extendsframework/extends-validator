@@ -9,7 +9,7 @@ use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 class UuidConstraint extends AbstractConstraint
 {
     /**
-     * Key when value is not an UUID.
+     * When value is not an UUID.
      *
      * @const string
      */
