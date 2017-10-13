@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Constraint\Regex;
+namespace ExtendsFramework\Validator\Constraint\Format;
 
 use ExtendsFramework\Validator\Constraint\AbstractConstraint;
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;

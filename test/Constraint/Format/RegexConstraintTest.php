@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Constraint\Regex;
+namespace ExtendsFramework\Validator\Constraint\Format;
 
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 use PHPUnit\Framework\TestCase;
@@ -13,8 +13,8 @@ class RegexConstraintTest extends TestCase
      *
      * Test that valid uuid value will validate against regular expression and return null.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Regex\RegexConstraint::__construct()
-     * @covers \ExtendsFramework\Validator\Constraint\Regex\RegexConstraint::validate()
+     * @covers \ExtendsFramework\Validator\Constraint\Format\RegexConstraint::__construct()
+     * @covers \ExtendsFramework\Validator\Constraint\Format\RegexConstraint::validate()
      */
     public function testValid(): void
     {
@@ -30,9 +30,9 @@ class RegexConstraintTest extends TestCase
      * Test that invalid uuid value will not validate against regular expression and return
      * ConstraintViolationInterface.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Regex\RegexConstraint::__construct()
-     * @covers \ExtendsFramework\Validator\Constraint\Regex\RegexConstraint::validate()
-     * @covers \ExtendsFramework\Validator\Constraint\Regex\RegexConstraint::getTemplates()
+     * @covers \ExtendsFramework\Validator\Constraint\Format\RegexConstraint::__construct()
+     * @covers \ExtendsFramework\Validator\Constraint\Format\RegexConstraint::validate()
+     * @covers \ExtendsFramework\Validator\Constraint\Format\RegexConstraint::getTemplates()
      * @covers \ExtendsFramework\Validator\Constraint\AbstractConstraint::getViolation()
      */
     public function testInvalid(): void
