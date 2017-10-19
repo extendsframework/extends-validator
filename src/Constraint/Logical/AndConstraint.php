@@ -24,6 +24,7 @@ class AndConstraint extends AbstractLogicalConstraint
 
     /**
      * @inheritDoc
+     * @codeCoverageIgnore
      */
     protected function getTemplates(): array
     {
