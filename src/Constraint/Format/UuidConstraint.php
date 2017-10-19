@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ExtendsFramework\Validator\Constraint\Format;
 
 use ExtendsFramework\Validator\Constraint\AbstractConstraint;
+use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 
 class UuidConstraint extends AbstractConstraint
@@ -34,6 +35,14 @@ class UuidConstraint extends AbstractConstraint
         return $this->getViolation(self::NOT_UUID, [
             'value' => $value,
         ]);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function factory(array $config): ConstraintInterface
+    {
+        return new static();
     }
 
     /**

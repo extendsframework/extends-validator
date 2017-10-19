@@ -13,11 +13,12 @@ class FloatConstraintTest extends TestCase
      *
      * Test that float value '9.0' is a float.
      *
+     * @covers \ExtendsFramework\Validator\Constraint\Type\AbstractTypeConstraint::factory()
      * @covers \ExtendsFramework\Validator\Constraint\Type\FloatConstraint::validate()
      */
     public function testValid(): void
     {
-        $constraint = new FloatConstraint();
+        $constraint = FloatConstraint::factory([]);
         $result = $constraint->validate(9.1);
 
         $this->assertNull($result);

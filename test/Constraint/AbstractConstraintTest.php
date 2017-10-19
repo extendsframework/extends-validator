@@ -20,25 +20,35 @@ class AbstractConstraintTest extends TestCase
      */
     public function testTemplateNotFound(): void
     {
-        $constraint = new class extends AbstractConstraint
-        {
-            /**
-             * @inheritDoc
-             */
-            public function validate($value, $context = null): ?ConstraintViolationInterface
-            {
-                return $this->getViolation('foo', []);
-            }
-
-            /**
-             * @inheritDoc
-             */
-            protected function getTemplates(): array
-            {
-                return [];
-            }
-        };
+        $constraint = new ConstraintStub();
 
         $constraint->validate('foo');
+    }
+}
+
+class ConstraintStub extends AbstractConstraint
+{
+    /**
+     * @inheritDoc
+     */
+    public function validate($value, $context = null): ?ConstraintViolationInterface
+    {
+        return $this->getViolation('foo', []);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function factory(array $config): ConstraintInterface
+    {
+        return new static();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getTemplates(): array
+    {
+        return [];
     }
 }

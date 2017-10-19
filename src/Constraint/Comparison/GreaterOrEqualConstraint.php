@@ -3,10 +3,9 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Comparison;
 
-use ExtendsFramework\Validator\Constraint\AbstractConstraint;
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 
-class GreaterOrEqualConstraint extends AbstractConstraint
+class GreaterOrEqualConstraint extends AbstractComparisonConstraint
 {
     /**
      * When value is not greater than or equal to context.

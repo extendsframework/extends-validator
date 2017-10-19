@@ -3,10 +3,9 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Type;
 
-use ExtendsFramework\Validator\Constraint\AbstractConstraint;
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 
-class FloatConstraint extends AbstractConstraint
+class FloatConstraint extends AbstractTypeConstraint
 {
     /**
      * When value is not a float.

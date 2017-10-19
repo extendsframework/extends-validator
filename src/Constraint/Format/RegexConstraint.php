@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ExtendsFramework\Validator\Constraint\Format;
 
 use ExtendsFramework\Validator\Constraint\AbstractConstraint;
+use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 
 class RegexConstraint extends AbstractConstraint
@@ -45,6 +46,16 @@ class RegexConstraint extends AbstractConstraint
             'value' => $value,
             'pattern' => $this->pattern,
         ]);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function factory(array $config): ConstraintInterface
+    {
+        return new static(
+            $config['pattern']
+        );
     }
 
     /**

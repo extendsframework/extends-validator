@@ -16,6 +16,29 @@ abstract class AbstractLogicalConstraint extends AbstractConstraint
     protected $constraints = [];
 
     /**
+     * @inheritDoc
+     */
+    public static function factory(array $config): ConstraintInterface
+    {
+        $instance = new static();
+        foreach ($config['constraints'] ?? [] as $constraint) {
+            if (is_string($constraint) === true) {
+                $constraint = [
+                    'constraint' => $constraint,
+                ];
+            }
+
+            if (is_array($constraint) === true) {
+                $constraint = $constraint['constraint']::factory($constraint['options'] ?? []);
+            }
+
+            $instance->addConstraint($constraint);
+        }
+
+        return $instance;
+    }
+
+    /**
      * Add $constraint.
      *
      * @param ConstraintInterface $constraint

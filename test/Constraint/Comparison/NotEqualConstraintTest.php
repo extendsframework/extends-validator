@@ -13,11 +13,12 @@ class NotEqualConstraintTest extends TestCase
      *
      * Test that string '1' is not equal to string '2'.
      *
+     * @covers \ExtendsFramework\Validator\Constraint\Comparison\AbstractComparisonConstraint::factory()
      * @covers \ExtendsFramework\Validator\Constraint\Comparison\NotEqualConstraint::validate()
      */
     public function testValid(): void
     {
-        $constraint = new NotEqualConstraint();
+        $constraint = NotEqualConstraint::factory([]);
 
         $this->assertNull($constraint->validate('1', '2'));
     }

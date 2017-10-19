@@ -13,11 +13,12 @@ class EqualConstraintTest extends TestCase
      *
      * Test that string '1' is equal to int '1'.
      *
+     * @covers \ExtendsFramework\Validator\Constraint\Comparison\AbstractComparisonConstraint::factory()
      * @covers \ExtendsFramework\Validator\Constraint\Comparison\EqualConstraint::validate()
      */
     public function testValid(): void
     {
-        $constraint = new EqualConstraint();
+        $constraint = EqualConstraint::factory([]);
 
         $this->assertNull($constraint->validate('1', 1));
     }
