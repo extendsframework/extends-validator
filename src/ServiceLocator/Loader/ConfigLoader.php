@@ -5,7 +5,7 @@ namespace ExtendsFramework\Validator\ServiceLocator\Loader;
 
 use ExtendsFramework\ServiceLocator\Config\Loader\LoaderInterface;
 use ExtendsFramework\ServiceLocator\Resolver\Factory\FactoryResolver;
-use ExtendsFramework\ServiceLocator\Resolver\StaticFactory\StaticFactoryInterface;
+use ExtendsFramework\ServiceLocator\Resolver\StaticFactory\StaticFactoryResolver;
 use ExtendsFramework\Validator\Constraint\Comparison\EqualConstraint;
 use ExtendsFramework\Validator\Constraint\Comparison\GreaterOrEqualConstraint;
 use ExtendsFramework\Validator\Constraint\Comparison\GreaterThanConstraint;
@@ -39,7 +39,7 @@ class ConfigLoader implements LoaderInterface
                 FactoryResolver::class => [
                     ValidatorInterface::class => ValidatorFactory::class,
                 ],
-                StaticFactoryInterface::class => [
+                StaticFactoryResolver::class => [
                     EqualConstraint::class => EqualConstraint::class,
                     GreaterOrEqualConstraint::class => GreaterOrEqualConstraint::class,
                     GreaterThanConstraint::class => GreaterThanConstraint::class,
