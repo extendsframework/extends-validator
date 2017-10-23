@@ -6,6 +6,7 @@ namespace ExtendsFramework\Validator\ServiceLocator\Loader;
 use ExtendsFramework\ServiceLocator\Config\Loader\LoaderInterface;
 use ExtendsFramework\ServiceLocator\Resolver\Factory\FactoryResolver;
 use ExtendsFramework\ServiceLocator\Resolver\StaticFactory\StaticFactoryResolver;
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\Constraint\Comparison\EqualConstraint;
 use ExtendsFramework\Validator\Constraint\Comparison\GreaterOrEqualConstraint;
 use ExtendsFramework\Validator\Constraint\Comparison\GreaterThanConstraint;
@@ -35,7 +36,7 @@ class ConfigLoader implements LoaderInterface
     public function load(): array
     {
         return [
-            'service_locator' => [
+            ServiceLocatorInterface::class => [
                 FactoryResolver::class => [
                     ValidatorInterface::class => ValidatorFactory::class,
                 ],
