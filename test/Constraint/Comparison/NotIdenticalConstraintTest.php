@@ -13,12 +13,11 @@ class NotIdenticalConstraintTest extends TestCase
      *
      * Test that string '1' is not identical to int '1'.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Comparison\AbstractComparisonConstraint::factory()
      * @covers \ExtendsFramework\Validator\Constraint\Comparison\NotIdenticalConstraint::validate()
      */
     public function testValid(): void
     {
-        $constraint = NotIdenticalConstraint::factory([]);
+        $constraint = new NotIdenticalConstraint();
 
         $this->assertNull($constraint->validate('1', 1));
     }

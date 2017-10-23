@@ -3,9 +3,10 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint;
 
+use ExtendsFramework\ServiceLocator\Resolver\StaticFactory\StaticFactoryInterface;
 use ExtendsFramework\Validator\Constraint\Exception\TemplateNotFound;
 
-abstract class AbstractConstraint implements ConstraintInterface
+abstract class AbstractConstraint implements ConstraintInterface, StaticFactoryInterface
 {
     /**
      * Create violation with template $key and $parameters.

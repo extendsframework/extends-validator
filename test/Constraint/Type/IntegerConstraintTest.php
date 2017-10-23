@@ -13,12 +13,11 @@ class IntegerConstraintTest extends TestCase
      *
      * Test that integer value '9' is an valid integer and null will be returned.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Type\AbstractTypeConstraint::factory()
      * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::validate()
      */
     public function testValid(): void
     {
-        $constraint = IntegerConstraint::factory([]);
+        $constraint = new IntegerConstraint();
         $result = $constraint->validate(9);
 
         $this->assertNull($result);

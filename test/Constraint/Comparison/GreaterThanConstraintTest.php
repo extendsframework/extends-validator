@@ -13,12 +13,11 @@ class GreaterThanConstraintTest extends TestCase
      *
      * Test that int '2' is greater than int '1'.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Comparison\AbstractComparisonConstraint::factory()
      * @covers \ExtendsFramework\Validator\Constraint\Comparison\GreaterThanConstraint::validate()
      */
     public function testValid(): void
     {
-        $constraint = GreaterThanConstraint::factory([]);
+        $constraint = new GreaterThanConstraint();
 
         $this->assertNull($constraint->validate(2, 1));
     }

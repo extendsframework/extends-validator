@@ -13,12 +13,11 @@ class StringConstraintTest extends TestCase
      *
      * Test that string value 'foo' is a valid string and null will be returned.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Type\AbstractTypeConstraint::factory()
      * @covers \ExtendsFramework\Validator\Constraint\Type\StringConstraint::validate()
      */
     public function testCanAssertValidValue(): void
     {
-        $constraint = StringConstraint::factory([]);
+        $constraint = new StringConstraint();
         $result = $constraint->validate('foo');
 
         $this->assertNull($result);

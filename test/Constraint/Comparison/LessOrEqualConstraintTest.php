@@ -14,11 +14,10 @@ class LessOrEqualConstraintTest extends TestCase
      * Test that int '1' is less than int '2' and int '1' is equal to int '1'.
      *
      * @covers \ExtendsFramework\Validator\Constraint\Comparison\LessOrEqualConstraint::validate()
-     * @covers \ExtendsFramework\Validator\Constraint\Comparison\AbstractComparisonConstraint::factory()
      */
     public function testValid(): void
     {
-        $constraint = LessOrEqualConstraint::factory([]);
+        $constraint = new LessOrEqualConstraint();
 
         $this->assertNull($constraint->validate(1, 2));
         $this->assertNull($constraint->validate(1, 1));

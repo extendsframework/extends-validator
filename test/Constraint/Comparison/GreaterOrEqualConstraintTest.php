@@ -13,12 +13,11 @@ class GreaterOrEqualConstraintTest extends TestCase
      *
      * Test that int '2' is greater than int '1' and int '2' is equal to int '2'.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Comparison\AbstractComparisonConstraint::factory()
      * @covers \ExtendsFramework\Validator\Constraint\Comparison\GreaterOrEqualConstraint::validate()
      */
     public function testValid(): void
     {
-        $constraint = GreaterOrEqualConstraint::factory([]);
+        $constraint = new GreaterOrEqualConstraint();
 
         $this->assertNull($constraint->validate(2, 1));
         $this->assertNull($constraint->validate(2, 2));

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Format;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\Constraint\AbstractConstraint;
 use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
@@ -40,7 +41,7 @@ class UuidConstraint extends AbstractConstraint
     /**
      * @inheritDoc
      */
-    public static function factory(array $config): ConstraintInterface
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): ConstraintInterface
     {
         return new static();
     }

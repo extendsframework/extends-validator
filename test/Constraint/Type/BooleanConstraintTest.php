@@ -13,12 +13,11 @@ class BooleanConstraintTest extends TestCase
      *
      * Test that boolean value 'true' is a boolean.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Type\AbstractTypeConstraint::factory()
      * @covers \ExtendsFramework\Validator\Constraint\Type\BooleanConstraint::validate()
      */
     public function testValid(): void
     {
-        $constraint = BooleanConstraint::factory([]);
+        $constraint = new BooleanConstraint();
         $result = $constraint->validate(true);
 
         $this->assertNull($result);

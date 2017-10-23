@@ -14,11 +14,10 @@ class IdenticalConstraintTest extends TestCase
      * Test that string '1' is identical to string '1'.
      *
      * @covers \ExtendsFramework\Validator\Constraint\Comparison\IdenticalConstraint::validate()
-     * @covers \ExtendsFramework\Validator\Constraint\Comparison\AbstractComparisonConstraint::factory()
      */
     public function testValid(): void
     {
-        $constraint = IdenticalConstraint::factory([]);
+        $constraint = new IdenticalConstraint();
 
         $this->assertNull($constraint->validate('1', '1'));
     }

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use PHPUnit\Framework\TestCase;
 
 class AbstractConstraintTest extends TestCase
@@ -39,7 +40,7 @@ class ConstraintStub extends AbstractConstraint
     /**
      * @inheritDoc
      */
-    public static function factory(array $config): ConstraintInterface
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null)
     {
         return new static();
     }

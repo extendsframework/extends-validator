@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Format;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -48,5 +50,26 @@ class RegexConstraintTest extends TestCase
                 'pattern' => '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i',
             ], $result->getParameters());
         }
+    }
+
+    /**
+     * Factory.
+     *
+     * Test that factory returns an instanceof of ConstraintInterface.
+     *
+     * @covers \ExtendsFramework\Validator\Constraint\Format\RegexConstraint::factory()
+     */
+    public function testFactory(): void
+    {
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
+
+        /**
+         * @var ServiceLocatorInterface $serviceLocator
+         */
+        $constraint = RegexConstraint::factory(RegexConstraint::class, $serviceLocator, [
+            'pattern' => '/a/'
+        ]);
+
+        $this->assertInstanceOf(ConstraintInterface::class, $constraint);
     }
 }

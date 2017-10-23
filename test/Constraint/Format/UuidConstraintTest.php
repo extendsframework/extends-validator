@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Format;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 use ExtendsFramework\Validator\Constraint\ConstraintViolationInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -45,5 +47,25 @@ class UuidConstraintTest extends TestCase
                 'value' => 'foo-bar-baz',
             ], $result->getParameters());
         }
+    }
+
+
+    /**
+     * Factory.
+     *
+     * Test that factory returns an instanceof of ConstraintInterface.
+     *
+     * @covers \ExtendsFramework\Validator\Constraint\Format\UuidConstraint::factory()
+     */
+    public function testFactory(): void
+    {
+        $serviceLocator = $this->createMock(ServiceLocatorInterface::class);
+
+        /**
+         * @var ServiceLocatorInterface $serviceLocator
+         */
+        $constraint = UuidConstraint::factory(UuidConstraint::class, $serviceLocator);
+
+        $this->assertInstanceOf(ConstraintInterface::class, $constraint);
     }
 }

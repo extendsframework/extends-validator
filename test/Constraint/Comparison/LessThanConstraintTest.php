@@ -14,11 +14,10 @@ class LessThanConstraintTest extends TestCase
      * Test that int '1' is less than int '2'.
      *
      * @covers \ExtendsFramework\Validator\Constraint\Comparison\LessThanConstraint::validate()
-     * @covers \ExtendsFramework\Validator\Constraint\Comparison\AbstractComparisonConstraint::factory()
      */
     public function testValid(): void
     {
-        $constraint = LessThanConstraint::factory([]);
+        $constraint = new LessThanConstraint();
 
         $this->assertNull($constraint->validate(1, 2));
     }

@@ -15,12 +15,4 @@ interface ConstraintInterface
      * @return null|ConstraintViolationInterface
      */
     public function validate($value, $context = null): ?ConstraintViolationInterface;
-
-    /**
-     * Create constraint from $config.
-     *
-     * @param array $config
-     * @return ConstraintInterface
-     */
-    public static function factory(array $config): ConstraintInterface;
 }

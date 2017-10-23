@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Constraint\Logical;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\Constraint\AbstractConstraint;
 use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 
@@ -18,21 +19,13 @@ abstract class AbstractLogicalConstraint extends AbstractConstraint
     /**
      * @inheritDoc
      */
-    public static function factory(array $config): ConstraintInterface
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): ConstraintInterface
     {
         $instance = new static();
-        foreach ($config['constraints'] ?? [] as $constraint) {
-            if (is_string($constraint) === true) {
-                $constraint = [
-                    'constraint' => $constraint,
-                ];
-            }
-
-            if (is_array($constraint) === true) {
-                $constraint = $constraint['constraint']::factory($constraint['options'] ?? []);
-            }
-
-            $instance->addConstraint($constraint);
+        foreach ($extra['constraints'] ?? [] as $constraint) {
+            $instance->addConstraint(
+                $serviceLocator->getService($constraint['name'], $constraint['options'] ?? [])
+            );
         }
 
         return $instance;
