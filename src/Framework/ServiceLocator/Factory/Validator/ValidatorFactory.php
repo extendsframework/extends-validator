@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\ServiceLocator\Factory;
+namespace ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator;
 
 use ExtendsFramework\ServiceLocator\Resolver\Factory\ServiceFactoryInterface;
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;

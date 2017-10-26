@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\ServiceLocator\Loader;
+namespace ExtendsFramework\Validator\Framework\ServiceLocator\Loader;
 
 use ExtendsFramework\ServiceLocator\Resolver\Factory\FactoryResolver;
-use ExtendsFramework\ServiceLocator\Resolver\StaticFactory\StaticFactoryInterface;
+use ExtendsFramework\ServiceLocator\Resolver\StaticFactory\StaticFactoryResolver;
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\Constraint\Comparison\EqualConstraint;
 use ExtendsFramework\Validator\Constraint\Comparison\GreaterOrEqualConstraint;
 use ExtendsFramework\Validator\Constraint\Comparison\GreaterThanConstraint;
@@ -23,7 +24,7 @@ use ExtendsFramework\Validator\Constraint\Type\BooleanConstraint;
 use ExtendsFramework\Validator\Constraint\Type\FloatConstraint;
 use ExtendsFramework\Validator\Constraint\Type\IntegerConstraint;
 use ExtendsFramework\Validator\Constraint\Type\StringConstraint;
-use ExtendsFramework\Validator\ServiceLocator\Factory\ValidatorFactory;
+use ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator\ValidatorFactory;
 use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -34,18 +35,18 @@ class ConfigLoaderTest extends TestCase
      *
      * Test that load method returns correct config.
      *
-     * @covers \ExtendsFramework\Validator\ServiceLocator\Loader\ConfigLoader::load
+     * @covers \ExtendsFramework\Validator\Framework\ServiceLocator\Loader\ConfigLoader::load
      */
     public function testLoad(): void
     {
         $loader = new ConfigLoader();
 
         $this->assertSame([
-            'service_locator' => [
+            ServiceLocatorInterface::class => [
                 FactoryResolver::class => [
                     ValidatorInterface::class => ValidatorFactory::class,
                 ],
-                StaticFactoryInterface::class => [
+                StaticFactoryResolver::class => [
                     EqualConstraint::class => EqualConstraint::class,
                     GreaterOrEqualConstraint::class => GreaterOrEqualConstraint::class,
                     GreaterThanConstraint::class => GreaterThanConstraint::class,

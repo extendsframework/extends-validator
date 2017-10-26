@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\ServiceLocator\Factory;
+namespace ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\Constraint\ConstraintInterface;
@@ -15,7 +15,7 @@ class ValidatorFactoryTest extends TestCase
      *
      * Test that factory will return an instance of ValidatorInterface.
      *
-     * @covers \ExtendsFramework\Validator\ServiceLocator\Factory\ValidatorFactory::createService()
+     * @covers \ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator\ValidatorFactory::createService()
      */
     public function testCreateService(): void
     {

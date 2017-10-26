@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\ServiceLocator\Loader;
+namespace ExtendsFramework\Validator\Framework\ServiceLocator\Loader;
 
 use ExtendsFramework\ServiceLocator\Config\Loader\LoaderInterface;
 use ExtendsFramework\ServiceLocator\Resolver\Factory\FactoryResolver;
@@ -25,7 +25,7 @@ use ExtendsFramework\Validator\Constraint\Type\BooleanConstraint;
 use ExtendsFramework\Validator\Constraint\Type\FloatConstraint;
 use ExtendsFramework\Validator\Constraint\Type\IntegerConstraint;
 use ExtendsFramework\Validator\Constraint\Type\StringConstraint;
-use ExtendsFramework\Validator\ServiceLocator\Factory\ValidatorFactory;
+use ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator\ValidatorFactory;
 use ExtendsFramework\Validator\ValidatorInterface;
 
 class ConfigLoader implements LoaderInterface
