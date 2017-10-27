@@ -28,7 +28,7 @@ use ExtendsFramework\Validator\Constraint\Type\StringConstraint;
 use ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator\ValidatorFactory;
 use ExtendsFramework\Validator\ValidatorInterface;
 
-class ConfigLoader implements LoaderInterface
+class ValidatorConfigLoader implements LoaderInterface
 {
     /**
      * @inheritDoc

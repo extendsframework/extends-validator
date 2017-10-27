@@ -28,18 +28,18 @@ use ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator\Valida
 use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
-class ConfigLoaderTest extends TestCase
+class ValidatorConfigLoaderTest extends TestCase
 {
     /**
      * Load.
      *
      * Test that load method returns correct config.
      *
-     * @covers \ExtendsFramework\Validator\Framework\ServiceLocator\Loader\ConfigLoader::load
+     * @covers \ExtendsFramework\Validator\Framework\ServiceLocator\Loader\ValidatorConfigLoader::load
      */
     public function testLoad(): void
     {
-        $loader = new ConfigLoader();
+        $loader = new ValidatorConfigLoader();
 
         $this->assertSame([
             ServiceLocatorInterface::class => [
