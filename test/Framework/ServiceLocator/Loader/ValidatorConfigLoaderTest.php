@@ -23,6 +23,7 @@ use ExtendsFramework\Validator\Constraint\Logical\XorConstraint;
 use ExtendsFramework\Validator\Constraint\Type\BooleanConstraint;
 use ExtendsFramework\Validator\Constraint\Type\FloatConstraint;
 use ExtendsFramework\Validator\Constraint\Type\IntegerConstraint;
+use ExtendsFramework\Validator\Constraint\Type\NumericConstraint;
 use ExtendsFramework\Validator\Constraint\Type\StringConstraint;
 use ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator\ValidatorFactory;
 use ExtendsFramework\Validator\ValidatorInterface;
@@ -64,6 +65,7 @@ class ValidatorConfigLoaderTest extends TestCase
                     BooleanConstraint::class => BooleanConstraint::class,
                     FloatConstraint::class => FloatConstraint::class,
                     IntegerConstraint::class => IntegerConstraint::class,
+                    NumericConstraint::class => NumericConstraint::class,
                     StringConstraint::class => StringConstraint::class,
                 ],
             ],
