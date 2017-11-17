@@ -49,4 +49,24 @@ class ConstraintViolationTest extends TestCase
 
         $this->assertSame('"Value \"baz\" is equal to \"baz\"."', json_encode($violation));
     }
+
+    /**
+     * To string.
+     *
+     * Test that object string cast will return correct string.
+     *
+     * @covers \ExtendsFramework\Validator\Constraint\ConstraintViolation::__construct()
+     * @covers \ExtendsFramework\Validator\Constraint\ConstraintViolation::__toString()
+     * @covers \ExtendsFramework\Validator\Constraint\ConstraintViolation::getMessage()
+     * @covers \ExtendsFramework\Validator\Constraint\ConstraintViolation::getParameters()
+     */
+    public function testToString(): void
+    {
+        $violation = new ConstraintViolation('Value "{{foo}}" is equal to "{{bar}}".', [
+            'foo' => 'baz',
+            'bar' => 'baz',
+        ]);
+
+        $this->assertSame('Value "baz" is equal to "baz".', (string)$violation);
+    }
 }

@@ -59,4 +59,12 @@ class ConstraintViolation implements ConstraintViolationInterface
 
         return strtr($this->getMessage(), $replacement);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function __toString(): string
+    {
+        return $this->jsonSerialize();
+    }
 }
