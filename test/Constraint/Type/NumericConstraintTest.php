@@ -13,7 +13,7 @@ class NumericConstraintTest extends TestCase
      *
      * Test that integer value '9' is an valid integer and null will be returned.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::validate()
+     * @covers \ExtendsFramework\Validator\Constraint\Type\NumericConstraint::validate()
      */
     public function testValid(): void
     {
@@ -30,8 +30,8 @@ class NumericConstraintTest extends TestCase
      *
      * Test that string value 'foo' is an valid integer and ConstraintViolationInterface instance will be returned.
      *
-     * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::validate()
-     * @covers \ExtendsFramework\Validator\Constraint\Type\IntegerConstraint::getTemplates()
+     * @covers \ExtendsFramework\Validator\Constraint\Type\NumericConstraint::validate()
+     * @covers \ExtendsFramework\Validator\Constraint\Type\NumericConstraint::getTemplates()
      * @covers \ExtendsFramework\Validator\Constraint\AbstractConstraint::getViolation()
      */
     public function testInvalid(): void
