@@ -20,6 +20,7 @@ use ExtendsFramework\Validator\Constraint\Logical\AndConstraint;
 use ExtendsFramework\Validator\Constraint\Logical\NotConstraint;
 use ExtendsFramework\Validator\Constraint\Logical\OrConstraint;
 use ExtendsFramework\Validator\Constraint\Logical\XorConstraint;
+use ExtendsFramework\Validator\Constraint\Type\ArrayConstraint;
 use ExtendsFramework\Validator\Constraint\Type\BooleanConstraint;
 use ExtendsFramework\Validator\Constraint\Type\FloatConstraint;
 use ExtendsFramework\Validator\Constraint\Type\IntegerConstraint;
@@ -62,6 +63,7 @@ class ValidatorConfigLoaderTest extends TestCase
                     NotConstraint::class => NotConstraint::class,
                     OrConstraint::class => OrConstraint::class,
                     XorConstraint::class => XorConstraint::class,
+                    ArrayConstraint::class => ArrayConstraint::class,
                     BooleanConstraint::class => BooleanConstraint::class,
                     FloatConstraint::class => FloatConstraint::class,
                     IntegerConstraint::class => IntegerConstraint::class,
