@@ -33,7 +33,7 @@ class ConstraintViolationTest extends TestCase
     /**
      * Json serializable.
      *
-     * Test that object JSON serialization will return correct string.
+     * Test that object JSON serialization will return correct array.
      *
      * @covers \ExtendsFramework\Validator\Constraint\ConstraintViolation::__construct()
      * @covers \ExtendsFramework\Validator\Constraint\ConstraintViolation::jsonSerialize()
@@ -47,7 +47,13 @@ class ConstraintViolationTest extends TestCase
             'bar' => 'baz',
         ]);
 
-        $this->assertSame('"Value \"baz\" is equal to \"baz\"."', json_encode($violation));
+        $this->assertSame(json_encode([
+            'message' => 'Value "{{foo}}" is equal to "{{bar}}".',
+            'parameters' => [
+                'foo' => 'baz',
+                'bar' => 'baz',
+            ],
+        ]), json_encode($violation));
     }
 
     /**

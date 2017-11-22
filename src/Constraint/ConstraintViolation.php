@@ -50,14 +50,12 @@ class ConstraintViolation implements ConstraintViolationInterface
     /**
      * @inheritDoc
      */
-    public function jsonSerialize(): string
+    public function jsonSerialize(): array
     {
-        $replacement = [];
-        foreach ($this->parameters as $key => $parameter) {
-            $replacement[sprintf('{{%s}}', $key)] = $parameter;
-        }
-
-        return strtr($this->getMessage(), $replacement);
+        return [
+            'message' => $this->getMessage(),
+            'parameters' => $this->getParameters(),
+        ];
     }
 
     /**
@@ -65,6 +63,11 @@ class ConstraintViolation implements ConstraintViolationInterface
      */
     public function __toString(): string
     {
-        return $this->jsonSerialize();
+        $replacement = [];
+        foreach ($this->parameters as $key => $parameter) {
+            $replacement[sprintf('{{%s}}', $key)] = $parameter;
+        }
+
+        return strtr($this->getMessage(), $replacement);
     }
 }

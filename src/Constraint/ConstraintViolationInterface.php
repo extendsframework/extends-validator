@@ -24,9 +24,9 @@ interface ConstraintViolationInterface extends JsonSerializable
     /**
      * Get parsed violation message.
      *
-     * @return string
+     * @return array
      */
-    public function jsonSerialize(): string;
+    public function jsonSerialize(): array;
 
     /**
      * Get parsed violation message.
