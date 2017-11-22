@@ -15,6 +15,13 @@ class ValidatorConstraint
     protected $constraint;
 
     /**
+     * Identifier for the constraint.
+     *
+     * @var string
+     */
+    protected $identifier;
+
+    /**
      * Whether or not the validation must be stopped.
      *
      * @var bool
@@ -25,12 +32,14 @@ class ValidatorConstraint
      * Set $constraint and $interrupt flag.
      *
      * @param ConstraintInterface $constraint
-     * @param bool                $interrupt
+     * @param string              $identifier
+     * @param bool|null           $interrupt
      */
-    public function __construct(ConstraintInterface $constraint, bool $interrupt)
+    public function __construct(ConstraintInterface $constraint, string $identifier, bool $interrupt = null)
     {
         $this->constraint = $constraint;
         $this->interrupt = $interrupt;
+        $this->identifier = $identifier ?? false;
     }
 
     /**
@@ -41,6 +50,16 @@ class ValidatorConstraint
     public function getConstraint(): ConstraintInterface
     {
         return $this->constraint;
+    }
+
+    /**
+     * Get identifier for this constraint.
+     *
+     * @return string
+     */
+    public function getIdentifier(): string
+    {
+        return $this->identifier;
     }
 
     /**

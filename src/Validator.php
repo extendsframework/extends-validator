@@ -26,7 +26,7 @@ class Validator implements ValidatorInterface
             $violation = $constraint->getConstraint()->validate($value, $context);
             if ($violation instanceof ConstraintViolationInterface) {
                 $valid = false;
-                $violations[] = $violation;
+                $violations[$constraint->getIdentifier()] = $violation;
 
                 if ($constraint->mustInterrupt() === true) {
                     break;
@@ -43,12 +43,13 @@ class Validator implements ValidatorInterface
      * When $interrupt is true, validation will stop if $constraint is invalid. Default value is false.
      *
      * @param ConstraintInterface $constraint
+     * @param string|null         $identifier
      * @param bool|null           $interrupt
      * @return Validator
      */
-    public function addConstraint(ConstraintInterface $constraint, bool $interrupt = null): Validator
+    public function addConstraint(ConstraintInterface $constraint, string $identifier, bool $interrupt = null): Validator
     {
-        $this->constraints[] = new ValidatorConstraint($constraint, $interrupt ?? false);
+        $this->constraints[] = new ValidatorConstraint($constraint, $identifier, $interrupt);
 
         return $this;
     }

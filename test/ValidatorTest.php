@@ -52,15 +52,15 @@ class ValidatorTest extends TestCase
          */
         $validator = new Validator();
         $result = $validator
-            ->addConstraint($constraint1)
-            ->addConstraint($constraint2, true)
-            ->addConstraint($constraint3)
+            ->addConstraint($constraint1, 'first')
+            ->addConstraint($constraint2, 'second', true)
+            ->addConstraint($constraint3, 'third')
             ->validate('foo', ['bar' => 'baz']);
 
         $this->assertInstanceOf(ValidatorResultInterface::class, $result);
         $this->assertFalse($result->isValid());
         $this->assertSame([
-            $violation,
+            'second' => $violation,
         ], $result->getViolations());
     }
 }
