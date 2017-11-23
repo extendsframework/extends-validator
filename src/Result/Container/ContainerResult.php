@@ -34,7 +34,9 @@ class ContainerResult implements ResultInterface
      */
     public function jsonSerialize()
     {
-        return $this->results;
+        return array_filter($this->results, function (ResultInterface $result) {
+            return $result->isValid() === false;
+        });
     }
 
     /**

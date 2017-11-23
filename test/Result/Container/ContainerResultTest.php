@@ -82,7 +82,7 @@ class ContainerResultTest extends TestCase
     {
         $result = $this->createMock(ResultInterface::class);
         $result
-            ->expects($this->once())
+            ->expects($this->exactly(4))
             ->method('isValid')
             ->willReturn(false);
 
