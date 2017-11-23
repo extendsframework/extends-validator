@@ -5,7 +5,7 @@ namespace ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator;
 
 use ExtendsFramework\ServiceLocator\Resolver\Factory\ServiceFactoryInterface;
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
-use ExtendsFramework\Validator\Validator;
+use ExtendsFramework\Validator\ContainerValidator;
 use ExtendsFramework\Validator\ValidatorInterface;
 
 class ValidatorFactory implements ServiceFactoryInterface
@@ -15,14 +15,14 @@ class ValidatorFactory implements ServiceFactoryInterface
      */
     public function createService(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): ValidatorInterface
     {
-        $validator = new Validator();
-        foreach ($extra['constraints'] ?? [] as $constraint) {
-            $validator->addConstraint(
-                $serviceLocator->getService($constraint['name'], $constraint['options'] ?? []),
-                $constraint['interrupt'] ?? false
+        $container = new ContainerValidator();
+        foreach ($extra['validators'] ?? [] as $validator) {
+            $container->addValidator(
+                $serviceLocator->getService($validator['name'], $validator['options'] ?? []),
+                $validator['interrupt'] ?? false
             );
         }
 
-        return $validator;
+        return $container;
     }
 }

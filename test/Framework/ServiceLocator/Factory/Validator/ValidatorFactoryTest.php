@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
-use ExtendsFramework\Validator\Constraint\ConstraintInterface;
 use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -23,17 +22,17 @@ class ValidatorFactoryTest extends TestCase
         $serviceLocator
             ->expects($this->once())
             ->method('getService')
-            ->with(ConstraintInterface::class, [])
-            ->willReturn($this->createMock(ConstraintInterface::class));
+            ->with(ValidatorInterface::class, [])
+            ->willReturn($this->createMock(ValidatorInterface::class));
 
         /**
          * @var ServiceLocatorInterface $serviceLocator
          */
         $factory = new ValidatorFactory();
         $validator = $factory->createService(ValidatorInterface::class, $serviceLocator, [
-            'constraints' => [
+            'validators' => [
                 [
-                    'name' => ConstraintInterface::class,
+                    'name' => ValidatorInterface::class,
                 ],
             ],
         ]);

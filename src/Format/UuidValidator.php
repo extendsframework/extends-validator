@@ -1,0 +1,58 @@
+<?php
+declare(strict_types=1);
+
+namespace ExtendsFramework\Validator\Format;
+
+use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\AbstractValidator;
+use ExtendsFramework\Validator\ValidatorInterface;
+use ExtendsFramework\Validator\Result\ResultInterface;
+
+class UuidValidator extends AbstractValidator
+{
+    /**
+     * When value is not an UUID.
+     *
+     * @const string
+     */
+    public const NOT_UUID = 'notUuid';
+
+    /**
+     * UUID regular expression.
+     *
+     * @var string
+     */
+    protected $pattern = '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i';
+
+    /**
+     * @inheritDoc
+     */
+    public function validate($value, $context = null): ResultInterface
+    {
+        if (preg_match($this->pattern, $value) === 1) {
+            return $this->getValidResult();
+        }
+
+        return $this->getInvalidResult(self::NOT_UUID, [
+            'value' => $value,
+        ]);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): ValidatorInterface
+    {
+        return new static();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    protected function getTemplates(): array
+    {
+        return [
+            self::NOT_UUID => 'Value "{{value}}" must be a valid UUID.',
+        ];
+    }
+}
