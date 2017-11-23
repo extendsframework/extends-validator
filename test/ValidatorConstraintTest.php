@@ -15,7 +15,6 @@ class ValidatorConstraintTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\ValidatorConstraint::__construct()
      * @covers \ExtendsFramework\Validator\ValidatorConstraint::getConstraint()
-     * @covers \ExtendsFramework\Validator\ValidatorConstraint::getIdentifier()
      * @covers \ExtendsFramework\Validator\ValidatorConstraint::mustInterrupt()
      */
     public function testGetMethods(): void
@@ -25,10 +24,9 @@ class ValidatorConstraintTest extends TestCase
         /**
          * @var ConstraintInterface $constraint
          */
-        $validatorConstraint = new ValidatorConstraint($constraint, 'property', true);
+        $validatorConstraint = new ValidatorConstraint($constraint, true);
 
         $this->assertSame($constraint, $validatorConstraint->getConstraint());
-        $this->assertSame('property', $validatorConstraint->getIdentifier());
         $this->assertTrue($validatorConstraint->mustInterrupt());
     }
 }
