@@ -24,7 +24,7 @@ class PropertyConstraintTest extends TestCase
         $constraint
             ->expects($this->once())
             ->method('validate')
-            ->with('bar')
+            ->with('bar', ['context' => true])
             ->willReturn(null);
 
         /**
@@ -33,7 +33,7 @@ class PropertyConstraintTest extends TestCase
         $property = new PropertyConstraint('foo', $constraint);
         $violation = $property->validate((object)[
             'foo' => 'bar',
-        ]);
+        ], ['context' => true]);
 
         $this->assertNull($violation);
     }

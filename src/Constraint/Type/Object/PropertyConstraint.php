@@ -68,7 +68,7 @@ class PropertyConstraint extends AbstractConstraint
             return null;
         }
 
-        return $this->constraint->validate($value->{$property});
+        return $this->constraint->validate($value->{$property}, $context);
     }
 
     /**
