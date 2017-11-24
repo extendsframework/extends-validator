@@ -105,7 +105,8 @@ class PropertiesValidator extends AbstractValidator
                     $container->addResult(
                         $this->getInvalidResult(self::PROPERTY_MISSING, [
                             'property' => $name,
-                        ])
+                        ]),
+                        $name
                     );
                 }
 
