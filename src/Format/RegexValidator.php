@@ -5,8 +5,9 @@ namespace ExtendsFramework\Validator\Format;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
-use ExtendsFramework\Validator\ValidatorInterface;
 use ExtendsFramework\Validator\Result\ResultInterface;
+use ExtendsFramework\Validator\Type\StringValidator;
+use ExtendsFramework\Validator\ValidatorInterface;
 
 class RegexValidator extends AbstractValidator
 {
@@ -39,6 +40,11 @@ class RegexValidator extends AbstractValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
+        $result = (new StringValidator())->validate($value);
+        if ($result->isValid() === false) {
+            return $result;
+        }
+
         if (preg_match($this->pattern, $value) === 1) {
             return $this->getValidResult();
         }

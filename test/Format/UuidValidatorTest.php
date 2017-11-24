@@ -41,6 +41,21 @@ class UuidValidatorTest extends TestCase
     }
 
     /**
+     * Invalid.
+     *
+     * Test that none string value will not validate.
+     *
+     * @covers \ExtendsFramework\Validator\Format\UuidValidator::validate()
+     */
+    public function testNotString(): void
+    {
+        $validator = new UuidValidator();
+        $result = $validator->validate(9);
+
+        $this->assertFalse($result->isValid());
+    }
+
+    /**
      * Factory.
      *
      * Test that factory returns an instanceof of ValidatorInterface.

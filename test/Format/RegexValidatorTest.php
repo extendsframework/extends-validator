@@ -43,6 +43,22 @@ class RegexValidatorTest extends TestCase
     }
 
     /**
+     * Invalid.
+     *
+     * Test that none string value will not validate.
+     *
+     * @covers \ExtendsFramework\Validator\Format\RegexValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Format\RegexValidator::validate()
+     */
+    public function testNotString(): void
+    {
+        $validator = new RegexValidator('/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i');
+        $result = $validator->validate(9);
+
+        $this->assertFalse($result->isValid());
+    }
+
+    /**
      * Factory.
      *
      * Test that factory returns an instanceof of ValidatorInterface.
