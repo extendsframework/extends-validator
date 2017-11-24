@@ -14,7 +14,7 @@ class StringValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Type\StringValidator::validate()
      */
-    public function testCanAssertValidValue(): void
+    public function testValid(): void
     {
         $validator = new StringValidator();
         $result = $validator->validate('foo');
@@ -30,7 +30,7 @@ class StringValidatorTest extends TestCase
      * @covers \ExtendsFramework\Validator\Type\StringValidator::validate()
      * @covers \ExtendsFramework\Validator\Type\StringValidator::getTemplates()
      */
-    public function testCanNotAssertInvalidValid(): void
+    public function testInvalid(): void
     {
         $validator = new StringValidator();
         $result = $validator->validate(9);
