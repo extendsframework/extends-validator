@@ -32,7 +32,7 @@ class CollectionValidator extends AbstractValidator
     /**
      * @inheritDoc
      */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null)
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): CollectionValidator
     {
         $validator = $extra['validator'];
 
