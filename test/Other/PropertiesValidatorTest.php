@@ -90,6 +90,25 @@ class PropertiesValidatorTest extends TestCase
     }
 
     /**
+     * Not strict.
+     *
+     * Test that undefined object properties are allowed.
+     *
+     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::validate()
+     */
+    public function testNotStrict()
+    {
+        $properties = new PropertiesValidator(null, false);
+        $result = $properties->validate((object)[
+            'foo' => 'bar',
+            'bar' => 'baz',
+        ], 'context');
+
+        $this->assertTrue($result->isValid());
+    }
+
+    /**
      * Property missing.
      *
      * Test that missing property will give invalid result.

@@ -33,7 +33,7 @@ class PropertiesValidator extends AbstractValidator
      *
      * @var Property[]
      */
-    protected $properties;
+    protected $properties = [];
 
     /**
      * If only defined properties are allowed.
