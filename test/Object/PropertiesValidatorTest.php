@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Other;
+namespace ExtendsFramework\Validator\Object;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\Result\ResultInterface;
@@ -15,10 +15,10 @@ class PropertiesValidatorTest extends TestCase
      *
      * Test that object is valid.
      *
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::addProperty()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::validate()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::checkStrictness()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::addProperty()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::checkStrictness()
      */
     public function testIsValid(): void
     {
@@ -58,11 +58,11 @@ class PropertiesValidatorTest extends TestCase
      *
      * Test that undefined object property is not allowed.
      *
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::addProperty()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::validate()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::checkStrictness()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::getTemplates()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::addProperty()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::checkStrictness()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getTemplates()
      */
     public function testStrict(): void
     {
@@ -94,8 +94,8 @@ class PropertiesValidatorTest extends TestCase
      *
      * Test that undefined object properties are allowed.
      *
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::validate()
      */
     public function testNotStrict()
     {
@@ -113,10 +113,10 @@ class PropertiesValidatorTest extends TestCase
      *
      * Test that missing property will give invalid result.
      *
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::addProperty()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::validate()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::getTemplates()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::addProperty()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getTemplates()
      */
     public function testPropertyMissing(): void
     {
@@ -138,9 +138,9 @@ class PropertiesValidatorTest extends TestCase
      *
      * Test that a non object can not be validated.
      *
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::validate()
-     * @covers \ExtendsFramework\Validator\Other\PropertiesValidator::getTemplates()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getTemplates()
      */
     public function testNotObject(): void
     {

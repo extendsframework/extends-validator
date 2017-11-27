@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Other\Properties;
+namespace ExtendsFramework\Validator\Object\Properties;
 
 use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
@@ -13,10 +13,10 @@ class PropertyTest extends TestCase
      *
      * Test that get methods will return correct values.
      *
-     * @covers \ExtendsFramework\Validator\Other\Properties\Property::__construct()
-     * @covers \ExtendsFramework\Validator\Other\Properties\Property::getName()
-     * @covers \ExtendsFramework\Validator\Other\Properties\Property::getValidator()
-     * @covers \ExtendsFramework\Validator\Other\Properties\Property::isOptional()
+     * @covers \ExtendsFramework\Validator\Object\Properties\Property::__construct()
+     * @covers \ExtendsFramework\Validator\Object\Properties\Property::getName()
+     * @covers \ExtendsFramework\Validator\Object\Properties\Property::getValidator()
+     * @covers \ExtendsFramework\Validator\Object\Properties\Property::isOptional()
      */
     public function testGetMethods(): void
     {

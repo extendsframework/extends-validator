@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Other\Properties;
+namespace ExtendsFramework\Validator\Object\Properties;
 
 use ExtendsFramework\Validator\ValidatorInterface;
 

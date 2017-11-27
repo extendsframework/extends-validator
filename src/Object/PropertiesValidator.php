@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Other;
+namespace ExtendsFramework\Validator\Object;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
 use ExtendsFramework\Validator\Exception\TemplateNotFound;
-use ExtendsFramework\Validator\Other\Properties\Property;
+use ExtendsFramework\Validator\Object\Properties\Property;
 use ExtendsFramework\Validator\Result\Container\ContainerResult;
 use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\Type\ObjectValidator;
