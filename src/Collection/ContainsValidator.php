@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Other;
+namespace ExtendsFramework\Validator\Collection;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
@@ -10,7 +10,7 @@ use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\Type\IterableValidator;
 use ExtendsFramework\Validator\ValidatorInterface;
 
-class CollectionValidator extends AbstractValidator
+class ContainsValidator extends AbstractValidator
 {
     /**
      * Validator to validate collection values.
@@ -32,7 +32,7 @@ class CollectionValidator extends AbstractValidator
     /**
      * @inheritDoc
      */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): CollectionValidator
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): ContainsValidator
     {
         $validator = $extra['validator'];
 

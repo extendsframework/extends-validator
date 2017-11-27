@@ -1,22 +1,22 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Other;
+namespace ExtendsFramework\Validator\Collection;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
-class CollectionValidatorTest extends TestCase
+class ContainsValidatorTest extends TestCase
 {
     /**
      * Valid.
      *
      * Test that collection will be valid.
      *
-     * @covers \ExtendsFramework\Validator\Other\CollectionValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Other\CollectionValidator::validate()
+     * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::validate()
      */
     public function testValid(): void
     {
@@ -36,7 +36,7 @@ class CollectionValidatorTest extends TestCase
         /**
          * @var ValidatorInterface $validator
          */
-        $collection = new CollectionValidator($validator);
+        $collection = new ContainsValidator($validator);
         $result = $collection->validate([
             'foo',
             'foo',
@@ -51,8 +51,8 @@ class CollectionValidatorTest extends TestCase
      *
      * Test that collection will be invalid.
      *
-     * @covers \ExtendsFramework\Validator\Other\CollectionValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Other\CollectionValidator::validate()
+     * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::validate()
      */
     public function testInvalid(): void
     {
@@ -72,7 +72,7 @@ class CollectionValidatorTest extends TestCase
         /**
          * @var ValidatorInterface $validator
          */
-        $collection = new CollectionValidator($validator);
+        $collection = new ContainsValidator($validator);
         $result = $collection->validate([
             'foo',
             'foo',
@@ -87,8 +87,8 @@ class CollectionValidatorTest extends TestCase
      *
      * Test that collection will be invalid when value is not iterable.
      *
-     * @covers \ExtendsFramework\Validator\Other\CollectionValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Other\CollectionValidator::validate()
+     * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::validate()
      */
     public function testNotIterable(): void
     {
@@ -97,7 +97,7 @@ class CollectionValidatorTest extends TestCase
         /**
          * @var ValidatorInterface $validator
          */
-        $collection = new CollectionValidator($validator);
+        $collection = new ContainsValidator($validator);
         $result = $collection->validate(9);
 
         $this->assertFalse($result->isValid());
@@ -108,8 +108,8 @@ class CollectionValidatorTest extends TestCase
      *
      * Test that factory returns a AbstractTypeValidator.
      *
-     * @covers \ExtendsFramework\Validator\Other\CollectionValidator::factory()
-     * @covers \ExtendsFramework\Validator\Other\CollectionValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::factory()
+     * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::__construct()
      */
     public function testFactory(): void
     {
@@ -123,7 +123,7 @@ class CollectionValidatorTest extends TestCase
         /**
          * @var ServiceLocatorInterface $serviceLocator
          */
-        $validator = CollectionValidator::factory(CollectionValidator::class, $serviceLocator, [
+        $validator = ContainsValidator::factory(ContainsValidator::class, $serviceLocator, [
             'validator' => [
                 'name' => ValidatorInterface::class,
                 'options' => [
@@ -132,6 +132,6 @@ class CollectionValidatorTest extends TestCase
             ],
         ]);
 
-        $this->assertInstanceOf(CollectionValidator::class, $validator);
+        $this->assertInstanceOf(ContainsValidator::class, $validator);
     }
 }
