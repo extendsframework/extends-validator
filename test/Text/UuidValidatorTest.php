@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Format;
+namespace ExtendsFramework\Validator\Text;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\ValidatorInterface;
@@ -14,7 +14,7 @@ class UuidValidatorTest extends TestCase
      *
      * Test that value 'db6eb6f2-1dda-4f06-a995-1fd1aca99e1f' is an valid UUID.
      *
-     * @covers \ExtendsFramework\Validator\Format\UuidValidator::validate()
+     * @covers \ExtendsFramework\Validator\Text\UuidValidator::validate()
      */
     public function testValid(): void
     {
@@ -29,8 +29,8 @@ class UuidValidatorTest extends TestCase
      *
      * Test that string value ''foo-bar-baz'' is a valid string.
      *
-     * @covers \ExtendsFramework\Validator\Format\UuidValidator::validate()
-     * @covers \ExtendsFramework\Validator\Format\UuidValidator::getTemplates()
+     * @covers \ExtendsFramework\Validator\Text\UuidValidator::validate()
+     * @covers \ExtendsFramework\Validator\Text\UuidValidator::getTemplates()
      */
     public function testCanNotAssertInvalidUuid(): void
     {
@@ -45,7 +45,7 @@ class UuidValidatorTest extends TestCase
      *
      * Test that none string value will not validate.
      *
-     * @covers \ExtendsFramework\Validator\Format\UuidValidator::validate()
+     * @covers \ExtendsFramework\Validator\Text\UuidValidator::validate()
      */
     public function testNotString(): void
     {
@@ -60,7 +60,7 @@ class UuidValidatorTest extends TestCase
      *
      * Test that factory returns an instanceof of ValidatorInterface.
      *
-     * @covers \ExtendsFramework\Validator\Format\UuidValidator::factory()
+     * @covers \ExtendsFramework\Validator\Text\UuidValidator::factory()
      */
     public function testFactory(): void
     {

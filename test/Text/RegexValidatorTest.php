@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Format;
+namespace ExtendsFramework\Validator\Text;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\ValidatorInterface;
@@ -14,8 +14,8 @@ class RegexValidatorTest extends TestCase
      *
      * Test that valid uuid value will validate against regular expression.
      *
-     * @covers \ExtendsFramework\Validator\Format\RegexValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Format\RegexValidator::validate()
+     * @covers \ExtendsFramework\Validator\Text\RegexValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Text\RegexValidator::validate()
      */
     public function testValid(): void
     {
@@ -30,9 +30,9 @@ class RegexValidatorTest extends TestCase
      *
      * Test that invalid uuid value will not validate against regular expression.
      *
-     * @covers \ExtendsFramework\Validator\Format\RegexValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Format\RegexValidator::validate()
-     * @covers \ExtendsFramework\Validator\Format\RegexValidator::getTemplates()
+     * @covers \ExtendsFramework\Validator\Text\RegexValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Text\RegexValidator::validate()
+     * @covers \ExtendsFramework\Validator\Text\RegexValidator::getTemplates()
      */
     public function testInvalid(): void
     {
@@ -47,8 +47,8 @@ class RegexValidatorTest extends TestCase
      *
      * Test that none string value will not validate.
      *
-     * @covers \ExtendsFramework\Validator\Format\RegexValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Format\RegexValidator::validate()
+     * @covers \ExtendsFramework\Validator\Text\RegexValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Text\RegexValidator::validate()
      */
     public function testNotString(): void
     {
@@ -63,7 +63,7 @@ class RegexValidatorTest extends TestCase
      *
      * Test that factory returns an instanceof of ValidatorInterface.
      *
-     * @covers \ExtendsFramework\Validator\Format\RegexValidator::factory()
+     * @covers \ExtendsFramework\Validator\Text\RegexValidator::factory()
      */
     public function testFactory(): void
     {
