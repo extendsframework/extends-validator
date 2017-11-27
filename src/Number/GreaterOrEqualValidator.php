@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Comparison;
+namespace ExtendsFramework\Validator\Number;
 
 use ExtendsFramework\Validator\Result\ResultInterface;
 
-class GreaterOrEqualValidator extends AbstractComparisonValidator
+class GreaterOrEqualValidator extends AbstractNumberValidator
 {
     /**
      * When value is not greater than or equal to context.
@@ -19,11 +19,19 @@ class GreaterOrEqualValidator extends AbstractComparisonValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if ($value >= $context) {
+        $result = parent::validate($value, $context);
+        if ($result->isValid() === false) {
+            return $result;
+        }
+
+        if ($value >= $this->number) {
             return $this->getValidResult();
         }
 
-        return $this->getInvalidResult(self::NOT_GREATER_OR_EQUAL);
+        return $this->getInvalidResult(self::NOT_GREATER_OR_EQUAL, [
+            'value' => $value,
+            'number' => $this->number,
+        ]);
     }
 
     /**
@@ -32,7 +40,7 @@ class GreaterOrEqualValidator extends AbstractComparisonValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_GREATER_OR_EQUAL => 'Value is not greater than or equal to context.',
+            self::NOT_GREATER_OR_EQUAL => 'Value {{value}} is not greater than or equal to {{number}}.',
         ];
     }
 }

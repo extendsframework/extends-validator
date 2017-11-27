@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Comparison;
+namespace ExtendsFramework\Validator\Number;
 
 use ExtendsFramework\Validator\Result\ResultInterface;
 
-class NotIdenticalValidator extends AbstractComparisonValidator
+class NotIdenticalValidator extends AbstractNumberValidator
 {
     /**
      * When value is not identical to context.
@@ -19,11 +19,19 @@ class NotIdenticalValidator extends AbstractComparisonValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if ($value !== $context) {
+        $result = parent::validate($value, $context);
+        if ($result->isValid() === false) {
+            return $result;
+        }
+
+        if ($value !== $this->number) {
             return $this->getValidResult();
         }
 
-        return $this->getInvalidResult(self::IS_IDENTICAL);
+        return $this->getInvalidResult(self::IS_IDENTICAL, [
+            'value' => $value,
+            'number' => $this->number,
+        ]);
     }
 
     /**
@@ -32,7 +40,7 @@ class NotIdenticalValidator extends AbstractComparisonValidator
     protected function getTemplates(): array
     {
         return [
-            self::IS_IDENTICAL => 'Value is identical to context.',
+            self::IS_IDENTICAL => 'Value {{value}} is identical to {{number}}.',
         ];
     }
 }

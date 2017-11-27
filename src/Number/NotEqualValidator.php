@@ -1,30 +1,38 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Comparison;
+namespace ExtendsFramework\Validator\Number;
 
 use ExtendsFramework\Validator\Result\ResultInterface;
 
-class EqualValidator extends AbstractComparisonValidator
+class NotEqualValidator extends AbstractNumberValidator
 {
     /**
      * When value is not equal to context.
      *
      * @const string
      */
-    public const NOT_EQUAL = 'notEqual';
+    public const IS_EQUAL = 'equal';
 
     /**
      * @inheritDoc
      */
     public function validate($value, $context = null): ResultInterface
     {
+        $result = parent::validate($value, $context);
+        if ($result->isValid() === false) {
+            return $result;
+        }
+
         /** @noinspection TypeUnsafeComparisonInspection */
-        if ($value == $context) {
+        if ($value != $this->number) {
             return $this->getValidResult();
         }
 
-        return $this->getInvalidResult(self::NOT_EQUAL);
+        return $this->getInvalidResult(self::IS_EQUAL, [
+            'value' => $value,
+            'number' => $this->number,
+        ]);
     }
 
     /**
@@ -33,7 +41,7 @@ class EqualValidator extends AbstractComparisonValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_EQUAL => 'Value is not equal to context.',
+            self::IS_EQUAL => 'Value {{value}} is equal to {{number}}.',
         ];
     }
 }
