@@ -11,7 +11,7 @@ use ExtendsFramework\Validator\Type\StringValidator;
 class LengthValidator extends AbstractValidator
 {
     /**
-     * WHen text is too short.
+     * When text is too short.
      *
      * @var string
      */
