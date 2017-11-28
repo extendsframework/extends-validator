@@ -56,8 +56,8 @@ class SizeValidator extends AbstractValidator
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): SizeValidator
     {
         return new static (
-            $extra['min'],
-            $extra['max']
+            $extra['min'] ?? null,
+            $extra['max'] ?? null
         );
     }
 
