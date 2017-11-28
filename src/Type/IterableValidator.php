@@ -34,7 +34,7 @@ class IterableValidator extends AbstractTypeValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_ITERABLE => 'Value must be iterable, got \'{{type}}\'.',
+            self::NOT_ITERABLE => 'Value must be iterable, got {{type}}.',
         ];
     }
 }

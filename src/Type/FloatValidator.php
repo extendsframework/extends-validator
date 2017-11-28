@@ -34,7 +34,7 @@ class FloatValidator extends AbstractTypeValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_FLOAT => 'Value must be a float, got \'{{type}}\'.',
+            self::NOT_FLOAT => 'Value must be a float, got {{type}}.',
         ];
     }
 }

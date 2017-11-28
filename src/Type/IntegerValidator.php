@@ -34,7 +34,7 @@ class IntegerValidator extends AbstractTypeValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_INTEGER => 'Value must be a integer, got \'{{type}}\'.',
+            self::NOT_INTEGER => 'Value must be a integer, got {{type}}.',
         ];
     }
 }

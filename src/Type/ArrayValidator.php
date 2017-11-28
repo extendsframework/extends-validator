@@ -34,7 +34,7 @@ class ArrayValidator extends AbstractTypeValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_ARRAY => 'Value must be an array, got \'{{type}}\'.',
+            self::NOT_ARRAY => 'Value must be an array, got {{type}}.',
         ];
     }
 }

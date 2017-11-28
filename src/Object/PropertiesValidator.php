@@ -175,8 +175,8 @@ class PropertiesValidator extends AbstractValidator
     protected function getTemplates(): array
     {
         return [
-            self::PROPERTY_NOT_ALLOWED => 'Property \'{{property}}\' is not allowed on object.',
-            self::PROPERTY_MISSING => 'Property \'{{property}}\' is missing and can not be left empty.',
+            self::PROPERTY_NOT_ALLOWED => 'Property {{property}} is not allowed on object.',
+            self::PROPERTY_MISSING => 'Property {{property}} is missing and can not be left empty.',
         ];
     }
 }

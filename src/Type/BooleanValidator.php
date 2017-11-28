@@ -34,7 +34,7 @@ class BooleanValidator extends AbstractTypeValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_BOOLEAN => 'Value must be a boolean, got \'{{type}}\'.',
+            self::NOT_BOOLEAN => 'Value must be a boolean, got {{type}}.',
         ];
     }
 }
