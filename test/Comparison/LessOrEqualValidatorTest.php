@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Number;
+namespace ExtendsFramework\Validator\Comparison;
 
 use PHPUnit\Framework\TestCase;
 
@@ -12,7 +12,7 @@ class LessOrEqualValidatorTest extends TestCase
      *
      * Test that int '1' is less than int '2' and int '1' is equal to int '1'.
      *
-     * @covers \ExtendsFramework\Validator\Number\LessOrEqualValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\LessOrEqualValidator::validate()
      */
     public function testValid(): void
     {
@@ -29,28 +29,13 @@ class LessOrEqualValidatorTest extends TestCase
      *
      * Test that int '1' is not greater than or equal to int '2'.
      *
-     * @covers \ExtendsFramework\Validator\Number\LessOrEqualValidator::validate()
-     * @covers \ExtendsFramework\Validator\Number\LessOrEqualValidator::getTemplates()
+     * @covers \ExtendsFramework\Validator\Comparison\LessOrEqualValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\LessOrEqualValidator::getTemplates()
      */
     public function testInvalid(): void
     {
         $validator = new LessOrEqualValidator(1);
         $result = $validator->validate(2);
-
-        $this->assertFalse($result->isValid());
-    }
-
-    /**
-     * Not numeric.
-     *
-     * Test that value is not numeric and validate will not validate.
-     *
-     * @covers \ExtendsFramework\Validator\Number\LessOrEqualValidator::validate()
-     */
-    public function testNotNumeric(): void
-    {
-        $validator = new LessOrEqualValidator(2);
-        $result = $validator->validate('a');
 
         $this->assertFalse($result->isValid());
     }

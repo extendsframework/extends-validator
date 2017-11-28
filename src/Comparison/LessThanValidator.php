@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Number;
+namespace ExtendsFramework\Validator\Comparison;
 
 use ExtendsFramework\Validator\Result\ResultInterface;
 
-class LessThanValidator extends AbstractNumberValidator
+class LessThanValidator extends AbstractComparisonValidator
 {
     /**
      * When value is not less than context.
@@ -19,18 +19,13 @@ class LessThanValidator extends AbstractNumberValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        $result = parent::validate($value, $context);
-        if ($result->isValid() === false) {
-            return $result;
-        }
-
-        if ($value < $this->number) {
+        if ($value < $this->subject) {
             return $this->getValidResult();
         }
 
         return $this->getInvalidResult(self::NOT_LESS_THAN, [
             'value' => $value,
-            'number' => $this->number,
+            'subject' => $this->subject,
         ]);
     }
 
@@ -40,7 +35,7 @@ class LessThanValidator extends AbstractNumberValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_LESS_THAN => 'Value {{value}} is not less than {{number}}.',
+            self::NOT_LESS_THAN => 'Value {{value}} is not less than subject {{subject}}.',
         ];
     }
 }

@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Number;
+namespace ExtendsFramework\Validator\Comparison;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -14,8 +15,8 @@ class AbstractComparisonValidatorTest extends TestCase
      *
      * Test that method will validate value and return result.
      *
-     * @covers \ExtendsFramework\Validator\Number\AbstractNumberValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Number\AbstractNumberValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::validate()
      */
     public function testValidate(): void
     {
@@ -30,7 +31,7 @@ class AbstractComparisonValidatorTest extends TestCase
      *
      * Test that factory returns a AbstractComparisonValidator.
      *
-     * @covers \ExtendsFramework\Validator\Number\AbstractNumberValidator::factory()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::factory()
      */
     public function testFactory(): void
     {
@@ -40,15 +41,23 @@ class AbstractComparisonValidatorTest extends TestCase
          * @var ServiceLocatorInterface $serviceLocator
          */
         $validator = NumberValidatorStub::factory(ValidatorInterface::class, $serviceLocator, [
-            'number' => 5.5,
+            'subject' => 5.5,
         ]);
 
         $this->assertInstanceOf(ValidatorInterface::class, $validator);
     }
 }
 
-class NumberValidatorStub extends AbstractNumberValidator
+class NumberValidatorStub extends AbstractComparisonValidator
 {
+    /**
+     * @inheritDoc
+     */
+    public function validate($value, $context = null): ResultInterface
+    {
+        return $this->getValidResult();
+    }
+
     /**
      * @inheritDoc
      */
