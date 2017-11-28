@@ -27,6 +27,32 @@ class CoordinatesValidator extends AbstractValidator
     public const LONGITUDE_OUT_OF_BOUND = 'longitudeOutOfBound';
 
     /**
+     * Latitude object key.
+     *
+     * @var string|null
+     */
+    protected $latitude;
+
+    /**
+     * Longitude object key.
+     *
+     * @var string|null
+     */
+    protected $longitude;
+
+    /**
+     * CoordinatesValidator constructor.
+     *
+     * @param null|string $latitude
+     * @param null|string $longitude
+     */
+    public function __construct(string $latitude = null, string $longitude = null)
+    {
+        $this->latitude = $latitude ?? 'latitude';
+        $this->longitude = $longitude ?? 'longitude';
+    }
+
+    /**
      * @inheritDoc
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): CoordinatesValidator
@@ -40,8 +66,8 @@ class CoordinatesValidator extends AbstractValidator
     public function validate($value, $context = null): ResultInterface
     {
         $validator = new PropertiesValidator([
-            'latitude' => new NumericValidator(),
-            'longitude' => new NumericValidator(),
+            $this->latitude => new NumericValidator(),
+            $this->longitude => new NumericValidator(),
         ]);
         $result = $validator->validate($value);
         if ($result->isValid() === false) {
@@ -49,17 +75,21 @@ class CoordinatesValidator extends AbstractValidator
         }
 
         $container = new ContainerResult();
-        if ($value->latitude < -180 || $value->latitude > 180) {
+
+        $latitude = $value->{$this->latitude};
+        if ($latitude < -180 || $latitude > 180) {
             $container->addResult(
                 $this->getInvalidResult(self::LATITUDE_OUT_OF_BOUND, [
                     'latitude' => $value->latitude,
                 ])
             );
         }
-        if ($value->longitude < -90 || $value->longitude > 90) {
+
+        $longitude = $value->{$this->longitude};
+        if ($longitude < -90 || $longitude > 90) {
             $container->addResult(
                 $this->getInvalidResult(self::LONGITUDE_OUT_OF_BOUND, [
-                    'longitude' => $value->longitude,
+                    'longitude' => $longitude,
                 ])
             );
         }

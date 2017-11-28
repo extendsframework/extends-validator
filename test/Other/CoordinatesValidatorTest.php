@@ -28,6 +28,25 @@ class CoordinatesValidatorTest extends TestCase
     }
 
     /**
+     * Custom keys.
+     *
+     * Test that latitude and longitude custom keys are valid.
+     *
+     * @covers \ExtendsFramework\Validator\Other\CoordinatesValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Other\CoordinatesValidator::validate()
+     */
+    public function testCustomKeys(): void
+    {
+        $validator = new CoordinatesValidator('lat', 'lng');
+        $result = $validator->validate((object)[
+            'lat' => 52.0767034,
+            'lng' => 5.4777887,
+        ]);
+
+        $this->assertTrue($result->isValid());
+    }
+
+    /**
      * Invalid latitude
      *
      * Test that latitude is invalid value and a invalid result will be returned.
