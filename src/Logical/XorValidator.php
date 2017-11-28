@@ -49,8 +49,8 @@ class XorValidator extends AbstractLogicalValidator
     protected function getTemplates(): array
     {
         return [
-            self::NONE_VALID => 'None of the {{count}} Validator(s) are valid.',
-            self::MULTIPLE_VALID => 'Multiple of the {{count}} Validator(s) are valid.',
+            self::NONE_VALID => 'None of the {{count}} validator(s) are valid.',
+            self::MULTIPLE_VALID => 'Multiple of the {{count}} validator(s) are valid.',
         ];
     }
 }
