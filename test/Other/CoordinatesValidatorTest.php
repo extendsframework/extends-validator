@@ -47,44 +47,6 @@ class CoordinatesValidatorTest extends TestCase
     }
 
     /**
-     * Invalid latitude
-     *
-     * Test that latitude is invalid value and a invalid result will be returned.
-     *
-     * @covers \ExtendsFramework\Validator\Other\CoordinatesValidator::validate()
-     * @covers \ExtendsFramework\Validator\Other\CoordinatesValidator::getTemplates()
-     */
-    public function testInvalidLatitude(): void
-    {
-        $validator = new CoordinatesValidator();
-        $result = $validator->validate((object)[
-            'latitude' => 200,
-            'longitude' => 5.4777887,
-        ]);
-
-        $this->assertFalse($result->isValid());
-    }
-
-    /**
-     * Invalid longitude
-     *
-     * Test that longitude is invalid value and a invalid result will be returned.
-     *
-     * @covers \ExtendsFramework\Validator\Other\CoordinatesValidator::validate()
-     * @covers \ExtendsFramework\Validator\Other\CoordinatesValidator::getTemplates()
-     */
-    public function testInvalidLongitude(): void
-    {
-        $validator = new CoordinatesValidator();
-        $result = $validator->validate((object)[
-            'latitude' => 52.0767034,
-            'longitude' => 100,
-        ]);
-
-        $this->assertFalse($result->isValid());
-    }
-
-    /**
      * Invalid coordinates object provider.
      *
      * @return array
@@ -145,7 +107,10 @@ class CoordinatesValidatorTest extends TestCase
         /**
          * @var ServiceLocatorInterface $serviceLocator
          */
-        $validator = CoordinatesValidator::factory(CoordinatesValidator::class, $serviceLocator, []);
+        $validator = CoordinatesValidator::factory(CoordinatesValidator::class, $serviceLocator, [
+            'latitude' => 'lat',
+            'longitude' => 'lng',
+        ]);
 
         $this->assertInstanceOf(CoordinatesValidator::class, $validator);
     }
