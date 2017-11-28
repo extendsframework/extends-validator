@@ -58,7 +58,7 @@ class UuidValidator extends AbstractValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_UUID => 'Value "{{value}}" must be a valid UUID.',
+            self::NOT_UUID => 'Value \'{{value}}\' must be a valid UUID.',
         ];
     }
 }

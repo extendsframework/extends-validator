@@ -34,7 +34,7 @@ class ObjectValidator extends AbstractTypeValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_OBJECT => 'Value must be an object, got "{{type}}".',
+            self::NOT_OBJECT => 'Value must be an object, got \'{{type}}\'.',
         ];
     }
 }

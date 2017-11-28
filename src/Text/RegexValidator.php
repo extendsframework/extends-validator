@@ -71,7 +71,7 @@ class RegexValidator extends AbstractValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_VALID => 'Value "{{value}}" must match regular expression "{{pattern}}".',
+            self::NOT_VALID => 'Value \'{{value}}\' must match regular expression \'{{pattern}}\'.',
         ];
     }
 }

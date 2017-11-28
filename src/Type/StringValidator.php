@@ -34,7 +34,7 @@ class StringValidator extends AbstractTypeValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_STRING => 'Value must be a string, got "{{type}}".',
+            self::NOT_STRING => 'Value must be a string, got \'{{type}}\'.',
         ];
     }
 }
