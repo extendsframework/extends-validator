@@ -34,7 +34,7 @@ class NumericValidator extends AbstractTypeValidator
     protected function getTemplates(): array
     {
         return [
-            self::NOT_NUMERIC => 'Value must be a number, got {{type}}.',
+            self::NOT_NUMERIC => 'Value must be numeric, got {{type}}.',
         ];
     }
 }
