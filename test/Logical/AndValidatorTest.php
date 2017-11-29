@@ -57,27 +57,30 @@ class AndValidatorTest extends TestCase
     {
         $result = $this->createMock(ResultInterface::class);
         $result
-            ->expects($this->exactly(1))
+            ->expects($this->exactly(2))
             ->method('isValid')
-            ->willReturn(false);
+            ->willReturnOnConsecutiveCalls(
+                true,
+                false
+            );
 
-        $innerValidator = $this->createMock(ValidatorInterface::class);
-        $innerValidator
-            ->expects($this->exactly(3))
+        $inner = $this->createMock(ValidatorInterface::class);
+        $inner
+            ->expects($this->exactly(2))
             ->method('validate')
             ->with('foo', ['bar' => 'baz'])
             ->willReturn($result);
 
         /**
-         * @var ValidatorInterface $innerValidator
+         * @var ValidatorInterface $inner
          */
-        $validator = new AndValidator();
-        $result = $validator
-            ->addValidator($innerValidator)
-            ->addValidator($innerValidator)
-            ->addValidator($innerValidator)
-            ->validate('foo', ['bar' => 'baz']);
-
-        $this->assertFalse($result->isValid());
+        $this->assertSame(
+            $result,
+            (new AndValidator())
+                ->addValidator($inner)
+                ->addValidator($inner)
+                ->addValidator($inner)
+                ->validate('foo', ['bar' => 'baz'])
+        );
     }
 }
