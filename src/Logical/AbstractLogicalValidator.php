@@ -17,18 +17,28 @@ abstract class AbstractLogicalValidator extends AbstractValidator
     protected $validators = [];
 
     /**
+     * AbstractLogicalValidator constructor.
+     *
+     * @param array|null $validators
+     */
+    public function __construct(array $validators = null)
+    {
+        foreach ($validators ?? [] as $validator) {
+            $this->addValidator($validator);
+        }
+    }
+
+    /**
      * @inheritDoc
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): ValidatorInterface
     {
-        $instance = new static();
+        $validators = [];
         foreach ($extra['validators'] ?? [] as $validator) {
-            $instance->addValidator(
-                $serviceLocator->getService($validator['name'], $validator['options'] ?? [])
-            );
+            $validators[] = $serviceLocator->getService($validator['name'], $validator['options'] ?? []);
         }
 
-        return $instance;
+        return new static($validators);
     }
 
     /**

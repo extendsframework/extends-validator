@@ -16,6 +16,7 @@ class AbstractLogicalValidatorTest extends TestCase
      * Test that factory returns a AbstractLogicalValidator.
      *
      * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::factory()
+     * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::__construct()
      * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::addValidator()
      */
     public function testFactory(): void
