@@ -1,10 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Other;
+namespace ExtendsFramework\Validator\Other\Coordinates;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
-use ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
