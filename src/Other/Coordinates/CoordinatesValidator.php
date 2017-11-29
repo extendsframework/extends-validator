@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace ExtendsFramework\Validator\Other;
+namespace ExtendsFramework\Validator\Other\Coordinates;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
 use ExtendsFramework\Validator\Object\PropertiesValidator;
-use ExtendsFramework\Validator\Other\Coordinates\LatitudeValidator;
-use ExtendsFramework\Validator\Other\Coordinates\LongitudeValidator;
+use ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator;
+use ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator;
 use ExtendsFramework\Validator\Result\ResultInterface;
 
 class CoordinatesValidator extends AbstractValidator

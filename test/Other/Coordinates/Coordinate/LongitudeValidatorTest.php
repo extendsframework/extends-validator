@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ExtendsFramework\Validator\Other\Coordinates;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator;
 use PHPUnit\Framework\TestCase;
 
 class LongitudeValidatorTest extends TestCase
@@ -30,7 +31,7 @@ class LongitudeValidatorTest extends TestCase
      * Test that longitude values are valid.
      *
      * @param mixed $longitude
-     * @covers       \ExtendsFramework\Validator\Other\Coordinates\LongitudeValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::validate()
      * @dataProvider validLongitudeValuesProvider
      */
     public function testValid($longitude): void
@@ -62,8 +63,8 @@ class LongitudeValidatorTest extends TestCase
      * Test that longitude values are valid.
      *
      * @param mixed $longitude
-     * @covers       \ExtendsFramework\Validator\Other\Coordinates\LongitudeValidator::validate()
-     * @covers       \ExtendsFramework\Validator\Other\Coordinates\LongitudeValidator::getTemplates()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::getTemplates()
      * @dataProvider invalidLongitudeValuesProvider
      */
     public function testInvalid($longitude): void
@@ -79,7 +80,7 @@ class LongitudeValidatorTest extends TestCase
      *
      * Test that longitude must be a number.
      *
-     * @covers \ExtendsFramework\Validator\Other\Coordinates\LongitudeValidator::validate()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::validate()
      */
     public function testNotNumber(): void
     {
@@ -94,7 +95,7 @@ class LongitudeValidatorTest extends TestCase
      *
      * Test that factory returns correct instance.
      *
-     * @covers \ExtendsFramework\Validator\Other\Coordinates\LongitudeValidator::factory()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::factory()
      */
     public function testFactory(): void
     {

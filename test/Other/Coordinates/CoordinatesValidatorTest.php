@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ExtendsFramework\Validator\Other;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -14,7 +15,7 @@ class CoordinatesValidatorTest extends TestCase
      *
      * Test that latitude and longitude are valid.
      *
-     * @covers \ExtendsFramework\Validator\Other\CoordinatesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::validate()
      */
     public function testValid(): void
     {
@@ -32,8 +33,8 @@ class CoordinatesValidatorTest extends TestCase
      *
      * Test that latitude and longitude custom keys are valid.
      *
-     * @covers \ExtendsFramework\Validator\Other\CoordinatesValidator::__construct()
-     * @covers \ExtendsFramework\Validator\Other\CoordinatesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::__construct()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::validate()
      */
     public function testCustomKeys(): void
     {
@@ -82,7 +83,7 @@ class CoordinatesValidatorTest extends TestCase
      * Test that coordinates object is invalid and an invalid result will be returned.
      *
      * @param mixed $coordinates
-     * @covers       \ExtendsFramework\Validator\Other\CoordinatesValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::validate()
      * @dataProvider invalidCoordinatesObjectProvider
      */
     public function testInvalidCoordinatesObject($coordinates)
@@ -98,7 +99,7 @@ class CoordinatesValidatorTest extends TestCase
      *
      * Test that factory returns correct instance.
      *
-     * @covers \ExtendsFramework\Validator\Other\CoordinatesValidator::factory()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::factory()
      */
     public function testFactory(): void
     {

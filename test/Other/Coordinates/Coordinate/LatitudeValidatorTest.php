@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ExtendsFramework\Validator\Other\Coordinates;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator;
 use PHPUnit\Framework\TestCase;
 
 class LatitudeValidatorTest extends TestCase
@@ -30,7 +31,7 @@ class LatitudeValidatorTest extends TestCase
      * Test that latitude values are valid.
      *
      * @param mixed $latitude
-     * @covers       \ExtendsFramework\Validator\Other\Coordinates\LatitudeValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::validate()
      * @dataProvider validLatitudeValuesProvider
      */
     public function testValid($latitude): void
@@ -62,8 +63,8 @@ class LatitudeValidatorTest extends TestCase
      * Test that latitude values are valid.
      *
      * @param mixed $latitude
-     * @covers       \ExtendsFramework\Validator\Other\Coordinates\LatitudeValidator::validate()
-     * @covers       \ExtendsFramework\Validator\Other\Coordinates\LatitudeValidator::getTemplates()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::getTemplates()
      * @dataProvider invalidLatitudeValuesProvider
      */
     public function testInvalid($latitude): void
@@ -79,7 +80,7 @@ class LatitudeValidatorTest extends TestCase
      *
      * Test that latitude must be a number.
      *
-     * @covers \ExtendsFramework\Validator\Other\Coordinates\LatitudeValidator::validate()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::validate()
      */
     public function testNotNumber(): void
     {
@@ -94,7 +95,7 @@ class LatitudeValidatorTest extends TestCase
      *
      * Test that factory returns correct instance.
      *
-     * @covers \ExtendsFramework\Validator\Other\Coordinates\LatitudeValidator::factory()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::factory()
      */
     public function testFactory(): void
     {
