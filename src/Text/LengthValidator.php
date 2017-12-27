@@ -60,7 +60,7 @@ class LengthValidator extends AbstractValidator
     /**
      * @inheritDoc
      */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): LengthValidator
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         return new static(
             $extra['min'] ?? null,

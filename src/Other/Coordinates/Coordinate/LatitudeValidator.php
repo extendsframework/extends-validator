@@ -34,7 +34,7 @@ class LatitudeValidator extends AbstractValidator
     /**
      * @inheritDoc
      */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null)
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         return new static();
     }
@@ -67,7 +67,8 @@ class LatitudeValidator extends AbstractValidator
     protected function getTemplates(): array
     {
         return [
-            self::LATITUDE_OUT_OF_BOUND => 'Latitude is out of bound and must be between {{min}} and {{max}} inclusive, got {{latitude}}.',
+            self::LATITUDE_OUT_OF_BOUND =>
+                'Latitude is out of bound and must be between {{min}} and {{max}} inclusive, got {{latitude}}.',
         ];
     }
 }

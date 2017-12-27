@@ -76,9 +76,9 @@ class BetweenValidator extends AbstractValidator
     /**
      * @inheritDoc
      */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): BetweenValidator
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
-        return new static (
+        return new static(
             $extra['min'] ?? null,
             $extra['max'] ?? null,
             $extra['inclusive'] ?? null

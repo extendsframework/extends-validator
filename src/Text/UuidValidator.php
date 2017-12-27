@@ -7,7 +7,6 @@ use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
 use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\Type\StringValidator;
-use ExtendsFramework\Validator\ValidatorInterface;
 
 class UuidValidator extends AbstractValidator
 {
@@ -47,7 +46,7 @@ class UuidValidator extends AbstractValidator
     /**
      * @inheritDoc
      */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): ValidatorInterface
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         return new static();
     }

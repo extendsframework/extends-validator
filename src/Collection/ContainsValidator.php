@@ -32,13 +32,15 @@ class ContainsValidator extends AbstractValidator
     /**
      * @inheritDoc
      */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): ContainsValidator
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         $validator = $extra['validator'];
+        $service = $serviceLocator->getService($validator['name'], $validator['options'] ?? []);
 
-        return new static(
-            $serviceLocator->getService($validator['name'], $validator['options'] ?? [])
-        );
+        /**
+         * @var ValidatorInterface $service
+         */
+        return new static($service);
     }
 
     /**

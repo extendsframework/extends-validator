@@ -64,7 +64,7 @@ class PropertiesValidator extends AbstractValidator
     /**
      * @inheritDoc
      */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): PropertiesValidator
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         $properties = new static(
             null,
@@ -73,13 +73,17 @@ class PropertiesValidator extends AbstractValidator
 
         foreach ($extra['properties'] ?? [] as $property) {
             $validator = $property['validator'];
+            $service = $serviceLocator->getService(
+                $validator['name'],
+                $validator['options'] ?? []
+            );
 
+            /**
+             * @var ValidatorInterface $service
+             */
             $properties->addProperty(
                 $property['property'],
-                $serviceLocator->getService(
-                    $validator['name'],
-                    $validator['options'] ?? []
-                ),
+                $service,
                 $property['optional'] ?? null
             );
         }
@@ -138,8 +142,11 @@ class PropertiesValidator extends AbstractValidator
      * @param bool|null          $optional
      * @return PropertiesValidator
      */
-    public function addProperty(string $property, ValidatorInterface $validator, bool $optional = null): PropertiesValidator
-    {
+    public function addProperty(
+        string $property,
+        ValidatorInterface $validator,
+        bool $optional = null
+    ): PropertiesValidator {
         $this->properties[$property] = new Property($property, $validator, $optional);
 
         return $this;

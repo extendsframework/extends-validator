@@ -41,7 +41,7 @@ class CoordinatesValidator extends AbstractValidator
     /**
      * @inheritDoc
      */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): CoordinatesValidator
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
         return new static(
             $extra['latitude'] ?? null,
