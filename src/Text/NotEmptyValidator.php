@@ -36,7 +36,6 @@ class NotEmptyValidator extends AbstractValidator
             return $result;
         }
 
-
         if (empty($text) === false) {
             return $this->getValidResult();
         }
