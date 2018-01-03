@@ -16,6 +16,8 @@ class SizeValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Collection\SizeValidator::__construct()
      * @covers \ExtendsFramework\Validator\Collection\SizeValidator::validate()
+     * @covers \ExtendsFramework\Validator\Collection\SizeValidator::getMin()
+     * @covers \ExtendsFramework\Validator\Collection\SizeValidator::getMax()
      */
     public function testValid(): void
     {
@@ -40,6 +42,8 @@ class SizeValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Collection\SizeValidator::__construct()
      * @covers \ExtendsFramework\Validator\Collection\SizeValidator::validate()
+     * @covers \ExtendsFramework\Validator\Collection\SizeValidator::getMin()
+     * @covers \ExtendsFramework\Validator\Collection\SizeValidator::getMax()
      * @covers \ExtendsFramework\Validator\Collection\SizeValidator::getTemplates()
      */
     public function testTooShort(): void
@@ -61,6 +65,8 @@ class SizeValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Collection\SizeValidator::__construct()
      * @covers \ExtendsFramework\Validator\Collection\SizeValidator::validate()
+     * @covers \ExtendsFramework\Validator\Collection\SizeValidator::getMin()
+     * @covers \ExtendsFramework\Validator\Collection\SizeValidator::getMax()
      * @covers \ExtendsFramework\Validator\Collection\SizeValidator::getTemplates()
      */
     public function testTooLong(): void
@@ -85,6 +91,8 @@ class SizeValidatorTest extends TestCase
      * Test that none array value will not validate.
      *
      * @covers \ExtendsFramework\Validator\Collection\SizeValidator::validate()
+     * @covers \ExtendsFramework\Validator\Collection\SizeValidator::getMin()
+     * @covers \ExtendsFramework\Validator\Collection\SizeValidator::getMax()
      */
     public function testNotArray(): void
     {

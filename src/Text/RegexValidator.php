@@ -44,13 +44,14 @@ class RegexValidator extends AbstractValidator
             return $result;
         }
 
-        if (preg_match($this->pattern, $value) === 1) {
+        $pattern = $this->getPattern();
+        if (preg_match($pattern, $value) === 1) {
             return $this->getValidResult();
         }
 
         return $this->getInvalidResult(self::NOT_VALID, [
             'value' => $value,
-            'pattern' => $this->pattern,
+            'pattern' => $pattern,
         ]);
     }
 
@@ -72,5 +73,15 @@ class RegexValidator extends AbstractValidator
         return [
             self::NOT_VALID => 'Value {{value}} must match regular expression {{pattern}}.',
         ];
+    }
+
+    /**
+     * Get pattern.
+     *
+     * @return string
+     */
+    protected function getPattern(): string
+    {
+        return $this->pattern;
     }
 }

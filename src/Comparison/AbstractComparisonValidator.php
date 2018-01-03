@@ -34,4 +34,14 @@ abstract class AbstractComparisonValidator extends AbstractValidator
             $extra['subject']
         );
     }
+
+    /**
+     * Get subject.
+     *
+     * @return mixed
+     */
+    protected function getSubject()
+    {
+        return $this->subject;
+    }
 }

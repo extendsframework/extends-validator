@@ -102,7 +102,7 @@ class PropertiesValidator extends AbstractValidator
         }
 
         $container = new ContainerResult();
-        foreach ($this->properties as $property) {
+        foreach ($this->getProperties() as $property) {
             $name = $property->getName();
             if (property_exists($value, $name) === false) {
                 if ($property->isOptional() === false) {
@@ -125,7 +125,7 @@ class PropertiesValidator extends AbstractValidator
             );
         }
 
-        if ($this->strict === true) {
+        if ($this->isStrict() === true) {
             $this->checkStrictness($container, $value);
         }
 
@@ -164,8 +164,9 @@ class PropertiesValidator extends AbstractValidator
      */
     protected function checkStrictness(ContainerResult $container, $object): void
     {
+        $properties = $this->getProperties();
         foreach ($object as $property => $value) {
-            if (array_key_exists($property, $this->properties) === false) {
+            if (array_key_exists($property, $properties) === false) {
                 $container->addResult(
                     $this->getInvalidResult(self::PROPERTY_NOT_ALLOWED, [
                         'property' => $property,
@@ -185,5 +186,25 @@ class PropertiesValidator extends AbstractValidator
             self::PROPERTY_NOT_ALLOWED => 'Property {{property}} is not allowed on object.',
             self::PROPERTY_MISSING => 'Property {{property}} is missing and can not be left empty.',
         ];
+    }
+
+    /**
+     * Get properties.
+     *
+     * @return Property[]
+     */
+    protected function getProperties(): array
+    {
+        return $this->properties;
+    }
+
+    /**
+     * Is strict.
+     *
+     * @return bool
+     */
+    protected function isStrict(): bool
+    {
+        return $this->strict;
     }
 }

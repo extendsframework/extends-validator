@@ -13,6 +13,7 @@ class GreaterThanValidatorTest extends TestCase
      * Test that int '2' is greater than int '1'.
      *
      * @covers \ExtendsFramework\Validator\Comparison\GreaterThanValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::getSubject()
      */
     public function testValid(): void
     {
@@ -28,6 +29,7 @@ class GreaterThanValidatorTest extends TestCase
      * Test that int '1' is not greater than int '2'.
      *
      * @covers \ExtendsFramework\Validator\Comparison\GreaterThanValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::getSubject()
      * @covers \ExtendsFramework\Validator\Comparison\GreaterThanValidator::getTemplates()
      */
     public function testInvalid(): void

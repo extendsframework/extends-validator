@@ -19,13 +19,14 @@ class LessThanValidator extends AbstractComparisonValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if ($value < $this->subject) {
+        $subject = $this->getSubject();
+        if ($value < $subject) {
             return $this->getValidResult();
         }
 
         return $this->getInvalidResult(self::NOT_LESS_THAN, [
             'value' => $value,
-            'subject' => $this->subject,
+            'subject' => $subject,
         ]);
     }
 

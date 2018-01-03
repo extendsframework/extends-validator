@@ -15,14 +15,14 @@ class CoordinatesValidator extends AbstractValidator
     /**
      * Latitude object key.
      *
-     * @var string|null
+     * @var string
      */
     protected $latitude;
 
     /**
      * Longitude object key.
      *
-     * @var string|null
+     * @var string
      */
     protected $longitude;
 
@@ -55,8 +55,8 @@ class CoordinatesValidator extends AbstractValidator
     public function validate($value, $context = null): ResultInterface
     {
         $validator = new PropertiesValidator([
-            $this->latitude => new LatitudeValidator(),
-            $this->longitude => new LongitudeValidator(),
+            $this->getLatitude() => new LatitudeValidator(),
+            $this->getLongitude() => new LongitudeValidator(),
         ]);
 
         return $validator->validate($value);
@@ -69,5 +69,25 @@ class CoordinatesValidator extends AbstractValidator
     protected function getTemplates(): array
     {
         return [];
+    }
+
+    /**
+     * Get latitude.
+     *
+     * @return string
+     */
+    protected function getLatitude(): string
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Get longitude.
+     *
+     * @return string
+     */
+    protected function getLongitude(): string
+    {
+        return $this->longitude;
     }
 }

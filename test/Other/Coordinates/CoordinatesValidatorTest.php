@@ -15,6 +15,8 @@ class CoordinatesValidatorTest extends TestCase
      * Test that latitude and longitude are valid.
      *
      * @covers \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::getLatitude()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::getLongitude()
      */
     public function testValid(): void
     {
@@ -34,6 +36,8 @@ class CoordinatesValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::__construct()
      * @covers \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::getLatitude()
+     * @covers \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::getLongitude()
      */
     public function testCustomKeys(): void
     {

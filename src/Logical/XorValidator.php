@@ -27,7 +27,8 @@ class XorValidator extends AbstractLogicalValidator
     public function validate($value, $context = null): ResultInterface
     {
         $valid = 0;
-        foreach ($this->getValidators() as $validator) {
+        $validators = $this->getValidators();
+        foreach ($validators as $validator) {
             $result = $validator->validate($value, $context);
             if ($result->isValid() === true) {
                 $valid++;
@@ -39,7 +40,7 @@ class XorValidator extends AbstractLogicalValidator
         }
 
         return $this->getInvalidResult($valid === 0 ? self::NONE_VALID : self::MULTIPLE_VALID, [
-            'count' => count($this->validators),
+            'count' => count($validators),
         ]);
     }
 

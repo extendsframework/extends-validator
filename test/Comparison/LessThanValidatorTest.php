@@ -13,6 +13,7 @@ class LessThanValidatorTest extends TestCase
      * Test that int '1' is less than int '2'.
      *
      * @covers \ExtendsFramework\Validator\Comparison\LessThanValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::getSubject()
      */
     public function testValid(): void
     {
@@ -28,6 +29,7 @@ class LessThanValidatorTest extends TestCase
      * Test that int '2' is not less than int '1'.
      *
      * @covers \ExtendsFramework\Validator\Comparison\LessThanValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::getSubject()
      * @covers \ExtendsFramework\Validator\Comparison\LessThanValidator::getTemplates()
      */
     public function testInvalid(): void

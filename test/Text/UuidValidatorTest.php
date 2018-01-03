@@ -15,6 +15,7 @@ class UuidValidatorTest extends TestCase
      * Test that value 'db6eb6f2-1dda-4f06-a995-1fd1aca99e1f' is an valid UUID.
      *
      * @covers \ExtendsFramework\Validator\Text\UuidValidator::validate()
+     * @covers \ExtendsFramework\Validator\Text\UuidValidator::getPattern()
      */
     public function testValid(): void
     {
@@ -33,6 +34,7 @@ class UuidValidatorTest extends TestCase
      * Test that string value ''foo-bar-baz'' is a valid string.
      *
      * @covers \ExtendsFramework\Validator\Text\UuidValidator::validate()
+     * @covers \ExtendsFramework\Validator\Text\UuidValidator::getPattern()
      * @covers \ExtendsFramework\Validator\Text\UuidValidator::getTemplates()
      */
     public function testInvalid(): void

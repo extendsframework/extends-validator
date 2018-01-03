@@ -13,6 +13,7 @@ class IdenticalValidatorTest extends TestCase
      * Test that string '1' is identical to string '1'.
      *
      * @covers \ExtendsFramework\Validator\Comparison\IdenticalValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::getSubject()
      */
     public function testValid(): void
     {
@@ -28,6 +29,7 @@ class IdenticalValidatorTest extends TestCase
      * Test that string '1' is not identical to int '1'.
      *
      * @covers \ExtendsFramework\Validator\Comparison\IdenticalValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::getSubject()
      * @covers \ExtendsFramework\Validator\Comparison\IdenticalValidator::getTemplates()
      */
     public function testInvalid(): void

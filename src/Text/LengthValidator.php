@@ -78,16 +78,18 @@ class LengthValidator extends AbstractValidator
             return $result;
         }
 
+        $min = $this->getMin();
+        $max = $this->getMax();
         $length = strlen($text);
-        if (is_int($this->min) === true && $length < $this->min) {
+        if (is_int($min) === true && $length < $min) {
             return $this->getInvalidResult(self::TOO_SHORT, [
-                'min' => $this->min,
+                'min' => $min,
                 'length' => $length,
             ]);
         }
-        if (is_int($this->max) === true && $length > $this->max) {
+        if (is_int($max) === true && $length > $max) {
             return $this->getInvalidResult(self::TOO_LONG, [
-                'max' => $this->max,
+                'max' => $max,
                 'length' => $length,
             ]);
         }
@@ -104,5 +106,25 @@ class LengthValidator extends AbstractValidator
             self::TOO_SHORT => 'String length must be at least {{min}} characters, got {{length}}.',
             self::TOO_LONG => 'String length can be up to {{max}} characters, got {{length}}.',
         ];
+    }
+
+    /**
+     * Get min.
+     *
+     * @return int|null
+     */
+    protected function getMin(): ?int
+    {
+        return $this->min;
+    }
+
+    /**
+     * Get max.
+     *
+     * @return int|null
+     */
+    protected function getMax(): ?int
+    {
+        return $this->max;
     }
 }

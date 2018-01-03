@@ -30,6 +30,16 @@ class CallbackValidator implements ValidatorInterface
      */
     public function validate($value, $context = null): ResultInterface
     {
-        return ($this->callback)($value, $context);
+        return $this->getCallback()($value, $context);
+    }
+
+    /**
+     * Get callback.
+     *
+     * @return callable
+     */
+    protected function getCallback(): callable
+    {
+        return $this->callback;
     }
 }

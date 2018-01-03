@@ -15,6 +15,7 @@ class ContainerValidatorTest extends TestCase
      * Test that sub validators will be validated and a result container will be returned.
      *
      * @covers \ExtendsFramework\Validator\ContainerValidator::addValidator()
+     * @covers \ExtendsFramework\Validator\ContainerValidator::getValidators()
      * @covers \ExtendsFramework\Validator\ContainerValidator::validate()
      */
     public function testValidate(): void

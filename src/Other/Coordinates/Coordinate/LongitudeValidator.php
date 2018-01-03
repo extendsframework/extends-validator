@@ -44,16 +44,17 @@ class LongitudeValidator extends AbstractValidator
      */
     public function validate($longitude, $context = null): ResultInterface
     {
-        $validator = new NumberValidator();
-        $result = $validator->validate($longitude);
+        $result = (new NumberValidator())->validate($longitude);
         if ($result->isValid() === false) {
             return $result;
         }
 
-        if ($longitude < $this->min || $longitude > $this->max) {
+        $min = $this->getMin();
+        $max = $this->getMax();
+        if ($longitude < $min || $longitude > $max) {
             return $this->getInvalidResult(self::LONGITUDE_OUT_OF_BOUND, [
-                'min' => $this->min,
-                'max' => $this->max,
+                'min' => $min,
+                'max' => $max,
                 'longitude' => $longitude,
             ]);
         }
@@ -70,5 +71,25 @@ class LongitudeValidator extends AbstractValidator
             self::LONGITUDE_OUT_OF_BOUND =>
                 'Longitude is out of bound and must be between {{min}} and {{max}} inclusive, got {{longitude}}.',
         ];
+    }
+
+    /**
+     * Get min.
+     *
+     * @return int
+     */
+    protected function getMin(): int
+    {
+        return $this->min;
+    }
+
+    /**
+     * Get max.
+     *
+     * @return int
+     */
+    protected function getMax(): int
+    {
+        return $this->max;
     }
 }

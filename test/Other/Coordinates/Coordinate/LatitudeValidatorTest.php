@@ -31,6 +31,8 @@ class LatitudeValidatorTest extends TestCase
      *
      * @param mixed $latitude
      * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::getMin()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::getMax()
      * @dataProvider validLatitudeValuesProvider
      */
     public function testValid($latitude): void
@@ -63,6 +65,8 @@ class LatitudeValidatorTest extends TestCase
      *
      * @param mixed $latitude
      * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::getMin()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::getMax()
      * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator::getTemplates()
      * @dataProvider invalidLatitudeValuesProvider
      */

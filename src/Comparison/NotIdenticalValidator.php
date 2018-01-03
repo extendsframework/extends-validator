@@ -19,13 +19,14 @@ class NotIdenticalValidator extends AbstractComparisonValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if ($value !== $this->subject) {
+        $subject = $this->getSubject();
+        if ($value !== $subject) {
             return $this->getValidResult();
         }
 
         return $this->getInvalidResult(self::IS_IDENTICAL, [
             'value' => $value,
-            'subject' => $this->subject,
+            'subject' => $subject,
         ]);
     }
 

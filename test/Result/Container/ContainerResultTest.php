@@ -77,6 +77,7 @@ class ContainerResultTest extends TestCase
      * @covers \ExtendsFramework\Validator\Result\Container\ContainerResult::addResult()
      * @covers \ExtendsFramework\Validator\Result\Container\ContainerResult::isValid()
      * @covers \ExtendsFramework\Validator\Result\Container\ContainerResult::jsonSerialize()
+     * @covers \ExtendsFramework\Validator\Result\Container\ContainerResult::getResults()
      */
     public function testJsonSerialize(): void
     {

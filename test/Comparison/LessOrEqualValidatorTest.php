@@ -13,6 +13,7 @@ class LessOrEqualValidatorTest extends TestCase
      * Test that int '1' is less than int '2' and int '1' is equal to int '1'.
      *
      * @covers \ExtendsFramework\Validator\Comparison\LessOrEqualValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::getSubject()
      */
     public function testValid(): void
     {
@@ -30,6 +31,7 @@ class LessOrEqualValidatorTest extends TestCase
      * Test that int '1' is not greater than or equal to int '2'.
      *
      * @covers \ExtendsFramework\Validator\Comparison\LessOrEqualValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::getSubject()
      * @covers \ExtendsFramework\Validator\Comparison\LessOrEqualValidator::getTemplates()
      */
     public function testInvalid(): void

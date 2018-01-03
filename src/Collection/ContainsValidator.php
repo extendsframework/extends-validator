@@ -56,7 +56,9 @@ class ContainsValidator extends AbstractValidator
         $container = new ContainerResult();
         foreach ($collection as $index => $value) {
             $container->addResult(
-                $this->validator->validate($value, $context),
+                $this
+                    ->getValidator()
+                    ->validate($value, $context),
                 (string)$index
             );
         }
@@ -71,5 +73,15 @@ class ContainsValidator extends AbstractValidator
     protected function getTemplates(): array
     {
         return [];
+    }
+
+    /**
+     * Get validator.
+     *
+     * @return ValidatorInterface
+     */
+    protected function getValidator(): ValidatorInterface
+    {
+        return $this->validator;
     }
 }

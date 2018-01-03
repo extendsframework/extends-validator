@@ -72,17 +72,20 @@ class SizeValidator extends AbstractValidator
             return $result;
         }
 
+        $min = $this->getMin();
+        $max = $this->getMax();
+
         $count = count($value);
-        if (is_int($this->min) === true && $count < $this->min) {
+        if (is_int($min) === true && $count < $min) {
             return $this->getInvalidResult(self::TOO_FEW, [
-                'min' => $this->min,
+                'min' => $min,
                 'count' => $count,
             ]);
         }
 
-        if (is_int($this->max) === true && $count > $this->max) {
+        if (is_int($max) === true && $count > $max) {
             return $this->getInvalidResult(self::TOO_MANY, [
-                'max' => $this->max,
+                'max' => $max,
                 'count' => $count,
             ]);
         }
@@ -99,5 +102,25 @@ class SizeValidator extends AbstractValidator
             self::TOO_FEW => 'Collection size must be at least {{min}} items, got {{count}}.',
             self::TOO_MANY => 'Collection size can be up to {{max}} items, got {{count}}.',
         ];
+    }
+
+    /**
+     * Get min.
+     *
+     * @return int
+     */
+    protected function getMin(): ?int
+    {
+        return $this->min;
+    }
+
+    /**
+     * Get max.
+     *
+     * @return int
+     */
+    protected function getMax(): ?int
+    {
+        return $this->max;
     }
 }

@@ -31,6 +31,8 @@ class LongitudeValidatorTest extends TestCase
      *
      * @param mixed $longitude
      * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::getMin()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::getMax()
      * @dataProvider validLongitudeValuesProvider
      */
     public function testValid($longitude): void
@@ -63,6 +65,8 @@ class LongitudeValidatorTest extends TestCase
      *
      * @param mixed $longitude
      * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::getMin()
+     * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::getMax()
      * @covers       \ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator::getTemplates()
      * @dataProvider invalidLongitudeValuesProvider
      */

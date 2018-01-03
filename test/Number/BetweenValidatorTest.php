@@ -64,6 +64,9 @@ class BetweenValidatorTest extends TestCase
      * @param float|int $number
      * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::__construct()
      * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::getMin()
+     * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::getMax()
+     * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::isInclusive()
      * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::getTemplates()
      * @dataProvider validInclusiveDataProvider
      */
@@ -82,6 +85,9 @@ class BetweenValidatorTest extends TestCase
      * @param float|int $number
      * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::__construct()
      * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::getMin()
+     * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::getMax()
+     * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::isInclusive()
      * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::getTemplates()
      * @dataProvider invalidInclusiveDataProvider
      */
@@ -100,6 +106,9 @@ class BetweenValidatorTest extends TestCase
      * @param float|int $number
      * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::__construct()
      * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::validate()
+     * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::getMin()
+     * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::getMax()
+     * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::isInclusive()
      * @covers       \ExtendsFramework\Validator\Number\BetweenValidator::getTemplates()
      * @dataProvider invalidExclusiveDataProvider
      */

@@ -18,6 +18,8 @@ class PropertiesValidatorTest extends TestCase
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::__construct()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::addProperty()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getProperties()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::isStrict()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::checkStrictness()
      */
     public function testIsValid(): void
@@ -61,6 +63,8 @@ class PropertiesValidatorTest extends TestCase
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::__construct()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::addProperty()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getProperties()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::isStrict()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::checkStrictness()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getTemplates()
      */
@@ -96,6 +100,8 @@ class PropertiesValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::__construct()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getProperties()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::isStrict()
      */
     public function testNotStrict()
     {
@@ -116,6 +122,8 @@ class PropertiesValidatorTest extends TestCase
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::__construct()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::addProperty()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getProperties()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::isStrict()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getTemplates()
      */
     public function testPropertyMissing(): void
@@ -140,6 +148,8 @@ class PropertiesValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::__construct()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::validate()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getProperties()
+     * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::isStrict()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getTemplates()
      */
     public function testNotObject(): void

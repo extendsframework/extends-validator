@@ -38,7 +38,9 @@ class InterruptValidator implements ValidatorInterface
      */
     public function validate($value, $context = null): ResultInterface
     {
-        return $this->validator->validate($value, $context);
+        return $this
+            ->getValidator()
+            ->validate($value, $context);
     }
 
     /**
@@ -49,5 +51,15 @@ class InterruptValidator implements ValidatorInterface
     public function mustInterrupt(): bool
     {
         return $this->interrupt;
+    }
+
+    /**
+     * Get validator.
+     *
+     * @return ValidatorInterface
+     */
+    protected function getValidator(): ValidatorInterface
+    {
+        return $this->validator;
     }
 }

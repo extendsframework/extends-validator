@@ -19,13 +19,14 @@ class GreaterThanValidator extends AbstractComparisonValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if ($value > $this->subject) {
+        $subject = $this->getSubject();
+        if ($value > $subject) {
             return $this->getValidResult();
         }
 
         return $this->getInvalidResult(self::NOT_GREATER_THAN, [
             'value' => $value,
-            'subject' => $this->subject,
+            'subject' => $subject,
         ]);
     }
 

@@ -16,6 +16,7 @@ class RegexValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Text\RegexValidator::__construct()
      * @covers \ExtendsFramework\Validator\Text\RegexValidator::validate()
+     * @covers \ExtendsFramework\Validator\Text\RegexValidator::getPattern()
      */
     public function testValid(): void
     {
@@ -32,6 +33,7 @@ class RegexValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Text\RegexValidator::__construct()
      * @covers \ExtendsFramework\Validator\Text\RegexValidator::validate()
+     * @covers \ExtendsFramework\Validator\Text\RegexValidator::getPattern()
      * @covers \ExtendsFramework\Validator\Text\RegexValidator::getTemplates()
      */
     public function testInvalid(): void

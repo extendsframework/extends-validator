@@ -13,6 +13,7 @@ class GreaterOrEqualValidatorTest extends TestCase
      * Test that int '2' is greater than int '1' and int '2' is equal to int '2'.
      *
      * @covers \ExtendsFramework\Validator\Comparison\GreaterOrEqualValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::getSubject()
      */
     public function testValid(): void
     {
@@ -30,6 +31,7 @@ class GreaterOrEqualValidatorTest extends TestCase
      * Test that int '1' is not greater than or equal to int '2'.
      *
      * @covers \ExtendsFramework\Validator\Comparison\GreaterOrEqualValidator::validate()
+     * @covers \ExtendsFramework\Validator\Comparison\AbstractComparisonValidator::getSubject()
      * @covers \ExtendsFramework\Validator\Comparison\GreaterOrEqualValidator::getTemplates()
      */
     public function testInvalid(): void
