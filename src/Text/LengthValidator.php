@@ -73,8 +73,7 @@ class LengthValidator extends AbstractValidator
      */
     public function validate($text, $context = null): ResultInterface
     {
-        $validator = new StringValidator();
-        $result = $validator->validate($text);
+        $result = (new StringValidator())->validate($text);
         if ($result->isValid() === false) {
             return $result;
         }

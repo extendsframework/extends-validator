@@ -90,8 +90,7 @@ class BetweenValidator extends AbstractValidator
      */
     public function validate($number, $context = null): ResultInterface
     {
-        $validator = new NumericValidator();
-        $result = $validator->validate($number);
+        $result = (new NumericValidator())->validate($number);
         if ($result->isValid() === false) {
             return $result;
         }
