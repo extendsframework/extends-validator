@@ -16,6 +16,7 @@ class XorValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Logical\XorValidator::validate()
      * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::addValidator()
+     * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::getValidators()
      */
     public function testValid(): void
     {
@@ -59,6 +60,7 @@ class XorValidatorTest extends TestCase
      * @covers \ExtendsFramework\Validator\Logical\XorValidator::validate()
      * @covers \ExtendsFramework\Validator\Logical\XorValidator::getTemplates()
      * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::addValidator()
+     * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::getValidators()
      */
     public function testNoneValid(): void
     {
@@ -102,6 +104,7 @@ class XorValidatorTest extends TestCase
      * @covers \ExtendsFramework\Validator\Logical\XorValidator::validate()
      * @covers \ExtendsFramework\Validator\Logical\XorValidator::getTemplates()
      * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::addValidator()
+     * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::getValidators()
      */
     public function testMultipleValid(): void
     {

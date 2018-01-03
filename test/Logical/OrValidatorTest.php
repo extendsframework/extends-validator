@@ -16,6 +16,7 @@ class OrValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Logical\OrValidator::validate()
      * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::addValidator()
+     * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::getValidators()
      */
     public function testValid(): void
     {
@@ -59,6 +60,7 @@ class OrValidatorTest extends TestCase
      * @covers \ExtendsFramework\Validator\Logical\OrValidator::validate()
      * @covers \ExtendsFramework\Validator\Logical\OrValidator::getTemplates()
      * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::addValidator()
+     * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::getValidators()
      */
     public function testInvalid(): void
     {

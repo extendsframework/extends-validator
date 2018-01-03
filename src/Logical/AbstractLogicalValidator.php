@@ -53,4 +53,14 @@ abstract class AbstractLogicalValidator extends AbstractValidator
 
         return $this;
     }
+
+    /**
+     * Get validators.
+     *
+     * @return ValidatorInterface[]
+     */
+    protected function getValidators(): array
+    {
+        return $this->validators;
+    }
 }

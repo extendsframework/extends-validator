@@ -16,6 +16,7 @@ class AndValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Logical\AndValidator::validate()
      * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::addValidator()
+     * @covers \ExtendsFramework\Validator\Logical\AbstractLogicalValidator::getValidators()
      */
     public function testValid(): void
     {

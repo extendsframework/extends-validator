@@ -19,7 +19,7 @@ class OrValidator extends AbstractLogicalValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        foreach ($this->validators as $validator) {
+        foreach ($this->getValidators() as $validator) {
             $result = $validator->validate($value, $context);
             if ($result->isValid()) {
                 return $this->getValidResult();
