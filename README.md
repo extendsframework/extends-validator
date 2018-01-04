@@ -5,4 +5,43 @@
 [![Latest Stable Version](https://poser.pugx.org/extendsframework/extends-validator/v/stable)](https://packagist.org/packages/extendsframework/extends-validator)
 [![Total Downloads](https://poser.pugx.org/extendsframework/extends-validator/downloads)](https://packagist.org/packages/extendsframework/extends-validator)
 
-This repository provides a set of validators to validate data in the blink of an eye.
+This repository provides a set of validators to validate data and data structures.
+
+## Installation
+
+You can install ExtendsFramework\Validator into your project using [Composer](https://getcomposer.org).
+ 
+```bash
+$ composer require extendsframework/extends-validator
+```
+
+## Example
+
+An simple example to give an idea how to use a validator.
+
+```php
+<?php
+declare(strict_types=1);
+
+use ExtendsFramework\Validator\Text\LengthValidator;
+
+require 'vendor/autoload.php';
+
+echo json_encode(
+    (new LengthValidator(5, 10))
+        ->validate('Hello world!')
+        ->isValid()
+);
+
+// Will output false, string is 13 characters long.
+```
+
+## Documentation
+
+The documentation for ExtendsFramework\Validator is available on the
+[Github Wiki](https://github.com/extendsframework/extends-validator/wiki).
+
+## Issues
+
+Bug reports and feature requests can be submitted on the
+[Github Issue Tracker](https://github.com/extendsframework/extends-validator/issues).
