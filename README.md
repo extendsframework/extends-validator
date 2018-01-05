@@ -23,9 +23,9 @@ An simple example to give an idea how to use a validator.
 <?php
 declare(strict_types=1);
 
-use ExtendsFramework\Validator\Text\LengthValidator;
-
 require 'vendor/autoload.php';
+
+use ExtendsFramework\Validator\Text\LengthValidator;
 
 echo json_encode(
     (new LengthValidator(5, 10))
