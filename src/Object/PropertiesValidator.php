@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Object;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorException;
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
 use ExtendsFramework\Validator\Exception\TemplateNotFound;
@@ -63,6 +64,7 @@ class PropertiesValidator extends AbstractValidator
 
     /**
      * @inheritDoc
+     * @throws ServiceLocatorException
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {
