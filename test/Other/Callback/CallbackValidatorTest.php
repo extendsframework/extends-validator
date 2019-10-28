@@ -32,7 +32,7 @@ class CallbackValidatorTest extends TestCase
         /**
          * @var ValidatorInterface $inner
          */
-        $validator = new CallbackValidator(function ($value, $context = null) use ($inner) {
+        $validator = new CallbackValidator(static function ($value, $context = null) use ($inner) {
             return $inner->validate($value, $context);
         });
 

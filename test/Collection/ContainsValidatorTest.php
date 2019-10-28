@@ -23,7 +23,6 @@ class ContainsValidatorTest extends TestCase
     {
         $result = $this->createMock(ResultInterface::class);
         $result
-            ->expects($this->any())
             ->method('isValid')
             ->willReturn(true);
 
@@ -60,7 +59,6 @@ class ContainsValidatorTest extends TestCase
     {
         $result = $this->createMock(ResultInterface::class);
         $result
-            ->expects($this->any())
             ->method('isValid')
             ->willReturn(false);
 

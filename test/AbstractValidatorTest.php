@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator;
 
-use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
-use ExtendsFramework\Validator\Result\ResultInterface;
+use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use PHPUnit\Framework\TestCase;
 
 class AbstractValidatorTest extends TestCase
@@ -46,52 +45,17 @@ class AbstractValidatorTest extends TestCase
      *
      * Test that exception TemplateNotFound will be thrown when template for key 'foo' can not be found.
      *
-     * @covers                   \ExtendsFramework\Validator\AbstractValidator::validate()
-     * @covers                   \ExtendsFramework\Validator\AbstractValidator::getInvalidResult()
-     * @covers                   \ExtendsFramework\Validator\Exception\TemplateNotFound::__construct()
-     * @expectedException        \ExtendsFramework\Validator\Exception\TemplateNotFound
-     * @expectedExceptionMessage No invalid result template found for key "foo".
+     * @covers \ExtendsFramework\Validator\AbstractValidator::validate()
+     * @covers \ExtendsFramework\Validator\AbstractValidator::getInvalidResult()
+     * @covers \ExtendsFramework\Validator\Exception\TemplateNotFound::__construct()
      */
     public function testTemplateNotFound(): void
     {
+        $this->expectException(TemplateNotFound::class);
+        $this->expectExceptionMessage('No invalid result template found for key "foo".');
+
         $validator = new ValidatorStub();
 
         $validator->validate('foo');
-    }
-}
-
-class ValidatorStub extends AbstractValidator
-{
-    /**
-     * @inheritDoc
-     */
-    public function validate($value, $context = null): ResultInterface
-    {
-        if ($context === true) {
-            return $this->getValidResult();
-        }
-        if ($context === false) {
-            return $this->getInvalidResult('bar', []);
-        }
-
-        return $this->getInvalidResult('foo', []);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
-    {
-        return new static();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function getTemplates(): array
-    {
-        return [
-            'bar' => 'Fancy error message.',
-        ];
     }
 }

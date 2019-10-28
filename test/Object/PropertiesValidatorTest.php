@@ -103,7 +103,7 @@ class PropertiesValidatorTest extends TestCase
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::getProperties()
      * @covers \ExtendsFramework\Validator\Object\PropertiesValidator::isStrict()
      */
-    public function testNotStrict()
+    public function testNotStrict(): void
     {
         $properties = new PropertiesValidator(null, false);
         $result = $properties->validate((object)[

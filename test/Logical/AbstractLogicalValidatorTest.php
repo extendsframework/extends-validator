@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace ExtendsFramework\Validator\Logical;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
-use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\ValidatorInterface;
 use PHPUnit\Framework\TestCase;
 
@@ -36,7 +35,7 @@ class AbstractLogicalValidatorTest extends TestCase
         /**
          * @var ServiceLocatorInterface $serviceLocator
          */
-        $validator = LogicalValidatorStub::factory(ValidatorInterface::class, $serviceLocator, [
+        $validator = AbstractLogicalValidatorStub::factory(ValidatorInterface::class, $serviceLocator, [
             'validators' => [
                 [
                     'name' => ValidatorInterface::class,
@@ -48,24 +47,5 @@ class AbstractLogicalValidatorTest extends TestCase
         ]);
 
         $this->assertInstanceOf(ValidatorInterface::class, $validator);
-    }
-}
-
-class LogicalValidatorStub extends AbstractLogicalValidator
-{
-    /**
-     * @inheritDoc
-     */
-    public function validate($value, $context = null): ResultInterface
-    {
-        return null;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function getTemplates(): array
-    {
-        return [];
     }
 }

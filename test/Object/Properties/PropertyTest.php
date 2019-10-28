@@ -29,6 +29,6 @@ class PropertyTest extends TestCase
 
         $this->assertSame('foo', $property->getName());
         $this->assertSame($validator, $property->getValidator());
-        $this->assertSame(false, $property->isOptional());
+        $this->assertFalse($property->isOptional());
     }
 }

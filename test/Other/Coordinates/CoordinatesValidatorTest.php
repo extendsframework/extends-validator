@@ -89,7 +89,7 @@ class CoordinatesValidatorTest extends TestCase
      * @covers       \ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator::validate()
      * @dataProvider invalidCoordinatesObjectProvider
      */
-    public function testInvalidCoordinatesObject($coordinates)
+    public function testInvalidCoordinatesObject($coordinates): void
     {
         $validator = new CoordinatesValidator();
         $result = $validator->validate($coordinates);
