@@ -21,7 +21,7 @@ class ValidatorFactory implements ServiceFactoryInterface
         foreach ($extra['validators'] ?? [] as $validator) {
             $container->addValidator(
                 $this->getValidator($serviceLocator, $validator['name'], $validator['options'] ?? []),
-                $validator['interrupt'] ?? false
+                $validator['interrupt'] ?? null
             );
         }
 
