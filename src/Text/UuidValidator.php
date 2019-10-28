@@ -27,6 +27,14 @@ class UuidValidator extends AbstractValidator
     /**
      * @inheritDoc
      */
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
+    {
+        return new static();
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function validate($value, $context = null): ResultInterface
     {
         $result = (new StringValidator())->validate($value);
@@ -41,14 +49,6 @@ class UuidValidator extends AbstractValidator
         return $this->getInvalidResult(self::NOT_UUID, [
             'value' => $value,
         ]);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
-    {
-        return new static();
     }
 
     /**

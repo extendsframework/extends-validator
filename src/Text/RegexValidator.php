@@ -37,6 +37,16 @@ class RegexValidator extends AbstractValidator
     /**
      * @inheritDoc
      */
+    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
+    {
+        return new static(
+            $extra['pattern']
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function validate($value, $context = null): ResultInterface
     {
         $result = (new StringValidator())->validate($value);
@@ -53,16 +63,6 @@ class RegexValidator extends AbstractValidator
             'value' => $value,
             'pattern' => $pattern,
         ]);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
-    {
-        return new static(
-            $extra['pattern']
-        );
     }
 
     /**

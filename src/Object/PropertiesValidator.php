@@ -153,6 +153,17 @@ class PropertiesValidator extends AbstractValidator
     }
 
     /**
+     * @inheritDoc
+     */
+    protected function getTemplates(): array
+    {
+        return [
+            self::PROPERTY_NOT_ALLOWED => 'Property {{property}} is not allowed on object.',
+            self::PROPERTY_MISSING => 'Property {{property}} is missing and can not be left empty.',
+        ];
+    }
+
+    /**
      * Check strictness.
      *
      * If in strict mode, check if there more than the allowed properties.
@@ -175,17 +186,6 @@ class PropertiesValidator extends AbstractValidator
                 );
             }
         }
-    }
-
-    /**
-     * @inheritDoc
-     */
-    protected function getTemplates(): array
-    {
-        return [
-            self::PROPERTY_NOT_ALLOWED => 'Property {{property}} is not allowed on object.',
-            self::PROPERTY_MISSING => 'Property {{property}} is missing and can not be left empty.',
-        ];
     }
 
     /**
