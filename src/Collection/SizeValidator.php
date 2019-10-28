@@ -74,17 +74,20 @@ class SizeValidator extends AbstractValidator
             return $result;
         }
 
+        $min = $this->getMin();
+        $max = $this->getMax();
+
         $count = count($value);
-        if (is_int($this->getMin()) && $count < $this->getMin()) {
+        if (is_int($min) && $count < $min) {
             return $this->getInvalidResult(self::TOO_FEW, [
-                'min' => $this->getMin(),
+                'min' => $min,
                 'count' => $count,
             ]);
         }
 
-        if (is_int($this->getMax()) && $count > $this->getMax()) {
+        if (is_int($max) && $count > $max) {
             return $this->getInvalidResult(self::TOO_MANY, [
-                'max' => $this->getMax(),
+                'max' => $max,
                 'count' => $count,
             ]);
         }
