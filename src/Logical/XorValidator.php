@@ -30,7 +30,7 @@ class XorValidator extends AbstractLogicalValidator
         $validators = $this->getValidators();
         foreach ($validators as $validator) {
             $result = $validator->validate($value, $context);
-            if ($result->isValid() === true) {
+            if ($result->isValid()) {
                 $valid++;
             }
         }

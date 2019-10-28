@@ -40,7 +40,7 @@ class RegexValidator extends AbstractValidator
     public function validate($value, $context = null): ResultInterface
     {
         $result = (new StringValidator())->validate($value);
-        if ($result->isValid() === false) {
+        if (!$result->isValid()) {
             return $result;
         }
 

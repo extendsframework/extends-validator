@@ -35,7 +35,7 @@ class ContainerResult implements ResultInterface
     public function jsonSerialize()
     {
         return array_filter($this->getResults(), function (ResultInterface $result) {
-            return $result->isValid() === false;
+            return !$result->isValid();
         });
     }
 
@@ -50,7 +50,7 @@ class ContainerResult implements ResultInterface
     {
         $this->valid = $this->isValid() && $result->isValid();
 
-        if (is_string($name) === true) {
+        if (is_string($name)) {
             $this->results[$name] = $result;
         } else {
             $this->results[] = $result;

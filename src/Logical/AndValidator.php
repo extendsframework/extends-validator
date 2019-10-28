@@ -14,7 +14,7 @@ class AndValidator extends AbstractLogicalValidator
     {
         foreach ($this->getValidators() as $validator) {
             $result = $validator->validate($value, $context);
-            if ($result->isValid() === false) {
+            if (!$result->isValid()) {
                 return $result;
             }
         }

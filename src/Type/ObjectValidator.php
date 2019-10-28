@@ -19,7 +19,7 @@ class ObjectValidator extends AbstractTypeValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if (is_object($value) === true) {
+        if (is_object($value)) {
             return $this->getValidResult();
         }
 

@@ -19,7 +19,7 @@ class IterableValidator extends AbstractTypeValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if (is_iterable($value) === true) {
+        if (is_iterable($value)) {
             return $this->getValidResult();
         }
 

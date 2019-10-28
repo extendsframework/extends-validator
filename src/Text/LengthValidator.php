@@ -74,20 +74,20 @@ class LengthValidator extends AbstractValidator
     public function validate($text, $context = null): ResultInterface
     {
         $result = (new StringValidator())->validate($text);
-        if ($result->isValid() === false) {
+        if (!$result->isValid()) {
             return $result;
         }
 
         $min = $this->getMin();
         $max = $this->getMax();
         $length = strlen($text);
-        if (is_int($min) === true && $length < $min) {
+        if (is_int($min) && $length < $min) {
             return $this->getInvalidResult(self::TOO_SHORT, [
                 'min' => $min,
                 'length' => $length,
             ]);
         }
-        if (is_int($max) === true && $length > $max) {
+        if (is_int($max) && $length > $max) {
             return $this->getInvalidResult(self::TOO_LONG, [
                 'max' => $max,
                 'length' => $length,

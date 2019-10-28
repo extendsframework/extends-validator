@@ -31,11 +31,11 @@ class NotEmptyValidator extends AbstractValidator
     public function validate($text, $context = null): ResultInterface
     {
         $result = (new StringValidator())->validate($text);
-        if ($result->isValid() === false) {
+        if (!$result->isValid()) {
             return $result;
         }
 
-        if (empty($text) === false) {
+        if (!empty($text)) {
             return $this->getValidResult();
         }
 

@@ -19,7 +19,7 @@ class ArrayValidator extends AbstractTypeValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if (is_array($value) === true) {
+        if (is_array($value)) {
             return $this->getValidResult();
         }
 

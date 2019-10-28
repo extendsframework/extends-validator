@@ -45,7 +45,7 @@ class LongitudeValidator extends AbstractValidator
     public function validate($longitude, $context = null): ResultInterface
     {
         $result = (new NumberValidator())->validate($longitude);
-        if ($result->isValid() === false) {
+        if (!$result->isValid()) {
             return $result;
         }
 

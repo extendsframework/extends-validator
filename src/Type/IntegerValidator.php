@@ -19,7 +19,7 @@ class IntegerValidator extends AbstractTypeValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if (is_int($value) === true) {
+        if (is_int($value)) {
             return $this->getValidResult();
         }
 

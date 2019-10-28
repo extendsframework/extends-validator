@@ -68,7 +68,7 @@ class SizeValidator extends AbstractValidator
     {
         $validator = new ArrayValidator();
         $result = $validator->validate($value);
-        if ($result->isValid() === false) {
+        if (!$result->isValid()) {
             return $result;
         }
 
@@ -76,14 +76,14 @@ class SizeValidator extends AbstractValidator
         $max = $this->getMax();
 
         $count = count($value);
-        if (is_int($min) === true && $count < $min) {
+        if (is_int($min) && $count < $min) {
             return $this->getInvalidResult(self::TOO_FEW, [
                 'min' => $min,
                 'count' => $count,
             ]);
         }
 
-        if (is_int($max) === true && $count > $max) {
+        if (is_int($max) && $count > $max) {
             return $this->getInvalidResult(self::TOO_MANY, [
                 'max' => $max,
                 'count' => $count,

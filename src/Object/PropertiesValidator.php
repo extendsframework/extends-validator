@@ -51,7 +51,7 @@ class PropertiesValidator extends AbstractValidator
     public function __construct(array $properties = null, bool $strict = null)
     {
         foreach ($properties ?? [] as $property => $validator) {
-            if (is_array($validator) === true) {
+            if (is_array($validator)) {
                 [$validator, $optional] = $validator;
             }
 
@@ -97,15 +97,15 @@ class PropertiesValidator extends AbstractValidator
     public function validate($value, $context = null): ResultInterface
     {
         $result = (new ObjectValidator())->validate($value, $context);
-        if ($result->isValid() === false) {
+        if (!$result->isValid()) {
             return $result;
         }
 
         $container = new ContainerResult();
         foreach ($this->getProperties() as $property) {
             $name = $property->getName();
-            if (property_exists($value, $name) === false) {
-                if ($property->isOptional() === false) {
+            if (!property_exists($value, $name)) {
+                if (!$property->isOptional()) {
                     $container->addResult(
                         $this->getInvalidResult(self::PROPERTY_MISSING, [
                             'property' => $name,
@@ -125,7 +125,7 @@ class PropertiesValidator extends AbstractValidator
             );
         }
 
-        if ($this->isStrict() === true) {
+        if ($this->isStrict()) {
             $this->checkStrictness($container, $value);
         }
 
@@ -166,7 +166,7 @@ class PropertiesValidator extends AbstractValidator
     {
         $properties = $this->getProperties();
         foreach ($object as $property => $value) {
-            if (array_key_exists($property, $properties) === false) {
+            if (!array_key_exists($property, $properties)) {
                 $container->addResult(
                     $this->getInvalidResult(self::PROPERTY_NOT_ALLOWED, [
                         'property' => $property,

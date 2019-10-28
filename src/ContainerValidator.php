@@ -25,7 +25,7 @@ class ContainerValidator implements ValidatorInterface
             $result = $validator->validate($value, $context);
             $container->addResult($result);
 
-            if ($result->isValid() === false && $validator->mustInterrupt() === true) {
+            if (!$result->isValid() && $validator->mustInterrupt()) {
                 break;
             }
         }

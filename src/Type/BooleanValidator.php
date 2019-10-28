@@ -19,7 +19,7 @@ class BooleanValidator extends AbstractTypeValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if (is_bool($value) === true) {
+        if (is_bool($value)) {
             return $this->getValidResult();
         }
 

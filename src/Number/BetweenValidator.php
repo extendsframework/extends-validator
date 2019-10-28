@@ -91,7 +91,7 @@ class BetweenValidator extends AbstractValidator
     public function validate($number, $context = null): ResultInterface
     {
         $result = (new NumericValidator())->validate($number);
-        if ($result->isValid() === false) {
+        if (!$result->isValid()) {
             return $result;
         }
 
@@ -99,8 +99,8 @@ class BetweenValidator extends AbstractValidator
         $max = $this->getMax();
         $isInclusive = $this->isInclusive();
 
-        if (is_int($min) === true) {
-            if ($isInclusive === true) {
+        if (is_int($min)) {
+            if ($isInclusive) {
                 if ($number < $min) {
                     return $this->getInvalidResult(self::TOO_LOW_INCLUSIVE, [
                         'min' => $min,
@@ -117,8 +117,8 @@ class BetweenValidator extends AbstractValidator
             }
         }
 
-        if (is_int($max) === true) {
-            if ($isInclusive === true) {
+        if (is_int($max)) {
+            if ($isInclusive) {
                 if ($number > $max) {
                     return $this->getInvalidResult(self::TOO_HIGH_INCLUSIVE, [
                         'max' => $max,
@@ -178,6 +178,6 @@ class BetweenValidator extends AbstractValidator
      */
     private function isInclusive(): bool
     {
-        return $this->inclusive === true;
+        return $this->inclusive;
     }
 }

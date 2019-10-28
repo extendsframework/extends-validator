@@ -19,7 +19,7 @@ class NotValidator extends AbstractLogicalValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if ((bool)$value === false) {
+        if (!(bool)$value) {
             return $this->getValidResult();
         }
 

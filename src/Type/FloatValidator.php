@@ -19,7 +19,7 @@ class FloatValidator extends AbstractTypeValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if (is_float($value) === true) {
+        if (is_float($value)) {
             return $this->getValidResult();
         }
 

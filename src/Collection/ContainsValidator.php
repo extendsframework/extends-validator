@@ -49,7 +49,7 @@ class ContainsValidator extends AbstractValidator
     public function validate($collection, $context = null): ResultInterface
     {
         $result = (new IterableValidator())->validate($collection);
-        if ($result->isValid() === false) {
+        if (!$result->isValid()) {
             return $result;
         }
 

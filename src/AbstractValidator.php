@@ -34,7 +34,7 @@ abstract class AbstractValidator implements ValidatorInterface, StaticFactoryInt
     protected function getInvalidResult(string $code, array $parameters = null): ResultInterface
     {
         $templates = $this->getTemplates();
-        if (array_key_exists($code, $templates) === false) {
+        if (!array_key_exists($code, $templates)) {
             throw new TemplateNotFound($code);
         }
 

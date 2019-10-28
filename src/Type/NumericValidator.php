@@ -19,7 +19,7 @@ class NumericValidator extends AbstractTypeValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        if (is_numeric($value) === true) {
+        if (is_numeric($value)) {
             return $this->getValidResult();
         }
 
