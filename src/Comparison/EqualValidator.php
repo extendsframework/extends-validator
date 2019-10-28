@@ -22,6 +22,7 @@ class EqualValidator extends AbstractComparisonValidator
     public function validate($value, $context = null): ResultInterface
     {
         $subject = $this->getSubject();
+        /** @noinspection TypeUnsafeComparisonInspection */
         if ($value == $subject) {
             return $this->getValidResult();
         }

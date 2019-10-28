@@ -109,13 +109,11 @@ class BetweenValidator extends AbstractValidator
                         'number' => $number,
                     ]);
                 }
-            } else {
-                if ($number <= $min) {
-                    return $this->getInvalidResult(self::TOO_LOW, [
-                        'min' => $min,
-                        'number' => $number,
-                    ]);
-                }
+            } elseif ($number <= $min) {
+                return $this->getInvalidResult(self::TOO_LOW, [
+                    'min' => $min,
+                    'number' => $number,
+                ]);
             }
         }
 
@@ -127,13 +125,11 @@ class BetweenValidator extends AbstractValidator
                         'number' => $number,
                     ]);
                 }
-            } else {
-                if ($number >= $max) {
-                    return $this->getInvalidResult(self::TOO_HIGH, [
-                        'max' => $max,
-                        'number' => $number,
-                    ]);
-                }
+            } elseif ($number >= $max) {
+                return $this->getInvalidResult(self::TOO_HIGH, [
+                    'max' => $max,
+                    'number' => $number,
+                ]);
             }
         }
 
