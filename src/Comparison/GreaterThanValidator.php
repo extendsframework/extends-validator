@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Comparison;
 
+use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use ExtendsFramework\Validator\Result\ResultInterface;
 
 class GreaterThanValidator extends AbstractComparisonValidator
@@ -16,6 +17,7 @@ class GreaterThanValidator extends AbstractComparisonValidator
 
     /**
      * @inheritDoc
+     * @throws TemplateNotFound
      */
     public function validate($value, $context = null): ResultInterface
     {

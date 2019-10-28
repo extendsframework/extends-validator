@@ -5,6 +5,7 @@ namespace ExtendsFramework\Validator\Other\Coordinates;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
+use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use ExtendsFramework\Validator\Object\PropertiesValidator;
 use ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator;
 use ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator;
@@ -51,6 +52,7 @@ class CoordinatesValidator extends AbstractValidator
 
     /**
      * @inheritDoc
+     * @throws TemplateNotFound
      */
     public function validate($value, $context = null): ResultInterface
     {

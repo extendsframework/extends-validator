@@ -5,6 +5,7 @@ namespace ExtendsFramework\Validator\Collection;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
+use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\Type\ArrayValidator;
 
@@ -63,6 +64,7 @@ class SizeValidator extends AbstractValidator
 
     /**
      * @inheritDoc
+     * @throws TemplateNotFound
      */
     public function validate($value, $context = null): ResultInterface
     {

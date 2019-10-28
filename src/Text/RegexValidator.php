@@ -5,6 +5,7 @@ namespace ExtendsFramework\Validator\Text;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
+use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\Type\StringValidator;
 
@@ -46,6 +47,7 @@ class RegexValidator extends AbstractValidator
 
     /**
      * @inheritDoc
+     * @throws TemplateNotFound
      */
     public function validate($value, $context = null): ResultInterface
     {

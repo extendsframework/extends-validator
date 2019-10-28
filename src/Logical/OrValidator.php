@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Logical;
 
+use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use ExtendsFramework\Validator\Result\ResultInterface;
 
 class OrValidator extends AbstractLogicalValidator
@@ -16,6 +17,7 @@ class OrValidator extends AbstractLogicalValidator
 
     /**
      * @inheritDoc
+     * @throws TemplateNotFound
      */
     public function validate($value, $context = null): ResultInterface
     {

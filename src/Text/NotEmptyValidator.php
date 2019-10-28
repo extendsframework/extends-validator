@@ -5,6 +5,7 @@ namespace ExtendsFramework\Validator\Text;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
+use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\Type\StringValidator;
 
@@ -27,6 +28,7 @@ class NotEmptyValidator extends AbstractValidator
 
     /**
      * @inheritDoc
+     * @throws TemplateNotFound
      */
     public function validate($text, $context = null): ResultInterface
     {

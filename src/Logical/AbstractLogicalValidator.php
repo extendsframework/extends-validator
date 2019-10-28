@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Logical;
 
+use ExtendsFramework\ServiceLocator\ServiceLocatorException;
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
 use ExtendsFramework\Validator\ValidatorInterface;
@@ -30,6 +31,7 @@ abstract class AbstractLogicalValidator extends AbstractValidator
 
     /**
      * @inheritDoc
+     * @throws ServiceLocatorException
      */
     public static function factory(string $key, ServiceLocatorInterface $serviceLocator, array $extra = null): object
     {

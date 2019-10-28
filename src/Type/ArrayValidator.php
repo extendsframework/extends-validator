@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace ExtendsFramework\Validator\Type;
 
+use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use ExtendsFramework\Validator\Result\ResultInterface;
 
 class ArrayValidator extends AbstractTypeValidator
@@ -16,6 +17,7 @@ class ArrayValidator extends AbstractTypeValidator
 
     /**
      * @inheritDoc
+     * @throws TemplateNotFound
      */
     public function validate($value, $context = null): ResultInterface
     {

@@ -5,6 +5,7 @@ namespace ExtendsFramework\Validator\Number;
 
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\AbstractValidator;
+use ExtendsFramework\Validator\Exception\TemplateNotFound;
 use ExtendsFramework\Validator\Result\ResultInterface;
 use ExtendsFramework\Validator\Type\NumericValidator;
 
@@ -87,6 +88,7 @@ class BetweenValidator extends AbstractValidator
 
     /**
      * @inheritDoc
+     * @throws TemplateNotFound
      */
     public function validate($number, $context = null): ResultInterface
     {
