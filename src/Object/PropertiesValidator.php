@@ -39,7 +39,7 @@ class PropertiesValidator extends AbstractValidator
     /**
      * If only defined properties are allowed.
      *
-     * @var bool
+     * @var bool|null
      */
     private $strict;
 
@@ -59,7 +59,7 @@ class PropertiesValidator extends AbstractValidator
             $this->addProperty($property, $validator, $optional ?? null);
         }
 
-        $this->strict = $strict ?? true;
+        $this->strict = $strict;
     }
 
     /**
@@ -208,6 +208,10 @@ class PropertiesValidator extends AbstractValidator
      */
     private function isStrict(): bool
     {
+        if ($this->strict === null) {
+            $this->strict = true;
+        }
+
         return $this->strict;
     }
 }
