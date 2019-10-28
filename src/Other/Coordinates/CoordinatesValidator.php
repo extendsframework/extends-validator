@@ -35,8 +35,8 @@ class CoordinatesValidator extends AbstractValidator
      */
     public function __construct(string $latitude = null, string $longitude = null)
     {
-        $this->latitude = $latitude ?? 'latitude';
-        $this->longitude = $longitude ?? 'longitude';
+        $this->latitude = $latitude ?: 'latitude';
+        $this->longitude = $longitude ?: 'longitude';
     }
 
     /**
