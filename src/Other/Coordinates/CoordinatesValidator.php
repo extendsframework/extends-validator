@@ -29,8 +29,8 @@ class CoordinatesValidator extends AbstractValidator
     /**
      * CoordinatesValidator constructor.
      *
-     * @param null|string $latitude
-     * @param null|string $longitude
+     * @param string|null $latitude
+     * @param string|null $longitude
      */
     public function __construct(string $latitude = null, string $longitude = null)
     {
