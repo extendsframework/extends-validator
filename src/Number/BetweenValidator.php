@@ -56,7 +56,7 @@ class BetweenValidator extends AbstractValidator
     /**
      * If min and max are inclusive.
      *
-     * @var bool
+     * @var bool|null
      */
     private $inclusive;
 
@@ -71,7 +71,7 @@ class BetweenValidator extends AbstractValidator
     {
         $this->min = $min;
         $this->max = $max;
-        $this->inclusive = $inclusive ?? true;
+        $this->inclusive = $inclusive;
     }
 
     /**
@@ -176,6 +176,10 @@ class BetweenValidator extends AbstractValidator
      */
     private function isInclusive(): bool
     {
+        if ($this->inclusive === null) {
+            $this->inclusive = true;
+        }
+
         return $this->inclusive;
     }
 }
