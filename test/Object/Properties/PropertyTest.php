@@ -25,7 +25,7 @@ class PropertyTest extends TestCase
         /**
          * @var ValidatorInterface $validator
          */
-        $property = new Property('foo', $validator, false);
+        $property = new Property('foo', $validator);
 
         $this->assertSame('foo', $property->getName());
         $this->assertSame($validator, $property->getValidator());
