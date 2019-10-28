@@ -13,7 +13,7 @@ abstract class AbstractComparisonValidator extends AbstractValidator
      *
      * @var mixed
      */
-    protected $subject;
+    private $subject;
 
     /**
      * AbstractComparisonValidator constructor.

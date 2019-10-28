@@ -33,14 +33,14 @@ class PropertiesValidator extends AbstractValidator
      *
      * @var Property[]
      */
-    protected $properties = [];
+    private $properties = [];
 
     /**
      * If only defined properties are allowed.
      *
      * @var bool
      */
-    protected $strict;
+    private $strict;
 
     /**
      * ObjectPropertiesValidator constructor.
@@ -162,7 +162,7 @@ class PropertiesValidator extends AbstractValidator
      * @return void
      * @throws TemplateNotFound
      */
-    protected function checkStrictness(ContainerResult $container, $object): void
+    private function checkStrictness(ContainerResult $container, $object): void
     {
         $properties = $this->getProperties();
         foreach ($object as $property => $value) {
@@ -193,7 +193,7 @@ class PropertiesValidator extends AbstractValidator
      *
      * @return Property[]
      */
-    protected function getProperties(): array
+    private function getProperties(): array
     {
         return $this->properties;
     }
@@ -203,7 +203,7 @@ class PropertiesValidator extends AbstractValidator
      *
      * @return bool
      */
-    protected function isStrict(): bool
+    private function isStrict(): bool
     {
         return $this->strict;
     }

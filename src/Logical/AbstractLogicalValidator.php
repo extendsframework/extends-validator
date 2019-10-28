@@ -14,7 +14,7 @@ abstract class AbstractLogicalValidator extends AbstractValidator
      *
      * @var ValidatorInterface[]
      */
-    protected $validators = [];
+    private $validators = [];
 
     /**
      * AbstractLogicalValidator constructor.

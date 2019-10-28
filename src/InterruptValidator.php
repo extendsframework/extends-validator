@@ -12,14 +12,14 @@ class InterruptValidator implements ValidatorInterface
      *
      * @var ValidatorInterface
      */
-    protected $validator;
+    private $validator;
 
     /**
      * Whether or not the validation must be stopped.
      *
      * @var bool
      */
-    protected $interrupt;
+    private $interrupt;
 
     /**
      * Set $validator and $interrupt flag.
@@ -58,7 +58,7 @@ class InterruptValidator implements ValidatorInterface
      *
      * @return ValidatorInterface
      */
-    protected function getValidator(): ValidatorInterface
+    private function getValidator(): ValidatorInterface
     {
         return $this->validator;
     }

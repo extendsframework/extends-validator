@@ -12,21 +12,21 @@ class InvalidResult implements ResultInterface
      *
      * @var string
      */
-    protected $code;
+    private $code;
 
     /**
      * Error message.
      *
      * @var string
      */
-    protected $message;
+    private $message;
 
     /**
      * Message parameters.
      *
      * @var array
      */
-    protected $parameters;
+    private $parameters;
 
     /**
      * Violation constructor.
@@ -82,7 +82,7 @@ class InvalidResult implements ResultInterface
      *
      * @return string
      */
-    protected function getCode(): string
+    private function getCode(): string
     {
         return $this->code;
     }
@@ -92,7 +92,7 @@ class InvalidResult implements ResultInterface
      *
      * @return string
      */
-    protected function getMessage(): string
+    private function getMessage(): string
     {
         return $this->message;
     }
@@ -102,7 +102,7 @@ class InvalidResult implements ResultInterface
      *
      * @return array
      */
-    protected function getParameters(): array
+    private function getParameters(): array
     {
         return $this->parameters;
     }

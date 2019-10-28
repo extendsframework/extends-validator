@@ -36,14 +36,14 @@ class LengthValidator extends AbstractValidator
      *
      * @var int|null
      */
-    protected $min;
+    private $min;
 
     /**
      * Maximum length.
      *
      * @var int|null
      */
-    protected $max;
+    private $max;
 
     /**
      * LengthValidator constructor.
@@ -113,7 +113,7 @@ class LengthValidator extends AbstractValidator
      *
      * @return int|null
      */
-    protected function getMin(): ?int
+    private function getMin(): ?int
     {
         return $this->min;
     }
@@ -123,7 +123,7 @@ class LengthValidator extends AbstractValidator
      *
      * @return int|null
      */
-    protected function getMax(): ?int
+    private function getMax(): ?int
     {
         return $this->max;
     }

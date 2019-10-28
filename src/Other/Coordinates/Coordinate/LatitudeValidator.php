@@ -22,14 +22,14 @@ class LatitudeValidator extends AbstractValidator
      *
      * @var int
      */
-    protected $min = -180;
+    private $min = -180;
 
     /**
      * Maximum latitude value.
      *
      * @var int
      */
-    protected $max = 180;
+    private $max = 180;
 
     /**
      * @inheritDoc
@@ -78,7 +78,7 @@ class LatitudeValidator extends AbstractValidator
      *
      * @return int
      */
-    protected function getMin(): int
+    private function getMin(): int
     {
         return $this->min;
     }
@@ -88,7 +88,7 @@ class LatitudeValidator extends AbstractValidator
      *
      * @return int
      */
-    protected function getMax(): int
+    private function getMax(): int
     {
         return $this->max;
     }

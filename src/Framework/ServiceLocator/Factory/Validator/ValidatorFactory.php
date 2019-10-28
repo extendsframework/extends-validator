@@ -36,7 +36,7 @@ class ValidatorFactory implements ServiceFactoryInterface
      * @return ValidatorInterface
      * @throws ServiceLocatorException
      */
-    protected function getValidator(ServiceLocatorInterface $serviceLocator, string $name, array $options): object
+    private function getValidator(ServiceLocatorInterface $serviceLocator, string $name, array $options): object
     {
         return $serviceLocator->getService($name, $options);
     }

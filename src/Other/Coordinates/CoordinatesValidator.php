@@ -17,14 +17,14 @@ class CoordinatesValidator extends AbstractValidator
      *
      * @var string
      */
-    protected $latitude;
+    private $latitude;
 
     /**
      * Longitude object key.
      *
      * @var string
      */
-    protected $longitude;
+    private $longitude;
 
     /**
      * CoordinatesValidator constructor.
@@ -76,7 +76,7 @@ class CoordinatesValidator extends AbstractValidator
      *
      * @return string
      */
-    protected function getLatitude(): string
+    private function getLatitude(): string
     {
         return $this->latitude;
     }
@@ -86,7 +86,7 @@ class CoordinatesValidator extends AbstractValidator
      *
      * @return string
      */
-    protected function getLongitude(): string
+    private function getLongitude(): string
     {
         return $this->longitude;
     }

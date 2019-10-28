@@ -22,7 +22,7 @@ class RegexValidator extends AbstractValidator
      *
      * @var string
      */
-    protected $pattern;
+    private $pattern;
 
     /**
      * Create new regular expression Validator for $pattern.
@@ -80,7 +80,7 @@ class RegexValidator extends AbstractValidator
      *
      * @return string
      */
-    protected function getPattern(): string
+    private function getPattern(): string
     {
         return $this->pattern;
     }

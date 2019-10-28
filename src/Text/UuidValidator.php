@@ -22,7 +22,7 @@ class UuidValidator extends AbstractValidator
      *
      * @var string
      */
-    protected $pattern = '/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
+    private $pattern = '/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
 
     /**
      * @inheritDoc
@@ -66,7 +66,7 @@ class UuidValidator extends AbstractValidator
      *
      * @return string
      */
-    protected function getPattern(): string
+    private function getPattern(): string
     {
         return $this->pattern;
     }

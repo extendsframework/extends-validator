@@ -43,21 +43,21 @@ class BetweenValidator extends AbstractValidator
      *
      * @var int|null
      */
-    protected $min;
+    private $min;
 
     /**
      * Maximum number.
      *
      * @var int|null
      */
-    protected $max;
+    private $max;
 
     /**
      * If min and max are inclusive.
      *
      * @var bool
      */
-    protected $inclusive;
+    private $inclusive;
 
     /**
      * SizeValidator constructor.
@@ -156,7 +156,7 @@ class BetweenValidator extends AbstractValidator
      *
      * @return int|null
      */
-    protected function getMin(): ?int
+    private function getMin(): ?int
     {
         return $this->min;
     }
@@ -166,7 +166,7 @@ class BetweenValidator extends AbstractValidator
      *
      * @return int|null
      */
-    protected function getMax(): ?int
+    private function getMax(): ?int
     {
         return $this->max;
     }
@@ -176,7 +176,7 @@ class BetweenValidator extends AbstractValidator
      *
      * @return bool
      */
-    protected function isInclusive(): bool
+    private function isInclusive(): bool
     {
         return $this->inclusive === true;
     }

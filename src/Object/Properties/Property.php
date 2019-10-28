@@ -12,21 +12,21 @@ class Property
      *
      * @var string
      */
-    protected $name;
+    private $name;
 
     /**
      * Property validator.
      *
      * @var ValidatorInterface
      */
-    protected $validator;
+    private $validator;
 
     /**
      * If property is optional.
      *
      * @var bool
      */
-    protected $optional;
+    private $optional;
 
     /**
      * Property constructor.

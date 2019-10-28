@@ -29,14 +29,14 @@ class SizeValidator extends AbstractValidator
      *
      * @var int
      */
-    protected $min;
+    private $min;
 
     /**
      * Maximum collection size.
      *
      * @var int
      */
-    protected $max;
+    private $max;
 
     /**
      * SizeValidator constructor.
@@ -109,7 +109,7 @@ class SizeValidator extends AbstractValidator
      *
      * @return int
      */
-    protected function getMin(): ?int
+    private function getMin(): ?int
     {
         return $this->min;
     }
@@ -119,7 +119,7 @@ class SizeValidator extends AbstractValidator
      *
      * @return int
      */
-    protected function getMax(): ?int
+    private function getMax(): ?int
     {
         return $this->max;
     }

@@ -17,7 +17,7 @@ class ContainsValidator extends AbstractValidator
      *
      * @var ValidatorInterface
      */
-    protected $validator;
+    private $validator;
 
     /**
      * CollectionValidator constructor.
@@ -80,7 +80,7 @@ class ContainsValidator extends AbstractValidator
      *
      * @return ValidatorInterface
      */
-    protected function getValidator(): ValidatorInterface
+    private function getValidator(): ValidatorInterface
     {
         return $this->validator;
     }

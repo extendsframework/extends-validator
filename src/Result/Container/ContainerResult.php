@@ -12,14 +12,14 @@ class ContainerResult implements ResultInterface
      *
      * @var bool
      */
-    protected $valid = true;
+    private $valid = true;
 
     /**
      * Validation results.
      *
      * @var ResultInterface[]
      */
-    protected $results = [];
+    private $results = [];
 
     /**
      * @inheritDoc
@@ -64,7 +64,7 @@ class ContainerResult implements ResultInterface
      *
      * @return ResultInterface[]
      */
-    protected function getResults(): array
+    private function getResults(): array
     {
         return $this->results;
     }

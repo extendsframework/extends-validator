@@ -13,7 +13,7 @@ class CallbackValidator implements ValidatorInterface
      *
      * @var callable
      */
-    protected $callback;
+    private $callback;
 
     /**
      * CallbackValidator constructor.
@@ -38,7 +38,7 @@ class CallbackValidator implements ValidatorInterface
      *
      * @return callable
      */
-    protected function getCallback(): callable
+    private function getCallback(): callable
     {
         return $this->callback;
     }

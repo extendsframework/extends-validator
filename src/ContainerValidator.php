@@ -13,7 +13,7 @@ class ContainerValidator implements ValidatorInterface
      *
      * @var InterruptValidator[]
      */
-    protected $validators = [];
+    private $validators = [];
 
     /**
      * @inheritdoc
@@ -54,7 +54,7 @@ class ContainerValidator implements ValidatorInterface
      *
      * @return InterruptValidator[]
      */
-    protected function getValidators(): array
+    private function getValidators(): array
     {
         return $this->validators;
     }
