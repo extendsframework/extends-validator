@@ -16,8 +16,6 @@ class LengthValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Text\LengthValidator::__construct()
      * @covers \ExtendsFramework\Validator\Text\LengthValidator::validate()
-     * @covers \ExtendsFramework\Validator\Text\LengthValidator::getMin()
-     * @covers \ExtendsFramework\Validator\Text\LengthValidator::getMax()
      */
     public function testValid(): void
     {
@@ -34,8 +32,6 @@ class LengthValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Text\LengthValidator::__construct()
      * @covers \ExtendsFramework\Validator\Text\LengthValidator::validate()
-     * @covers \ExtendsFramework\Validator\Text\LengthValidator::getMin()
-     * @covers \ExtendsFramework\Validator\Text\LengthValidator::getMax()
      * @covers \ExtendsFramework\Validator\Text\LengthValidator::getTemplates()
      */
     public function testTooShort(): void
@@ -53,8 +49,6 @@ class LengthValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Text\LengthValidator::__construct()
      * @covers \ExtendsFramework\Validator\Text\LengthValidator::validate()
-     * @covers \ExtendsFramework\Validator\Text\LengthValidator::getMin()
-     * @covers \ExtendsFramework\Validator\Text\LengthValidator::getMax()
      * @covers \ExtendsFramework\Validator\Text\LengthValidator::getTemplates()
      */
     public function testTooLong(): void

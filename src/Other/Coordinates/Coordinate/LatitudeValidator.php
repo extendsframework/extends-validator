@@ -51,12 +51,10 @@ class LatitudeValidator extends AbstractValidator
             return $result;
         }
 
-        $min = $this->getMin();
-        $max = $this->getMax();
-        if ($latitude < $min || $latitude > $max) {
+        if ($latitude < $this->min || $latitude > $this->max) {
             return $this->getInvalidResult(self::LATITUDE_OUT_OF_BOUND, [
-                'min' => $min,
-                'max' => $max,
+                'min' => $this->min,
+                'max' => $this->max,
                 'latitude' => $latitude,
             ]);
         }
@@ -73,25 +71,5 @@ class LatitudeValidator extends AbstractValidator
             self::LATITUDE_OUT_OF_BOUND =>
                 'Latitude is out of bound and must be between {{min}} and {{max}} inclusive, got {{latitude}}.',
         ];
-    }
-
-    /**
-     * Get min.
-     *
-     * @return int
-     */
-    private function getMin(): int
-    {
-        return $this->min;
-    }
-
-    /**
-     * Get max.
-     *
-     * @return int
-     */
-    private function getMax(): int
-    {
-        return $this->max;
     }
 }

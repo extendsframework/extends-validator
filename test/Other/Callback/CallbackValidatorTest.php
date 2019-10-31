@@ -16,7 +16,6 @@ class CallbackValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Other\Callback\CallbackValidator::__construct()
      * @covers \ExtendsFramework\Validator\Other\Callback\CallbackValidator::validate()
-     * @covers \ExtendsFramework\Validator\Other\Callback\CallbackValidator::getCallback()
      */
     public function testValidate(): void
     {

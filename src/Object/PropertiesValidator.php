@@ -39,7 +39,7 @@ class PropertiesValidator extends AbstractValidator
     /**
      * If only defined properties are allowed.
      *
-     * @var bool|null
+     * @var bool
      */
     private $strict;
 
@@ -59,7 +59,7 @@ class PropertiesValidator extends AbstractValidator
             $this->addProperty($property, $validator, $optional ?? null);
         }
 
-        $this->strict = $strict;
+        $this->strict = $strict ?? true;
     }
 
     /**
@@ -74,18 +74,13 @@ class PropertiesValidator extends AbstractValidator
         );
 
         foreach ($extra['properties'] ?? [] as $property) {
-            $validator = $property['validator'];
-            $service = $serviceLocator->getService(
-                $validator['name'],
-                $validator['options'] ?? []
-            );
-
-            /**
-             * @var ValidatorInterface $service
-             */
+            /** @noinspection PhpParamsInspection */
             $properties->addProperty(
                 $property['property'],
-                $service,
+                $serviceLocator->getService(
+                    $property['validator']['name'],
+                    $property['validator']['options'] ?? []
+                ),
                 $property['optional'] ?? null
             );
         }
@@ -105,7 +100,7 @@ class PropertiesValidator extends AbstractValidator
         }
 
         $container = new ContainerResult();
-        foreach ($this->getProperties() as $property) {
+        foreach ($this->properties as $property) {
             $name = $property->getName();
             if (!property_exists($value, $name)) {
                 if (!$property->isOptional()) {
@@ -128,7 +123,7 @@ class PropertiesValidator extends AbstractValidator
             );
         }
 
-        if ($this->isStrict()) {
+        if ($this->strict) {
             $this->checkStrictness($container, $value);
         }
 
@@ -178,9 +173,8 @@ class PropertiesValidator extends AbstractValidator
      */
     private function checkStrictness(ContainerResult $container, $object): void
     {
-        $properties = $this->getProperties();
         foreach ($object as $property => $value) {
-            if (!array_key_exists($property, $properties)) {
+            if (!array_key_exists($property, $this->properties)) {
                 $container->addResult(
                     $this->getInvalidResult(self::PROPERTY_NOT_ALLOWED, [
                         'property' => $property,
@@ -189,29 +183,5 @@ class PropertiesValidator extends AbstractValidator
                 );
             }
         }
-    }
-
-    /**
-     * Get properties.
-     *
-     * @return Property[]
-     */
-    private function getProperties(): array
-    {
-        return $this->properties;
-    }
-
-    /**
-     * Is strict.
-     *
-     * @return bool
-     */
-    private function isStrict(): bool
-    {
-        if ($this->strict === null) {
-            $this->strict = true;
-        }
-
-        return $this->strict;
     }
 }

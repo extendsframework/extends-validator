@@ -15,9 +15,6 @@ class InvalidResultTest extends TestCase
      * @covers \ExtendsFramework\Validator\Result\Invalid\InvalidResult::__construct()
      * @covers \ExtendsFramework\Validator\Result\Invalid\InvalidResult::isValid()
      * @covers \ExtendsFramework\Validator\Result\Invalid\InvalidResult::jsonSerialize()
-     * @covers \ExtendsFramework\Validator\Result\Invalid\InvalidResult::getCode()
-     * @covers \ExtendsFramework\Validator\Result\Invalid\InvalidResult::getMessage()
-     * @covers \ExtendsFramework\Validator\Result\Invalid\InvalidResult::getParameters()
      * @covers \ExtendsFramework\Validator\Result\Invalid\InvalidResult::__toString()
      */
     public function testMethods(): void

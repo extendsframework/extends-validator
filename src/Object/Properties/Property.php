@@ -24,7 +24,7 @@ class Property
     /**
      * If property is optional.
      *
-     * @var bool|null
+     * @var bool
      */
     private $optional;
 
@@ -39,7 +39,7 @@ class Property
     {
         $this->name = $name;
         $this->validator = $validator;
-        $this->optional = $optional;
+        $this->optional = $optional ?? false;
     }
 
     /**
@@ -69,10 +69,6 @@ class Property
      */
     public function isOptional(): bool
     {
-        if ($this->optional === null) {
-            $this->optional = false;
-        }
-
         return $this->optional;
     }
 }

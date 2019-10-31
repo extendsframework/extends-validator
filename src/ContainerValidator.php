@@ -21,7 +21,7 @@ class ContainerValidator implements ValidatorInterface
     public function validate($value, $context = null): ResultInterface
     {
         $container = new ContainerResult();
-        foreach ($this->getValidators() as $validator) {
+        foreach ($this->validators as $validator) {
             $result = $validator->validate($value, $context);
             $container->addResult($result);
 
@@ -47,15 +47,5 @@ class ContainerValidator implements ValidatorInterface
         $this->validators[] = new InterruptValidator($validator, $interrupt);
 
         return $this;
-    }
-
-    /**
-     * Get validators.
-     *
-     * @return InterruptValidator[]
-     */
-    private function getValidators(): array
-    {
-        return $this->validators;
     }
 }

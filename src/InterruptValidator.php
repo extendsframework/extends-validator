@@ -17,7 +17,7 @@ class InterruptValidator implements ValidatorInterface
     /**
      * Whether or not the validation must be stopped.
      *
-     * @var bool|null
+     * @var bool
      */
     private $interrupt;
 
@@ -30,7 +30,7 @@ class InterruptValidator implements ValidatorInterface
     public function __construct(ValidatorInterface $validator, bool $interrupt = null)
     {
         $this->validator = $validator;
-        $this->interrupt = $interrupt;
+        $this->interrupt = $interrupt ?? false;
     }
 
     /**
@@ -38,9 +38,7 @@ class InterruptValidator implements ValidatorInterface
      */
     public function validate($value, $context = null): ResultInterface
     {
-        return $this
-            ->getValidator()
-            ->validate($value, $context);
+        return $this->validator->validate($value, $context);
     }
 
     /**
@@ -50,20 +48,6 @@ class InterruptValidator implements ValidatorInterface
      */
     public function mustInterrupt(): bool
     {
-        if ($this->interrupt === null) {
-            $this->interrupt = false;
-        }
-
         return $this->interrupt;
-    }
-
-    /**
-     * Get validator.
-     *
-     * @return ValidatorInterface
-     */
-    private function getValidator(): ValidatorInterface
-    {
-        return $this->validator;
     }
 }

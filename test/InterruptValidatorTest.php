@@ -15,7 +15,6 @@ class InterruptValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\InterruptValidator::__construct()
      * @covers \ExtendsFramework\Validator\InterruptValidator::validate()
-     * @covers \ExtendsFramework\Validator\InterruptValidator::getValidator()
      * @covers \ExtendsFramework\Validator\InterruptValidator::mustInterrupt()
      */
     public function testValidate(): void

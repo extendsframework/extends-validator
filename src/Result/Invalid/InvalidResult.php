@@ -56,9 +56,9 @@ class InvalidResult implements ResultInterface
     public function jsonSerialize(): array
     {
         return [
-            'code' => $this->getCode(),
-            'message' => $this->getMessage(),
-            'parameters' => $this->getParameters(),
+            'code' => $this->code,
+            'message' => $this->message,
+            'parameters' => $this->parameters,
         ];
     }
 
@@ -70,40 +70,10 @@ class InvalidResult implements ResultInterface
     public function __toString(): string
     {
         $replacement = [];
-        foreach ($this->getParameters() as $key => $parameter) {
+        foreach ($this->parameters as $key => $parameter) {
             $replacement[sprintf('{{%s}}', $key)] = $parameter;
         }
 
-        return strtr($this->getMessage(), $replacement);
-    }
-
-    /**
-     * Get code.
-     *
-     * @return string
-     */
-    private function getCode(): string
-    {
-        return $this->code;
-    }
-
-    /**
-     * Get message.
-     *
-     * @return string
-     */
-    private function getMessage(): string
-    {
-        return $this->message;
-    }
-
-    /**
-     * Get parameters.
-     *
-     * @return array
-     */
-    private function getParameters(): array
-    {
-        return $this->parameters;
+        return strtr($this->message, $replacement);
     }
 }

@@ -51,12 +51,10 @@ class LongitudeValidator extends AbstractValidator
             return $result;
         }
 
-        $min = $this->getMin();
-        $max = $this->getMax();
-        if ($longitude < $min || $longitude > $max) {
+        if ($longitude < $this->min || $longitude > $this->max) {
             return $this->getInvalidResult(self::LONGITUDE_OUT_OF_BOUND, [
-                'min' => $min,
-                'max' => $max,
+                'min' => $this->min,
+                'max' => $this->max,
                 'longitude' => $longitude,
             ]);
         }
@@ -73,25 +71,5 @@ class LongitudeValidator extends AbstractValidator
             self::LONGITUDE_OUT_OF_BOUND =>
                 'Longitude is out of bound and must be between {{min}} and {{max}} inclusive, got {{longitude}}.',
         ];
-    }
-
-    /**
-     * Get min.
-     *
-     * @return int
-     */
-    private function getMin(): int
-    {
-        return $this->min;
-    }
-
-    /**
-     * Get max.
-     *
-     * @return int
-     */
-    private function getMax(): int
-    {
-        return $this->max;
     }
 }

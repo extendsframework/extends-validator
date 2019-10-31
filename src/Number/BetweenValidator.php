@@ -56,7 +56,7 @@ class BetweenValidator extends AbstractValidator
     /**
      * If min and max are inclusive.
      *
-     * @var bool|null
+     * @var bool
      */
     private $inclusive;
 
@@ -71,7 +71,7 @@ class BetweenValidator extends AbstractValidator
     {
         $this->min = $min;
         $this->max = $max;
-        $this->inclusive = $inclusive;
+        $this->inclusive = $inclusive ?? true;
     }
 
     /**
@@ -97,37 +97,33 @@ class BetweenValidator extends AbstractValidator
             return $result;
         }
 
-        $min = $this->getMin();
-        $max = $this->getMax();
-        $isInclusive = $this->isInclusive();
-
-        if (is_int($min)) {
-            if ($isInclusive) {
-                if ($number < $min) {
+        if (is_int($this->min)) {
+            if ($this->inclusive) {
+                if ($number < $this->min) {
                     return $this->getInvalidResult(self::TOO_LOW_INCLUSIVE, [
-                        'min' => $min,
+                        'min' => $this->min,
                         'number' => $number,
                     ]);
                 }
-            } elseif ($number <= $min) {
+            } elseif ($number <= $this->min) {
                 return $this->getInvalidResult(self::TOO_LOW, [
-                    'min' => $min,
+                    'min' => $this->min,
                     'number' => $number,
                 ]);
             }
         }
 
-        if (is_int($max)) {
-            if ($isInclusive) {
-                if ($number > $max) {
+        if (is_int($this->max)) {
+            if ($this->inclusive) {
+                if ($number > $this->max) {
                     return $this->getInvalidResult(self::TOO_HIGH_INCLUSIVE, [
-                        'max' => $max,
+                        'max' => $this->max,
                         'number' => $number,
                     ]);
                 }
-            } elseif ($number >= $max) {
+            } elseif ($number >= $this->max) {
                 return $this->getInvalidResult(self::TOO_HIGH, [
-                    'max' => $max,
+                    'max' => $this->max,
                     'number' => $number,
                 ]);
             }
@@ -147,39 +143,5 @@ class BetweenValidator extends AbstractValidator
             self::TOO_LOW_INCLUSIVE => 'Number must be greater than {{min}}, got {{number}}.',
             self::TOO_HIGH_INCLUSIVE => 'Number must be less than {{max}}, got {{number}}.',
         ];
-    }
-
-    /**
-     * Get min.
-     *
-     * @return int|null
-     */
-    private function getMin(): ?int
-    {
-        return $this->min;
-    }
-
-    /**
-     * Get max.
-     *
-     * @return int|null
-     */
-    private function getMax(): ?int
-    {
-        return $this->max;
-    }
-
-    /**
-     * Is inclusive.
-     *
-     * @return bool
-     */
-    private function isInclusive(): bool
-    {
-        if ($this->inclusive === null) {
-            $this->inclusive = true;
-        }
-
-        return $this->inclusive;
     }
 }

@@ -15,7 +15,6 @@ class ValidatorFactoryTest extends TestCase
      * Test that factory will return an instance of ValidatorInterface.
      *
      * @covers \ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator\ValidatorFactory::createService()
-     * @covers \ExtendsFramework\Validator\Framework\ServiceLocator\Factory\Validator\ValidatorFactory::getValidator()
      */
     public function testCreateService(): void
     {

@@ -7,7 +7,6 @@ use ExtendsFramework\ServiceLocator\Resolver\Factory\ServiceFactoryInterface;
 use ExtendsFramework\ServiceLocator\ServiceLocatorException;
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
 use ExtendsFramework\Validator\ContainerValidator;
-use ExtendsFramework\Validator\ValidatorInterface;
 
 class ValidatorFactory implements ServiceFactoryInterface
 {
@@ -19,26 +18,13 @@ class ValidatorFactory implements ServiceFactoryInterface
     {
         $container = new ContainerValidator();
         foreach ($extra['validators'] ?? [] as $validator) {
+            /** @noinspection PhpParamsInspection */
             $container->addValidator(
-                $this->getValidator($serviceLocator, $validator['name'], $validator['options'] ?? []),
+                $serviceLocator->getService($validator['name'], $validator['options'] ?? []),
                 $validator['interrupt'] ?? null
             );
         }
 
         return $container;
-    }
-
-    /**
-     * Get validator for name.
-     *
-     * @param ServiceLocatorInterface $serviceLocator
-     * @param string                  $name
-     * @param array                   $options
-     * @return ValidatorInterface
-     * @throws ServiceLocatorException
-     */
-    private function getValidator(ServiceLocatorInterface $serviceLocator, string $name, array $options): object
-    {
-        return $serviceLocator->getService($name, $options);
     }
 }

@@ -17,7 +17,6 @@ class ContainsValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::__construct()
      * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::validate()
-     * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::getValidator()
      */
     public function testValid(): void
     {
@@ -53,7 +52,6 @@ class ContainsValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::__construct()
      * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::validate()
-     * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::getValidator()
      */
     public function testInvalid(): void
     {
@@ -89,7 +87,6 @@ class ContainsValidatorTest extends TestCase
      *
      * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::__construct()
      * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::validate()
-     * @covers \ExtendsFramework\Validator\Collection\ContainsValidator::getValidator()
      */
     public function testNotIterable(): void
     {
