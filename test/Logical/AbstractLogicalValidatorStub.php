@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ExtendsFramework\Validator\Logical;
 
 use ExtendsFramework\Validator\Result\ResultInterface;
+use ExtendsFramework\Validator\Result\Valid\ValidResult;
 
 class AbstractLogicalValidatorStub extends AbstractLogicalValidator
 {
@@ -12,7 +13,7 @@ class AbstractLogicalValidatorStub extends AbstractLogicalValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        return null;
+        return new ValidResult();
     }
 
     /**

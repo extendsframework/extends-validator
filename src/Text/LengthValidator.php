@@ -26,13 +26,6 @@ class LengthValidator extends AbstractValidator
     public const TOO_LONG = 'tooLong';
 
     /**
-     * When string is not between min and max.
-     *
-     * @var string
-     */
-    public const NOT_BETWEEN = 'notBetween';
-
-    /**
      * Minimal length.
      *
      * @var int|null
