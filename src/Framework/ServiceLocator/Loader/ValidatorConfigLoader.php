@@ -25,7 +25,11 @@ use ExtendsFramework\Validator\Object\PropertiesValidator;
 use ExtendsFramework\Validator\Other\Coordinates\Coordinate\LatitudeValidator;
 use ExtendsFramework\Validator\Other\Coordinates\Coordinate\LongitudeValidator;
 use ExtendsFramework\Validator\Other\Coordinates\CoordinatesValidator;
+use ExtendsFramework\Validator\Other\NullableValidator;
+use ExtendsFramework\Validator\Text\DateTimeValidator;
+use ExtendsFramework\Validator\Text\EmailAddressValidator;
 use ExtendsFramework\Validator\Text\LengthValidator;
+use ExtendsFramework\Validator\Text\NotEmptyValidator;
 use ExtendsFramework\Validator\Text\RegexValidator;
 use ExtendsFramework\Validator\Text\UuidValidator;
 use ExtendsFramework\Validator\Type\ArrayValidator;
@@ -33,6 +37,7 @@ use ExtendsFramework\Validator\Type\BooleanValidator;
 use ExtendsFramework\Validator\Type\FloatValidator;
 use ExtendsFramework\Validator\Type\IntegerValidator;
 use ExtendsFramework\Validator\Type\IterableValidator;
+use ExtendsFramework\Validator\Type\NullValidator;
 use ExtendsFramework\Validator\Type\NumberValidator;
 use ExtendsFramework\Validator\Type\NumericValidator;
 use ExtendsFramework\Validator\Type\ObjectValidator;
@@ -74,8 +79,12 @@ class ValidatorConfigLoader implements LoaderInterface
                     CoordinatesValidator::class => CoordinatesValidator::class,
                     LatitudeValidator::class => LatitudeValidator::class,
                     LongitudeValidator::class => LongitudeValidator::class,
+                    NullableValidator::class => NullableValidator::class,
                     // Text
+                    DateTimeValidator::class => DateTimeValidator::class,
+                    EmailAddressValidator::class => EmailAddressValidator::class,
                     LengthValidator::class => LengthValidator::class,
+                    NotEmptyValidator::class => NotEmptyValidator::class,
                     RegexValidator::class => RegexValidator::class,
                     UuidValidator::class => UuidValidator::class,
                     // Type
@@ -84,6 +93,7 @@ class ValidatorConfigLoader implements LoaderInterface
                     FloatValidator::class => FloatValidator::class,
                     IntegerValidator::class => IntegerValidator::class,
                     IterableValidator::class => IterableValidator::class,
+                    NullValidator::class => NullValidator::class,
                     NumberValidator::class => NumberValidator::class,
                     NumericValidator::class => NumericValidator::class,
                     ObjectValidator::class => ObjectValidator::class,
