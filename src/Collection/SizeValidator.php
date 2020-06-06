@@ -68,8 +68,7 @@ class SizeValidator extends AbstractValidator
      */
     public function validate($value, $context = null): ResultInterface
     {
-        $validator = new ArrayValidator();
-        $result = $validator->validate($value);
+        $result = (new ArrayValidator())->validate($value);
         if (!$result->isValid()) {
             return $result;
         }
