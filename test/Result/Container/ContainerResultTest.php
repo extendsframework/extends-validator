@@ -102,4 +102,35 @@ class ContainerResultTest extends TestCase
             $result,
         ], $json);
     }
+
+    /**
+     * JSON array.
+     *
+     * Test that an JSON array will be forced when there are only integer keys.
+     *
+     * @covers \ExtendsFramework\Validator\Result\Container\ContainerResult::addResult()
+     * @covers \ExtendsFramework\Validator\Result\Container\ContainerResult::isValid()
+     * @covers \ExtendsFramework\Validator\Result\Container\ContainerResult::jsonSerialize()
+     */
+    public function testJsonArray(): void
+    {
+        $result = $this->createMock(ResultInterface::class);
+        $result
+            ->expects($this->exactly(4))
+            ->method('isValid')
+            ->willReturnOnConsecutiveCalls(true, false, true, false);
+
+        /**
+         * @var ResultInterface $result
+         */
+        $container = new ContainerResult();
+        $json = $container
+            ->addResult($result)
+            ->addResult($result)
+            ->jsonSerialize();
+
+        $this->assertSame([
+            0 => $result,
+        ], $json);
+    }
 }
