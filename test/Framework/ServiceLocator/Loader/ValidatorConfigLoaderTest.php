@@ -6,6 +6,9 @@ namespace ExtendsFramework\Validator\Framework\ServiceLocator\Loader;
 use ExtendsFramework\ServiceLocator\Resolver\Factory\FactoryResolver;
 use ExtendsFramework\ServiceLocator\Resolver\StaticFactory\StaticFactoryResolver;
 use ExtendsFramework\ServiceLocator\ServiceLocatorInterface;
+use ExtendsFramework\Validator\Collection\ContainsValidator;
+use ExtendsFramework\Validator\Collection\InArrayValidator;
+use ExtendsFramework\Validator\Collection\SizeValidator;
 use ExtendsFramework\Validator\Comparison\EqualValidator;
 use ExtendsFramework\Validator\Comparison\GreaterOrEqualValidator;
 use ExtendsFramework\Validator\Comparison\GreaterThanValidator;
@@ -63,6 +66,10 @@ class ValidatorConfigLoaderTest extends TestCase
                     ValidatorInterface::class => ValidatorFactory::class,
                 ],
                 StaticFactoryResolver::class => [
+                    // Collection
+                    ContainsValidator::class => ContainsValidator::class,
+                    InArrayValidator::class => InArrayValidator::class,
+                    SizeValidator::class => SizeValidator::class,
                     // Comparison
                     EqualValidator::class => EqualValidator::class,
                     GreaterOrEqualValidator::class => GreaterOrEqualValidator::class,
